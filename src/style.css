@@ -586,6 +586,18 @@ footer p {
   opacity: 0.7;
 }
 
+.credit-link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.credit-link:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .container {

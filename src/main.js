@@ -243,7 +243,7 @@ function createRoadmapHTML() {
       </section>
 
       <footer>
-        <p>สร้างด้วย ❤️ สำหรับนักพัฒนาไทย | 2026</p>
+        <p>สร้างด้วย ❤️ โดย <a href="https://www.facebook.com/milerdevpro" target="_blank" rel="noopener noreferrer" class="credit-link">milerdev</a></p>
         <p class="footer-sub">อัพเดทล่าสุด: มกราคม 2026</p>
       </footer>
     </div>
