@@ -159,6 +159,14 @@ button{font:inherit;color:inherit}
 .chip:hover{border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .result-line{font-size:13px;color:var(--muted);margin:0 0 18px;min-height:20px}
+.toolbar[data-collapsed="true"]{padding:8px 0}
+.toolbar[data-collapsed="true"] .toolbar-body,.toolbar[data-collapsed="false"] .toolbar-mini{display:none}
+.toolbar-mini{display:flex;align-items:center;gap:12px;min-height:36px}
+.tb-toggle{flex:none;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);cursor:pointer;font-size:14px;font-weight:500}
+.tb-toggle:hover{border-color:var(--ink)}
+.tb-count{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;display:inline-grid;place-items:center}
+.tb-summary{flex:1;min-width:0;font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tb-collapse{margin-left:auto}
 .toggle input:disabled{cursor:not-allowed}
 .toggle.is-disabled{opacity:.45;cursor:not-allowed}
 
@@ -509,8 +517,17 @@ footer p{margin:4px 0;max-width:70ch}
       <section class="plan" id="plan" aria-labelledby="planTitle" hidden></section>
     </div>
 
-    <div class="toolbar" id="toolbar">
+    <div class="toolbar" id="toolbar" data-collapsed="false">
       <div class="wrap">
+        <div class="toolbar-mini">
+          <button class="tb-toggle" type="button" id="tbExpand" aria-expanded="false" aria-controls="toolbarBody">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            <span>ตัวกรอง</span><span class="tb-count" id="tbCount" hidden></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <span class="tb-summary" id="tbSummary"></span>
+        </div>
+        <div class="toolbar-body" id="toolbarBody">
         <div class="toolbar-row">
           <label class="search">
             <span class="sr-only">ค้นหาหัวข้อ</span>
@@ -525,9 +542,14 @@ footer p{margin:4px 0;max-width:70ch}
           </select>
           <label class="toggle"><input type="checkbox" id="hideDone"> ซ่อนที่เรียนจบแล้ว</label>
           <label class="toggle" id="hideOffWrap"><input type="checkbox" id="hideOff"> ซ่อนหัวข้อนอกสาย</label>
+          <button class="btn btn-sm btn-ghost tb-collapse" type="button" id="tbCollapse" aria-expanded="true" aria-controls="toolbarBody" title="ย่อแถบตัวกรองเพื่อให้เห็นเนื้อหามากขึ้น">
+            ย่อ
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+          </button>
         </div>
         <div class="chips" id="trackChips" role="group" aria-label="เลือกสายงาน">
           <span class="chips-label">สายงาน</span>
+        </div>
         </div>
       </div>
     </div>
@@ -1352,6 +1374,38 @@ function applyFilters() {
   if (q) line += " · ค้นหา “" + state.q.trim() + "”";
   $("#resultLine").textContent = line;
   refreshMatrixDim();
+  updateTbSummary(shown);
+}
+
+function updateTbSummary(shown) {
+  var parts = [];
+  if (state.track !== "all") parts.push("สาย " + TRACK_LABEL[state.track] + (state.hideOff ? " (ซ่อนนอกสาย)" : ""));
+  if (state.q.trim()) parts.push("ค้นหา “" + state.q.trim() + "”");
+  if (state.pri !== "all") parts.push(state.pri === "must" ? "ต้องรู้เท่านั้น" : "ต้องรู้ + ควรรู้");
+  if (state.hideDone) parts.push("ซ่อนที่เรียนจบ");
+  var count = $("#tbCount");
+  count.hidden = !parts.length; count.textContent = parts.length;
+  $("#tbSummary").textContent = (parts.length ? parts.join(" · ") : "ไม่มีตัวกรอง") + " · แสดง " + shown + " หัวข้อ";
+  $("#tbExpand").setAttribute("aria-label", "แสดงตัวกรอง" + (parts.length ? " (เปิดอยู่ " + parts.length + " รายการ)" : ""));
+}
+
+function setToolbarCollapsed(collapsed, moveFocus) {
+  var tb = $("#toolbar");
+  if ((tb.dataset.collapsed === "true") === collapsed) return;
+  // Keep the content in view steady while a stuck toolbar changes height. Browsers with
+  // scroll anchoring already do this, so only correct whatever offset is left over.
+  var stuck = getComputedStyle(tb).position === "sticky" && tb.getBoundingClientRect().top <= $(".topbar").offsetHeight + 1 && window.scrollY > 0;
+  var ref = stuck ? document.elementFromPoint(window.innerWidth / 2, window.innerHeight * 0.6) : null;
+  var refTop = ref ? ref.getBoundingClientRect().top : 0;
+  tb.dataset.collapsed = String(collapsed);
+  $("#tbExpand").setAttribute("aria-expanded", String(!collapsed));
+  $("#tbCollapse").setAttribute("aria-expanded", String(!collapsed));
+  if (ref) requestAnimationFrame(function () {
+    var d = ref.getBoundingClientRect().top - refTop;
+    if (Math.abs(d) > 1) window.scrollBy({ top: d, behavior: "instant" });
+  });
+  try { localStorage.setItem("aidr.tbCollapsed", collapsed ? "1" : "0"); } catch (e) {}
+  if (moveFocus) (collapsed ? $("#tbExpand") : $("#search")).focus({ preventScroll:true });
 }
 
 function refreshStages() {
@@ -1960,6 +2014,8 @@ function bind() {
   $("#priFilter").addEventListener("change", function (e) { state.pri = e.target.value; applyFilters(); });
   $("#hideDone").addEventListener("change", function (e) { state.hideDone = e.target.checked; applyFilters(); });
   $("#hideOff").addEventListener("change", function (e) { state.hideOff = e.target.checked; save(); applyFilters(); });
+  $("#tbExpand").addEventListener("click", function () { setToolbarCollapsed(false, true); });
+  $("#tbCollapse").addEventListener("click", function () { setToolbarCollapsed(true, true); });
   $("#importFile").addEventListener("change", function (e) { var f = e.target.files && e.target.files[0]; if (f) importProgress(f); e.target.value = ""; });
 
   $("#themeBtn").addEventListener("click", function () {
@@ -2018,7 +2074,7 @@ function bind() {
       return;
     }
     if (e.key === "/" && !typing && !drawer.classList.contains("open") && !quizEl.classList.contains("open")) {
-      e.preventDefault(); var s = $("#search"); s.focus(); s.select(); return;
+      e.preventDefault(); setToolbarCollapsed(false, false); var s = $("#search"); s.focus(); s.select(); return;
     }
     if (drawer.classList.contains("open") && !typing && current) {
       if (e.key === "ArrowLeft" && NODES[current.i - 1]) { e.preventDefault(); openNode(NODES[current.i - 1].id); }
@@ -2053,6 +2109,13 @@ $('[data-count="nodes"]').textContent = NODES.length;
 $('[data-count="skills"]').textContent = totalSkills;
 $("#roadmapTitle").textContent = "เส้นทางการเรียนรู้ " + STAGES.length + " ช่วง " + NODES.length + " หัวข้อ";
 renderThemeBtn();
+try {
+  if (localStorage.getItem("aidr.tbCollapsed") === "1") {
+    $("#toolbar").dataset.collapsed = "true";
+    $("#tbExpand").setAttribute("aria-expanded", "false");
+    $("#tbCollapse").setAttribute("aria-expanded", "false");
+  }
+} catch (e) {}
 bind();
 buildMatrix();
 refreshAll();
