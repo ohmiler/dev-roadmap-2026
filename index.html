@@ -17,7 +17,7 @@
   --bg:#f6f5f1; --surface:#ffffff; --surface-2:#f1efe9; --surface-3:#e8e5dc;
   --ink:#111111; --ink-2:#4a4945; --muted:#7d7b74;
   --line:#e4e1d8; --line-strong:#cdc9bd;
-  --accent:#c6f432; --on-accent:#111111;
+  --accent:#c6f432; --on-accent:#111111; --focus-ring:#76a300;
   --bar:#111111; --bar-track:#e8e5dc;
   --good:#0ca30c;
   --p-must:#2a78d6; --p-should:#eb6834; --p-nice:#1baf7a;
@@ -32,7 +32,7 @@
     --bg:#0f1012; --surface:#17181c; --surface-2:#1f2126; --surface-3:#2a2c32;
     --ink:#f2f1ec; --ink-2:#c3c2bb; --muted:#8c8b85;
     --line:#2a2c31; --line-strong:#3c3f46;
-    --bar:#c6f432; --bar-track:#2a2c32;
+    --bar:#c6f432; --bar-track:#2a2c32; --focus-ring:#c6f432;
     --p-must:#3987e5; --p-should:#d95926; --p-nice:#199e70;
     --scrim:rgba(0,0,0,.6);
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
@@ -43,7 +43,7 @@
   --bg:#0f1012; --surface:#17181c; --surface-2:#1f2126; --surface-3:#2a2c32;
   --ink:#f2f1ec; --ink-2:#c3c2bb; --muted:#8c8b85;
   --line:#2a2c31; --line-strong:#3c3f46;
-  --bar:#c6f432; --bar-track:#2a2c32;
+  --bar:#c6f432; --bar-track:#2a2c32; --focus-ring:#c6f432;
   --p-must:#3987e5; --p-should:#d95926; --p-nice:#199e70;
   --scrim:rgba(0,0,0,.6);
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
@@ -158,7 +158,38 @@ button{font:inherit;color:inherit}
 .chip{flex:none;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);font-size:14px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
 .chip:hover{border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.result-line{font-size:13px;color:var(--muted);margin-top:6px;min-height:20px}
+.result-line{font-size:13px;color:var(--muted);margin:0 0 18px;min-height:20px}
+.toggle input:disabled{cursor:not-allowed}
+.toggle.is-disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Stage bar (screens without the side rail) ---------- */
+.stagebar{position:sticky;top:var(--sb-top,60px);z-index:29;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 0}
+@media (min-width:1101px){.stagebar{display:none}}
+.stage-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.stage-chips::-webkit-scrollbar{display:none}
+.stage-chip{flex:none;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;text-decoration:none;color:var(--ink-2);white-space:nowrap;transition:background .15s,color .15s,opacity .2s}
+.stage-chip:hover{border-color:var(--line-strong);color:var(--ink)}
+.stage-chip .sn{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+.stage-chip.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.stage-chip.active .sn{color:inherit;opacity:.7}
+.stage-chip.complete::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--good)}
+.stage-chip.off{opacity:.4}
+
+/* ---------- My plan ---------- */
+.plan{margin:0 0 24px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px 20px 26px;box-shadow:var(--shadow);position:relative;overflow:hidden;scroll-margin-top:calc(var(--top-h) + 16px)}
+.plan::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent)}
+.plan-head{display:flex;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;align-items:flex-start}
+.plan-title{margin:4px 0 4px;font-size:clamp(19px,2vw,22px);line-height:1.35}
+.plan-sub{margin:0;color:var(--ink-2);font-size:14px}
+.plan-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.plan-k{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.plan-focus{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.plan-focus button{width:100%;height:100%;display:flex;gap:10px;align-items:flex-start;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.plan-focus button:hover{border-color:var(--ink)}
+.pf-n{flex:none;width:22px;height:22px;border-radius:7px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;margin-top:1px}
+.pf-t{display:block;font-weight:500;font-size:14px;line-height:1.4}
+.pf-s{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);margin-top:2px}
+.plan-done{margin:12px 0 0;color:var(--ink-2)}
 
 /* ---------- Roadmap layout ---------- */
 .legend-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;color:var(--ink-2);align-items:center}
@@ -193,24 +224,33 @@ button{font:inherit;color:inherit}
 .sbar{width:120px;height:4px;background:var(--bar-track);border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle}
 .sbar i{display:block;height:100%;width:0;background:var(--bar);transition:width .4s}
 @media (max-width:640px){
-  .stage{padding-left:0;scroll-margin-top:80px;padding-bottom:48px}
+  .stage{padding-left:0;padding-bottom:48px}
   .stage::before{display:none}
   .stage-num{position:static;width:44px;height:44px;margin-bottom:12px}
 }
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.node{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s,opacity .25s;position:relative;min-height:158px}
+.node{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:transform .18s,border-color .18s,box-shadow .18s,opacity .25s;position:relative;min-height:158px}
 .node:hover{border-color:var(--line-strong);transform:translateY(-2px);box-shadow:var(--shadow)}
 .node.dim{opacity:.34}
 .node.dim:hover{opacity:.8}
 .node.hide{display:none}
 .node[data-status="doing"]{border-color:var(--line-strong)}
 .node[data-status="done"]{border-color:color-mix(in srgb,var(--good) 45%,var(--line))}
-.node-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:2px}
-.status{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;--p:0;background:conic-gradient(var(--bar) calc(var(--p) * 1%),var(--bar-track) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px))}
-.status svg{display:none}
+.node.is-focus{border-color:var(--focus-ring);box-shadow:0 0 0 1px var(--focus-ring)}
+.node.flash{animation:flash 1.4s ease-out}
+@keyframes flash{0%,100%{box-shadow:0 0 0 1px var(--focus-ring)}25%{box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 70%,transparent)}}
+.node-open{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;text-align:left;background:none;border:0;border-radius:inherit;padding:16px 16px 14px;cursor:pointer;color:inherit;font:inherit}
+.node-top{display:flex;align-items:center;gap:8px;margin-bottom:2px;padding-right:30px;min-height:22px;flex-wrap:wrap}
+.focus-pill{font-size:11.5px;font-weight:600;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:0 8px;line-height:20px;white-space:nowrap}
+.node-check{position:absolute;top:8px;right:8px;width:38px;height:38px;border-radius:50%;border:0;background:none;padding:0;display:grid;place-items:center;cursor:pointer;transition:background .15s}
+.node-check:hover{background:var(--surface-2)}
+.node-check>*{grid-area:1/1}
+.node-check .chk{display:none;color:var(--muted)}
+.node-check:hover .chk,.node-check:focus-visible .chk{display:block}
+.status{width:20px;height:20px;border-radius:50%;flex:none;--p:0;background:conic-gradient(var(--bar) calc(var(--p) * 1%),var(--bar-track) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px))}
 .node[data-status="done"] .status{background:var(--good);-webkit-mask:none;mask:none}
-.node[data-status="done"] .status svg{display:block}
+.node[data-status="done"] .node-check .chk{display:block;color:#fff}
 .node-title{display:block;font-weight:600;font-size:16.5px;line-height:1.4}
 .node-en{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);line-height:1.45}
 .node-meta{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:8px;flex-wrap:wrap}
@@ -354,8 +394,10 @@ button{font:inherit;color:inherit}
 .r-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
 
 /* ---------- Toast & footer ---------- */
-.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s,transform .2s;z-index:100;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s,transform .2s;z-index:100;pointer-events:none;max-width:calc(100% - 32px);text-align:center;display:flex;align-items:center;gap:14px}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.show.has-action{pointer-events:auto}
+.toast-btn{flex:none;background:none;border:0;padding:2px 2px;color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--ink-2);font-size:14px;margin-top:24px}
 .foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer p{margin:4px 0;max-width:70ch}
@@ -461,9 +503,10 @@ footer p{margin:4px 0;max-width:70ch}
           <span class="pri must">ต้องรู้</span>
           <span class="pri should">ควรรู้</span>
           <span class="pri nice">เสริม</span>
-          <span class="lg mono" style="font-size:12.5px">AI xx% = AI ทำแทนได้ประมาณ</span>
+          <span class="lg" style="font-size:12.5px;color:var(--muted)">“AI ทำแทนได้ xx%” = สัดส่วนงานที่ AI ทำได้ในปัจจุบัน (ค่าประเมิน)</span>
         </div>
       </div>
+      <section class="plan" id="plan" aria-labelledby="planTitle" hidden></section>
     </div>
 
     <div class="toolbar" id="toolbar">
@@ -481,17 +524,21 @@ footer p{margin:4px 0;max-width:70ch}
             <option value="must">ต้องรู้เท่านั้น</option>
           </select>
           <label class="toggle"><input type="checkbox" id="hideDone"> ซ่อนที่เรียนจบแล้ว</label>
+          <label class="toggle" id="hideOffWrap"><input type="checkbox" id="hideOff"> ซ่อนหัวข้อนอกสาย</label>
         </div>
         <div class="chips" id="trackChips" role="group" aria-label="เลือกสายงาน">
           <span class="chips-label">สายงาน</span>
         </div>
-        <div class="result-line" id="resultLine" aria-live="polite"></div>
       </div>
     </div>
+    <nav class="stagebar" id="stagebar" aria-label="ไปยังช่วงการเรียนรู้">
+      <div class="wrap"><div class="stage-chips" id="stageChips"></div></div>
+    </nav>
 
     <div class="wrap layout">
       <nav class="rail" id="rail" aria-label="สารบัญช่วงการเรียนรู้"></nav>
       <div>
+        <div class="result-line" id="resultLine" aria-live="polite"></div>
         <div id="roadmap"></div>
         <div class="empty" id="emptyState" hidden>
           <p style="margin:0 0 12px">ไม่พบหัวข้อที่ตรงกับเงื่อนไข</p>
@@ -1117,7 +1164,7 @@ NODES.forEach(function (n, i) { n.i = i; byId[n.id] = n; });
    STATE
    ========================================================= */
 var KEY = "aidr.v1";
-var state = { checks:{}, track:"all", pri:"all", hideDone:false, q:"" };
+var state = { checks:{}, track:"all", pri:"all", hideDone:false, hideOff:false, q:"", plan:null };
 
 function load() {
   try {
@@ -1127,11 +1174,19 @@ function load() {
     if (d && typeof d === "object") {
       state.checks = cleanChecks(d.checks);
       if (TRACK_LABEL[d.track]) state.track = d.track;
+      state.hideOff = d.hideOff === true;
+      state.plan = cleanPlan(d.plan);
     }
   } catch (e) {}
 }
 function save() {
-  try { localStorage.setItem(KEY, JSON.stringify({ checks:state.checks, track:state.track })); } catch (e) {}
+  try { localStorage.setItem(KEY, JSON.stringify({ checks:state.checks, track:state.track, hideOff:state.hideOff, plan:state.plan })); } catch (e) {}
+}
+function cleanPlan(p) {
+  if (!p || typeof p !== "object") return null;
+  var ok = TRACK_LABEL[p.track] && p.track !== "all" &&
+    ["0","1","2","3"].indexOf(p.exp) > -1 && ["0","1","2","3"].indexOf(p.ai) > -1 && ["4","8","15","25"].indexOf(p.hrs) > -1;
+  return ok ? { exp:p.exp, track:p.track, ai:p.ai, hrs:p.hrs } : null;
 }
 function cleanChecks(c) {
   var out = {};
@@ -1181,12 +1236,16 @@ function $(s, r) { return (r || document).querySelector(s); }
 function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
 var toastTimer;
-function toast(msg) {
-  var t = $("#toast"); t.textContent = msg; t.classList.add("show");
-  clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2200);
+function toast(msg, action) {
+  var t = $("#toast");
+  t.innerHTML = '<span>' + esc(msg) + '</span>' + (action ? '<button type="button" class="toast-btn">' + esc(action.label) + '</button>' : "");
+  t.classList.toggle("has-action", !!action);
+  if (action) $(".toast-btn", t).addEventListener("click", function () { t.classList.remove("show"); clearTimeout(toastTimer); action.fn(); });
+  t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, action ? 5000 : 2200);
 }
 var ICON = {
-  check:'<svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 10.5l2.6 2.6L14 7.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  check:'<svg class="chk" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 10.5l2.6 2.6L14 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   ext:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>',
   sun:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
   moon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>',
@@ -1212,13 +1271,16 @@ function buildChips() {
 }
 
 function nodeHTML(n) {
-  return '<button class="node" type="button" data-id="' + n.id + '" data-status="todo">' +
-    '<span class="node-top"><span class="pri ' + n.p + '">' + PRI[n.p] + '</span><span class="status" aria-hidden="true">' + ICON.check + '</span></span>' +
-    '<span class="node-title">' + esc(n.title) + '</span>' +
-    '<span class="node-en">' + esc(n.en) + '</span>' +
-    '<span class="node-meta"><span>' + (n.o ? "ทำควบคู่ต่อเนื่อง" : "~" + n.w + " สัปดาห์") + '</span><span aria-hidden="true">·</span><span title="AI ทำแทนได้ประมาณ ' + n.a + '%">AI ' + n.a + '%</span></span>' +
-    '<span class="node-prog"><span class="node-bar"><i></i></span><span class="node-count mono">0/' + n.sk.length + '</span></span>' +
-  '</button>';
+  return '<div class="node" data-id="' + n.id + '" data-status="todo">' +
+    '<button class="node-open" type="button">' +
+      '<span class="node-top"><span class="pri ' + n.p + '">' + PRI[n.p] + '</span><span class="focus-pill" hidden></span></span>' +
+      '<span class="node-title">' + esc(n.title) + '</span>' +
+      '<span class="node-en">' + esc(n.en) + '</span>' +
+      '<span class="node-meta"><span>' + (n.o ? "ทำควบคู่ต่อเนื่อง" : "~" + n.w + " สัปดาห์") + '</span><span aria-hidden="true">·</span><span title="สัดส่วนงานในทักษะนี้ที่ AI ทำได้ในปัจจุบัน (ค่าประเมิน)">AI ทำแทนได้ ' + n.a + '%</span></span>' +
+      '<span class="node-prog"><span class="node-bar"><i></i></span><span class="node-count mono">0/' + n.sk.length + '</span></span>' +
+    '</button>' +
+    '<button class="node-check" type="button" aria-pressed="false"><span class="status" aria-hidden="true"></span>' + ICON.check + '</button>' +
+  '</div>';
 }
 
 function buildRoadmap() {
@@ -1242,6 +1304,9 @@ function buildRail() {
   $("#rail").innerHTML = '<div class="rail-title">สารบัญ</div>' + STAGES.map(function (st) {
     return '<a href="#' + st.id + '" data-stage-link="' + st.id + '"><span class="rn">' + st.n + '</span><span>' + esc(st.short) + '</span><span class="rbar"><i></i></span></a>';
   }).join("");
+  $("#stageChips").innerHTML = STAGES.map(function (st) {
+    return '<a class="stage-chip" href="#' + st.id + '" data-stage-link="' + st.id + '"><span class="sn">' + st.n + '</span>' + esc(st.short) + '</a>';
+  }).join("");
 }
 
 /* =========================================================
@@ -1249,12 +1314,16 @@ function buildRail() {
    ========================================================= */
 function refreshCards() {
   $$(".node").forEach(function (el) {
-    var n = byId[el.dataset.id], p = prog(n), st = statusOf(n);
+    var n = byId[el.dataset.id], p = prog(n), st = statusOf(n), done = st === "done";
+    var chk = $(".node-check", el);
     el.dataset.status = st;
-    el.querySelector(".status").style.setProperty("--p", Math.round(p.c / p.t * 100));
-    el.querySelector(".node-bar i").style.width = (p.c / p.t * 100) + "%";
-    el.querySelector(".node-count").textContent = p.c + "/" + p.t;
-    el.setAttribute("aria-label", n.title + " (" + PRI[n.p] + ") ความคืบหน้า " + p.c + " จาก " + p.t + (relevant(n) ? "" : " · นอกสายที่เลือก"));
+    $(".status", el).style.setProperty("--p", Math.round(p.c / p.t * 100));
+    $(".node-bar i", el).style.width = (p.c / p.t * 100) + "%";
+    $(".node-count", el).textContent = p.c + "/" + p.t;
+    $(".node-open", el).setAttribute("aria-label", n.title + " (" + PRI[n.p] + ") ความคืบหน้า " + p.c + " จาก " + p.t + (relevant(n) ? "" : " · นอกสายที่เลือก"));
+    chk.setAttribute("aria-pressed", String(done));
+    chk.setAttribute("aria-label", (done ? "ยกเลิกสถานะเรียนจบ: " : "ทำเครื่องหมายว่าเรียนจบ: ") + n.title);
+    chk.title = done ? "คลิกเพื่อยกเลิกสถานะเรียนจบ" : "คลิกเพื่อทำเครื่องหมายว่าเรียนจบทั้งหัวข้อ";
   });
 }
 
@@ -1265,17 +1334,21 @@ function applyFilters() {
     var vis = 0;
     $$(".node", sec).forEach(function (el) {
       var n = byId[el.dataset.id];
-      var hide = !matches(n, q) || !priOk(n) || (state.hideDone && statusOf(n) === "done");
       var rel = relevant(n);
+      var hide = !matches(n, q) || !priOk(n) || (state.hideDone && statusOf(n) === "done") || (state.hideOff && !rel);
       el.classList.toggle("hide", hide);
       el.classList.toggle("dim", !hide && !rel);
       if (!hide) { vis++; shown++; if (rel) shownRel++; }
     });
     sec.classList.toggle("hide", vis === 0);
+    var chip = $('.stage-chip[data-stage-link="' + sec.id + '"]');
+    if (chip) chip.classList.toggle("off", vis === 0);
   });
   $("#emptyState").hidden = shown > 0;
   var line = "แสดง " + shown + " หัวข้อ";
-  if (state.track !== "all") line += " · " + shownRel + " หัวข้ออยู่ในสาย " + TRACK_LABEL[state.track] + " (หัวข้อนอกสายแสดงแบบจาง)";
+  if (state.track !== "all") line += state.hideOff
+    ? " · เฉพาะสาย " + TRACK_LABEL[state.track]
+    : " · " + shownRel + " หัวข้ออยู่ในสาย " + TRACK_LABEL[state.track] + " (หัวข้อนอกสายแสดงแบบจาง)";
   if (q) line += " · ค้นหา “" + state.q.trim() + "”";
   $("#resultLine").textContent = line;
   refreshMatrixDim();
@@ -1295,6 +1368,8 @@ function refreshStages() {
     sec.classList.toggle("complete", t > 0 && c >= t);
     var link = $('[data-stage-link="' + st.id + '"] .rbar i');
     if (link) link.style.width = pct + "%";
+    var chip = $('.stage-chip[data-stage-link="' + st.id + '"]');
+    if (chip) chip.classList.toggle("complete", t > 0 && c >= t);
   });
 }
 
@@ -1326,11 +1401,54 @@ function refreshHero() {
 
 function refreshChips() {
   $$("#trackChips .chip").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.track === state.track)); });
+  var off = $("#hideOff"), all = state.track === "all";
+  off.disabled = all; off.checked = !all && state.hideOff;
+  $("#hideOffWrap").classList.toggle("is-disabled", all);
+  $("#hideOffWrap").title = all ? "เลือกสายงานก่อนจึงจะซ่อนหัวข้อนอกสายได้" : "";
+}
+
+function refreshPlan() {
+  var box = $("#plan");
+  var r = state.plan ? computeResult(state.plan) : null;
+  var ids = r ? r.focus.map(function (n) { return n.id; }) : [];
+  $$(".node").forEach(function (el) {
+    var k = ids.indexOf(el.dataset.id), pill = $(".focus-pill", el);
+    el.classList.toggle("is-focus", k > -1);
+    pill.hidden = k === -1;
+    pill.textContent = k > -1 ? "แนะนำ #" + (k + 1) : "";
+  });
+  if (!r) { box.hidden = true; box.innerHTML = ""; return; }
+  var st = STAGES[r.start];
+  var done = r.path.filter(function (n) { return statusOf(n) === "done"; }).length;
+  box.hidden = false;
+  box.innerHTML =
+    '<div class="plan-head"><div>' +
+      '<div class="eyebrow">เส้นทางของฉัน</div>' +
+      '<h3 class="plan-title" id="planTitle">' + esc(TRACK_LABEL[r.track]) + ' · เริ่มที่ Stage ' + st.n + '</h3>' +
+      '<p class="plan-sub">เรียนจบแล้ว ' + done + ' จาก ' + r.path.length + ' หัวข้อในเส้นทาง · เหลือ ' + fmtDuration(r.weeks) + ' ที่ ~' + r.hrs + ' ชม./สัปดาห์</p>' +
+    '</div><div class="plan-actions">' +
+      (ids.length ? '<button class="btn btn-sm btn-primary" type="button" data-action="plan-next">ไปที่หัวข้อถัดไป</button>' : "") +
+      '<button class="btn btn-sm" type="button" data-action="quiz">ทำแบบทดสอบใหม่</button>' +
+      '<button class="btn btn-sm btn-ghost" type="button" data-action="plan-clear">ลบเส้นทาง</button>' +
+    '</div></div>' +
+    (ids.length
+      ? '<div class="plan-k">' + ids.length + ' หัวข้อถัดไปที่ควรโฟกัส</div><ol class="plan-focus">' + r.focus.map(function (n, i) {
+          var p = prog(n);
+          return '<li><button type="button" data-open="' + n.id + '"><span class="pf-n">' + (i + 1) + '</span><span><span class="pf-t">' + esc(n.title) + '</span><span class="pf-s">Stage ' + STAGES[n.s].n + ' · ' + p.c + '/' + p.t + '</span></span></button></li>';
+        }).join("") + '</ol>'
+      : '<p class="plan-done">เยี่ยมมาก! คุณเรียนหัวข้อ “ต้องรู้” ในเส้นทางนี้ครบแล้ว ลองไล่หัวข้อ “ควรรู้” ต่อ หรือทำแบบทดสอบใหม่เพื่อเลือกสายถัดไป</p>');
 }
 
 function refreshAll() {
-  refreshCards(); refreshStages(); refreshHero(); refreshChips(); applyFilters(); refreshMatrixDone();
+  refreshCards(); refreshStages(); refreshHero(); refreshChips(); refreshPlan(); applyFilters(); refreshMatrixDone();
   if (!$("#mxTableWrap").hidden) buildTable();
+}
+
+function toggleDone(n) {
+  var prev = (state.checks[n.id] || []).slice();
+  var wasDone = statusOf(n) === "done";
+  setChecks(n, wasDone ? [] : n.sk.map(function (_, i) { return i; }));
+  toast((wasDone ? "ยกเลิกสถานะเรียนจบ: " : "เรียนจบแล้ว: ") + n.title, { label:"เลิกทำ", fn:function () { setChecks(n, prev); } });
 }
 
 /* =========================================================
@@ -1338,10 +1456,14 @@ function refreshAll() {
    ========================================================= */
 function initSpy() {
   if (!("IntersectionObserver" in window)) return;
+  var bar = $("#stageChips");
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        $$("#rail a").forEach(function (a) { a.classList.toggle("active", a.dataset.stageLink === e.target.id); });
+      if (!e.isIntersecting) return;
+      $$("[data-stage-link]").forEach(function (a) { a.classList.toggle("active", a.dataset.stageLink === e.target.id); });
+      var chip = $('.stage-chip[data-stage-link="' + e.target.id + '"]');
+      if (chip && bar.offsetParent !== null) {
+        bar.scrollTo({ left: chip.offsetLeft - bar.clientWidth / 2 + chip.offsetWidth / 2, behavior: "smooth" });
       }
     });
   }, { rootMargin: "-35% 0px -60% 0px" });
@@ -1434,6 +1556,8 @@ function updateDrawerProgress() {
   $("#dPct").textContent = p.c + "/" + p.t + " ทักษะ";
   var bar = $("#dPbar"); bar.classList.toggle("done", p.c >= p.t); $("i", bar).style.width = (p.c / p.t * 100) + "%";
   $("#dPrompt").textContent = buildPrompt(current);
+  var checks = state.checks[current.id] || [];
+  $$(".checklist input", drawer).forEach(function (c) { c.checked = checks.indexOf(+c.dataset.sk) > -1; });
 }
 
 function openNode(id) {
@@ -1454,7 +1578,7 @@ function closeDrawer() {
   drawer.inert = true;
   document.body.classList.remove("lock");
   try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
-  var back = current && document.querySelector('.node[data-id="' + current.id + '"]');
+  var back = current && document.querySelector('.node[data-id="' + current.id + '"] .node-open');
   current = null;
   var target = (lastFocus && document.body.contains(lastFocus)) ? lastFocus : back;
   if (target && target.focus) target.focus({ preventScroll:true });
@@ -1552,7 +1676,7 @@ function computeResult(a) {
   if (hrs <= 4) tips.push("เวลาจำกัด ให้กรองเฉพาะ “ต้องรู้” ก่อน และทำโปรเจกต์เล็กให้เสร็จทีละชิ้น ดีกว่าเริ่มหลายอย่างพร้อมกัน");
   if (track === "ai" && exp <= 1) tips.push("สาย AI Engineer ต้องมีพื้นฐานวิศวกรรมแน่นก่อน อย่าข้าม Stage 01–02 แม้จะอยากสร้าง agent เร็ว ๆ");
   tips.push("หัวข้อใน Stage 08 อย่างการเขียน การสื่อสาร และ portfolio ทำควบคู่ไปได้ตั้งแต่วันแรก");
-  return { start:start, track:track, hrs:hrs, weeks:weeks, focus:focus, tips:tips.slice(0, 4) };
+  return { start:start, track:track, hrs:hrs, weeks:weeks, path:path, focus:focus, tips:tips.slice(0, 4) };
 }
 function renderResult() {
   var r = lastResult = computeResult(quizAns), st = STAGES[r.start];
@@ -1573,14 +1697,29 @@ function renderResult() {
     '<div class="r-actions"><button class="btn btn-primary" type="button" data-action="quiz-apply">ใช้เส้นทางนี้</button><button class="btn" type="button" data-action="quiz-restart">ทำแบบทดสอบใหม่</button></div>';
   setTimeout(function () { var b = $('[data-action="quiz-apply"]', quizEl); if (b) b.focus({ preventScroll:true }); }, 50);
 }
+function smoothOk() { return !matchMedia("(prefers-reduced-motion: reduce)").matches; }
 function applyQuiz() {
   if (!lastResult) return;
+  state.plan = cleanPlan(quizAns);
   state.track = lastResult.track; state.pri = "all"; $("#priFilter").value = "all";
   save(); refreshAll();
   closeQuiz(false);
-  var target = document.getElementById(STAGES[lastResult.start].id);
-  if (target) target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start" });
-  toast("ตั้งค่าเส้นทาง " + TRACK_LABEL[lastResult.track] + " แล้ว เริ่มที่ Stage " + STAGES[lastResult.start].n);
+  $("#plan").scrollIntoView({ behavior: smoothOk() ? "smooth" : "auto", block:"start" });
+  toast("บันทึกเส้นทาง " + TRACK_LABEL[lastResult.track] + " แล้ว หัวข้อที่แนะนำจะถูกไฮไลต์ใน Roadmap");
+}
+function goNextFocus() {
+  var r = state.plan && computeResult(state.plan);
+  if (!r || !r.focus.length) return;
+  var el = document.querySelector('.node[data-id="' + r.focus[0].id + '"]');
+  if (!el) return;
+  if (el.classList.contains("hide")) {
+    state.q = ""; $("#search").value = ""; state.pri = "all"; $("#priFilter").value = "all";
+    state.hideDone = false; $("#hideDone").checked = false; state.hideOff = false; save(); refreshChips(); applyFilters();
+  }
+  el.scrollIntoView({ behavior: smoothOk() ? "smooth" : "auto", block:"center" });
+  el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+  setTimeout(function () { el.classList.remove("flash"); }, 1500);
+  $(".node-open", el).focus({ preventScroll:true });
 }
 
 /* =========================================================
@@ -1715,7 +1854,7 @@ function renderThemeBtn() {
    IMPORT / EXPORT / RESET
    ========================================================= */
 function exportProgress() {
-  var data = { app:"ai-developer-roadmap", version:1, exportedAt:new Date().toISOString(), track:state.track, checks:state.checks };
+  var data = { app:"ai-developer-roadmap", version:1, exportedAt:new Date().toISOString(), track:state.track, hideOff:state.hideOff, plan:state.plan, checks:state.checks };
   var blob = new Blob([JSON.stringify(data, null, 2)], { type:"application/json" });
   var a = document.createElement("a");
   a.href = URL.createObjectURL(blob); a.download = "ai-roadmap-progress.json";
@@ -1731,6 +1870,8 @@ function importProgress(file) {
       var c = cleanChecks(d && d.checks);
       state.checks = c;
       if (d && TRACK_LABEL[d.track]) state.track = d.track;
+      if (d && "plan" in d) state.plan = cleanPlan(d.plan);
+      if (d && typeof d.hideOff === "boolean") state.hideOff = d.hideOff;
       save(); refreshAll(); if (current) renderDrawer();
       toast("นำเข้าความคืบหน้าสำเร็จ (" + Object.keys(c).length + " หัวข้อ)");
     } catch (e) { toast("ไฟล์ไม่ถูกต้อง นำเข้าไม่สำเร็จ"); }
@@ -1756,7 +1897,8 @@ function bind() {
       }
       return;
     }
-    var node = t.closest(".node"); if (node) { openNode(node.dataset.id); return; }
+    var chk = t.closest(".node-check"); if (chk) { toggleDone(byId[chk.closest(".node").dataset.id]); return; }
+    var node = t.closest(".node-open"); if (node) { openNode(node.closest(".node").dataset.id); return; }
     var op = t.closest("[data-open]"); if (op) { var id = op.dataset.open; if (quizEl.classList.contains("open")) closeQuiz(false); openNode(id); return; }
     var chip = t.closest("[data-track]");
     if (chip) { state.track = chip.dataset.track; save(); refreshAll(); return; }
@@ -1769,6 +1911,11 @@ function bind() {
       case "quiz-back": quizStep = Math.max(0, quizStep - 1); renderQuiz(); break;
       case "quiz-restart": quizStep = 0; quizAns = {}; renderQuiz(); break;
       case "quiz-apply": applyQuiz(); break;
+      case "plan-next": goNextFocus(); break;
+      case "plan-clear":
+        var prevPlan = state.plan; state.plan = null; save(); refreshPlan();
+        toast("ลบเส้นทางแล้ว", { label:"เลิกทำ", fn:function () { state.plan = prevPlan; save(); refreshPlan(); } });
+        break;
       case "export": exportProgress(); break;
       case "import": $("#importFile").click(); break;
       case "reset":
@@ -1777,7 +1924,8 @@ function bind() {
         }
         break;
       case "clear-filters":
-        state.q = ""; $("#search").value = ""; state.pri = "all"; $("#priFilter").value = "all"; state.hideDone = false; $("#hideDone").checked = false; applyFilters(); break;
+        state.q = ""; $("#search").value = ""; state.pri = "all"; $("#priFilter").value = "all"; state.hideDone = false; $("#hideDone").checked = false;
+        state.hideOff = false; save(); refreshChips(); applyFilters(); break;
       case "check-all": if (current) setChecks(current, current.sk.map(function (_, i) { return i; })); $$('.checklist input', drawer).forEach(function (c) { c.checked = true; }); break;
       case "check-none": if (current) setChecks(current, []); $$('.checklist input', drawer).forEach(function (c) { c.checked = false; }); break;
       case "copy-prompt":
@@ -1811,6 +1959,7 @@ function bind() {
   });
   $("#priFilter").addEventListener("change", function (e) { state.pri = e.target.value; applyFilters(); });
   $("#hideDone").addEventListener("change", function (e) { state.hideDone = e.target.checked; applyFilters(); });
+  $("#hideOff").addEventListener("change", function (e) { state.hideOff = e.target.checked; save(); applyFilters(); });
   $("#importFile").addEventListener("change", function (e) { var f = e.target.files && e.target.files[0]; if (f) importProgress(f); e.target.value = ""; });
 
   $("#themeBtn").addEventListener("click", function () {
@@ -1844,14 +1993,17 @@ function bind() {
     if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); hideTip(); openNode(g.dataset.id); }
   });
 
-  var tb = $("#toolbar"), topbar = $(".topbar");
+  var tb = $("#toolbar"), topbar = $(".topbar"), sb = $("#stagebar");
   var setStick = function () {
-    var sticky = getComputedStyle(tb).position === "sticky";
-    var h = topbar.offsetHeight + (sticky ? tb.offsetHeight : 0) + 20;
-    document.documentElement.style.setProperty("--stick", h + "px");
+    var tbSticky = getComputedStyle(tb).position === "sticky";
+    var sbShown = getComputedStyle(sb).display !== "none";
+    var top = topbar.offsetHeight + (tbSticky ? tb.offsetHeight : 0);
+    document.documentElement.style.setProperty("--sb-top", top + "px");
+    document.documentElement.style.setProperty("--stick", (top + (sbShown ? sb.offsetHeight : 0) + 20) + "px");
   };
   setStick();
-  if ("ResizeObserver" in window) new ResizeObserver(setStick).observe(tb); else window.addEventListener("resize", setStick);
+  if ("ResizeObserver" in window) new ResizeObserver(setStick).observe(tb);
+  window.addEventListener("resize", setStick);
 
   var rt;
   var onResize = function () { clearTimeout(rt); rt = setTimeout(function () { if (Math.abs($("#mxBox").clientWidth - mxW) > 8) buildMatrix(); }, 120); };
