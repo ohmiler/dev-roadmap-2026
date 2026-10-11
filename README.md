@@ -1,34 +1,54 @@
-# 🚀 2026 AI-Era Developer Roadmap
+# 🚀 Developer Roadmap ในยุค AI (2026)
 
-เว็บไซต์ Roadmap สำหรับนักพัฒนาที่ต้องการประสบความสำเร็จในยุค AI
+เส้นทางการเรียนรู้แบบ interactive อย่างละเอียด สำหรับนักพัฒนาที่ต้องการประสบความสำเร็จในยุคที่ AI เปลี่ยนวงการ
 
-![Hero Section](https://img.shields.io/badge/Version-2026-6366f1?style=for-the-badge)
-![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Version](https://img.shields.io/badge/Version-2026-c6f432?style=for-the-badge&labelColor=111111)
+![Single File](https://img.shields.io/badge/Single_HTML_File-No_Build_Needed-111111?style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+## ✨ Features
+
+- **9 ช่วง · 64 หัวข้อ · 364 ทักษะย่อย** ตั้งแต่ Mindset จนถึง Human Edge
+- **รายละเอียดทุกหัวข้อ**: ทำไมสำคัญในยุค AI, เช็กลิสต์ทักษะ, เคล็ดลับใช้ AI ช่วยเรียน, โปรเจกต์ฝึกมือ และแหล่งเรียนรู้
+- **ติดตามความคืบหน้า**: ติ๊กทักษะย่อย ดูเปอร์เซ็นต์รายช่วงและเวลาที่เหลือ บันทึกในเบราว์เซอร์ พร้อมส่งออก/นำเข้าเป็น JSON
+- **แบบทดสอบหาจุดเริ่มต้น** 4 คำถาม แนะนำสายงาน Stage ที่ควรเริ่ม ระยะเวลา และ 5 หัวข้อแรกที่ควรโฟกัส
+- **กรองตามสายงาน**: Frontend, Backend, Full-stack, AI Engineer, Data / ML, DevOps / Platform, Mobile
+- **Prompt สำเร็จรูป** คัดลอกไปเรียนกับ AI แบบ Socratic ได้ทันที (ปรับตามทักษะที่ยังไม่ได้เรียน)
+- **Skill Matrix**: แผนภาพ “AI ทำแทนได้แค่ไหน” เทียบ “คุณค่าระยะยาว” แบ่ง 4 โซน พร้อมมุมมองตาราง
+- ค้นหา (กด `/`), Light / Dark mode, รองรับมือถือ และใช้งานด้วยคีย์บอร์ดได้
 
 ## 📚 Roadmap Content
 
-| Phase | หัวข้อ | ระยะเวลา |
-|-------|--------|----------|
-| 1 | 🧠 AI-Native Mindset | 1-2 เดือน |
-| 2 | 💻 Core Dev Skills + AI Tools | 2-3 เดือน |
-| 3 | 🏗️ Modern Tech Stack 2026 | 3-4 เดือน |
-| 4 | 🤖 AI Integration & Building | 3-4 เดือน |
-| 5 | 🚀 Production & DevOps | 2-3 เดือน |
-| 6 | 🌟 Career & Soft Skills | Ongoing |
+| Stage | หัวข้อ | จำนวนหัวข้อ |
+|-------|--------|-------------|
+| 00 | 🧠 Mindset และวิธีเรียนในยุค AI | 4 |
+| 01 | 🧱 รากฐานที่ AI แทนไม่ได้ | 7 |
+| 02 | 🏗️ วิศวกรรมซอฟต์แวร์แกนหลัก | 9 |
+| 03 | 🤝 พัฒนาซอฟต์แวร์ร่วมกับ AI | 7 |
+| 04 | 🔍 เข้าใจ LLM ที่คุณใช้อยู่ | 7 |
+| 05 | 🤖 AI Engineering: สร้างผลิตภัณฑ์ด้วย AI | 9 |
+| 06 | 🚀 Production, Cloud และ DevOps | 6 |
+| 07 | 🎯 ความเชี่ยวชาญเฉพาะทาง (เลือก 1 สาย) | 7 |
+| 08 | 🌟 Human Edge: ทักษะที่ทำให้คุณโดดเด่น | 8 |
 
-**รวมระยะเวลา:** 12-18 เดือน
+> ตัวเลข “AI ทำแทนได้” และ “คุณค่าระยะยาว” เป็นค่าประเมินเชิงบรรณาธิการ ณ ปี 2026 เพื่อช่วยจัดลำดับการเรียน ไม่ใช่ผลการวิจัย
 
-## 🎯 Learning Resources
+## 🛠️ การใช้งาน
 
-แต่ละ Phase มี links ไปยังแหล่งเรียนรู้คุณภาพ:
+ทั้งเว็บอยู่ใน `index.html` ไฟล์เดียว เปิดในเบราว์เซอร์ได้ทันทีโดยไม่ต้อง build
 
-- **OpenAI** - Prompt Engineering Guide
-- **GitHub** - Skills & Actions
-- **React** - Official Documentation
-- **LangChain** - AI Development
-- **Docker** - Container Basics
-- และอีกมากมาย...
+หรือรันผ่าน Vite:
+
+```bash
+npm install
+npm run dev
+```
+
+Build สำหรับ deploy (ได้ `dist/index.html`):
+
+```bash
+npm run build
+```
 
 ## 📝 License
 

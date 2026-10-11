@@ -1,25 +1,1909 @@
 <!doctype html>
 <html lang="th">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 AI Learning Roadmap | เส้นทางการเรียน AI</title>
-  <meta name="description"
-    content="เส้นทางการเรียนรู้ Artificial Intelligence อย่างละเอียดสำหรับนักพัฒนาที่ต้องการเชี่ยวชาญ AI ในปี 2026" />
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer Roadmap ยุค AI</title>
+<meta name="description" content="เส้นทางการเรียนรู้แบบ interactive อย่างละเอียด สำหรับนักพัฒนาที่ต้องการประสบความสำเร็จในยุคที่ AI เปลี่ยนวงการ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  try { var t = localStorage.getItem("aidr.theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f5f1; --surface:#ffffff; --surface-2:#f1efe9; --surface-3:#e8e5dc;
+  --ink:#111111; --ink-2:#4a4945; --muted:#7d7b74;
+  --line:#e4e1d8; --line-strong:#cdc9bd;
+  --accent:#c6f432; --on-accent:#111111;
+  --bar:#111111; --bar-track:#e8e5dc;
+  --good:#0ca30c;
+  --p-must:#2a78d6; --p-should:#eb6834; --p-nice:#1baf7a;
+  --scrim:rgba(17,17,17,.42);
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+  --radius:14px;
+  --top-h:60px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0f1012; --surface:#17181c; --surface-2:#1f2126; --surface-3:#2a2c32;
+    --ink:#f2f1ec; --ink-2:#c3c2bb; --muted:#8c8b85;
+    --line:#2a2c31; --line-strong:#3c3f46;
+    --bar:#c6f432; --bar-track:#2a2c32;
+    --p-must:#3987e5; --p-should:#d95926; --p-nice:#199e70;
+    --scrim:rgba(0,0,0,.6);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f1012; --surface:#17181c; --surface-2:#1f2126; --surface-3:#2a2c32;
+  --ink:#f2f1ec; --ink-2:#c3c2bb; --muted:#8c8b85;
+  --line:#2a2c31; --line-strong:#3c3f46;
+  --bar:#c6f432; --bar-track:#2a2c32;
+  --p-must:#3987e5; --p-should:#d95926; --p-nice:#199e70;
+  --scrim:rgba(0,0,0,.6);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+body.lock{overflow:hidden}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+a{color:inherit}
+button{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+@media (max-width:640px){.wrap{padding:0 16px}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* ---------- Top bar ---------- */
+.topbar{position:sticky;top:0;z-index:40;background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;height:var(--top-h)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;white-space:nowrap;font-size:15px}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:#111111;color:#c6f432;box-shadow:inset 0 0 0 1px var(--line-strong);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:-.02em}
+.topnav{display:flex;gap:2px;margin-left:12px}
+.topnav a{padding:6px 12px;border-radius:999px;text-decoration:none;color:var(--ink-2);font-size:14px}
+.topnav a:hover{background:var(--surface-2);color:var(--ink)}
+.top-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+.icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;flex:none}
+.icon-btn:hover{border-color:var(--line-strong)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);cursor:pointer;font-weight:500;font-size:15px;text-decoration:none;white-space:nowrap;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn-accent{background:var(--accent);color:var(--on-accent);border-color:transparent}
+.btn-sm{height:34px;padding:0 12px;font-size:13.5px}
+.btn-ghost{background:transparent;border-color:transparent;color:var(--ink-2)}
+.btn-ghost:hover{background:var(--surface-2);color:var(--ink)}
+@media (max-width:900px){.topnav{display:none}}
+@media (max-width:480px){.top-quiz .lbl{display:none}.top-quiz{width:40px;padding:0}}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 32px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:end}
+@media (max-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:32px}.hero{padding-top:40px}}
+.hero h1{font-size:clamp(38px,6.2vw,76px);line-height:1.08;letter-spacing:-.025em;margin:16px 0 20px;font-weight:700}
+.hero h1 .hl{background:var(--accent);color:var(--on-accent);padding:0 .14em;border-radius:.14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--ink-2);max-width:60ch;margin:0}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.hero-actions .btn{height:48px;padding:0 22px;font-size:16px}
+
+.progress-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.pc-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pc-head .eyebrow{letter-spacing:.08em}
+.track-pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:var(--surface-2);font-size:13px;color:var(--ink-2);white-space:nowrap}
+.pc-main{display:flex;gap:22px;align-items:center}
+.ring{position:relative;width:124px;height:124px;flex:none}
+.ring svg{transform:rotate(-90deg);display:block}
+.ring .r-track{stroke:var(--bar-track)}
+.ring .r-fill{stroke:var(--bar);transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.ring-label{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring-label b{display:block;font-size:30px;line-height:1;font-weight:700}
+.ring-label small{display:block;font-size:11.5px;color:var(--muted);margin-top:4px}
+.pc-stats{display:grid;gap:10px;flex:1;min-width:0}
+.pc-stat{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--ink-2);border-bottom:1px dashed var(--line);padding-bottom:8px}
+.pc-stat:last-child{border-bottom:0;padding-bottom:0}
+.pc-stat b{color:var(--ink);font-weight:600;white-space:nowrap}
+.pc-doing{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.pc-doing .eyebrow{margin-bottom:8px;letter-spacing:.08em}
+.doing-list{display:flex;flex-wrap:wrap;gap:6px}
+.doing-chip{border:1px solid var(--line-strong);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.doing-chip:hover{border-color:var(--ink)}
+.doing-empty{font-size:13.5px;color:var(--muted)}
+.pc-tools{display:flex;gap:4px;flex-wrap:wrap;margin-top:14px;margin-left:-8px}
+@media (max-width:420px){.pc-main{flex-direction:column;align-items:stretch}.ring{margin:0 auto}}
+
+/* ---------- Sections ---------- */
+.section{padding:56px 0}
+#principles,#roadmap-section,#matrix-section{scroll-margin-top:var(--top-h)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(28px,3.2vw,40px);margin:8px 0 0;line-height:1.2;letter-spacing:-.015em}
+.section-head p{margin:10px 0 0;color:var(--ink-2);max-width:64ch}
+
+.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:960px){.principles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.principles{grid-template-columns:minmax(0,1fr)}}
+.principle{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;overflow:hidden}
+.principle .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+.principle h3{margin:8px 0 8px;font-size:19px;line-height:1.35}
+.principle p{margin:0;color:var(--ink-2);font-size:15px}
+.principle:first-child{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.principle:first-child p,.principle:first-child .num{color:color-mix(in srgb,var(--bg) 72%,transparent)}
+.principle:first-child h3 span{background:var(--accent);color:var(--on-accent);padding:0 .2em;border-radius:4px}
+
+/* ---------- Toolbar ---------- */
+.toolbar{position:sticky;top:var(--top-h);z-index:30;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0 10px}
+@media (max-width:767px){.toolbar{position:static}}
+.toolbar-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 280px;position:relative;min-width:0}
+.search input{width:100%;height:44px;border-radius:12px;border:1px solid var(--line-strong);background:var(--surface);padding:0 44px 0 42px;font:inherit;font-size:15px;color:var(--ink)}
+.search input::placeholder{color:var(--muted)}
+.search .s-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);border:1px solid var(--line-strong);border-radius:6px;padding:1px 7px;background:var(--surface-2)}
+.select{height:44px;border-radius:12px;border:1px solid var(--line-strong);background:var(--surface);padding:0 12px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;max-width:100%}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);cursor:pointer;user-select:none;height:44px;padding:0 4px}
+.toggle input{appearance:none;-webkit-appearance:none;width:36px;height:22px;border-radius:999px;background:var(--surface-3);position:relative;cursor:pointer;margin:0;transition:background .2s;flex:none}
+.toggle input::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .2s}
+.toggle input:checked{background:var(--ink)}
+.toggle input:checked::after{transform:translateX(14px)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none;-ms-overflow-style:none}
+.chips::-webkit-scrollbar{display:none}
+.chips-label{flex:none;font-size:13px;color:var(--muted);align-self:center;margin-right:4px}
+.chip{flex:none;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);font-size:14px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result-line{font-size:13px;color:var(--muted);margin-top:6px;min-height:20px}
+
+/* ---------- Roadmap layout ---------- */
+.legend-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;color:var(--ink-2);align-items:center}
+.legend-row .lg{display:inline-flex;align-items:center;gap:8px}
+.pri{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);font-weight:500;white-space:nowrap}
+.pri::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--pc);flex:none}
+.pri.must{--pc:var(--p-must)} .pri.should{--pc:var(--p-should)} .pri.nice{--pc:var(--p-nice)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:44px;padding-top:36px}
+@media (max-width:1100px){.layout{grid-template-columns:minmax(0,1fr)}.rail{display:none}}
+.rail{position:sticky;top:var(--stick,220px);align-self:start;max-height:calc(100vh - var(--stick,220px) - 16px);overflow:auto;padding-bottom:20px}
+.rail-title{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 10px 10px}
+.rail a{display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:6px;padding:9px 10px;border-radius:12px;text-decoration:none;color:var(--ink-2);font-size:14px;line-height:1.35;margin-bottom:2px}
+.rail a:hover{background:var(--surface-2)}
+.rail a.active{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.rail .rn{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);padding-top:1px}
+.rail a.active .rn{color:var(--ink)}
+.rail .rbar{grid-column:2;height:3px;background:var(--bar-track);border-radius:2px;margin-top:7px;overflow:hidden}
+.rail .rbar i{display:block;height:100%;width:0;background:var(--bar);transition:width .4s}
+
+.stage{position:relative;padding:0 0 64px 76px;scroll-margin-top:var(--stick,220px)}
+.stage::before{content:"";position:absolute;left:24px;top:60px;bottom:8px;width:2px;background:repeating-linear-gradient(to bottom,var(--line-strong) 0 6px,transparent 6px 12px)}
+.stage.hide{display:none}
+.stage-num{position:absolute;left:0;top:0;width:50px;height:50px;border-radius:15px;background:var(--surface);border:1px solid var(--line-strong);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:15px;transition:background .3s}
+.stage.complete .stage-num{background:var(--accent);color:var(--on-accent);border-color:transparent}
+.stage-head{margin-bottom:22px}
+.stage-en{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.stage-title{font-size:clamp(23px,2.5vw,30px);margin:4px 0 8px;line-height:1.25;letter-spacing:-.01em}
+.stage-desc{color:var(--ink-2);margin:0 0 14px;max-width:74ch}
+.stage-goal{display:flex;gap:10px;padding:12px 16px;border-radius:12px;background:var(--surface-2);font-size:14.5px;color:var(--ink-2);max-width:74ch;line-height:1.6}
+.stage-goal b{color:var(--ink);white-space:nowrap}
+.stage-meta{display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:12.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.sbar{width:120px;height:4px;background:var(--bar-track);border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle}
+.sbar i{display:block;height:100%;width:0;background:var(--bar);transition:width .4s}
+@media (max-width:640px){
+  .stage{padding-left:0;scroll-margin-top:80px;padding-bottom:48px}
+  .stage::before{display:none}
+  .stage-num{position:static;width:44px;height:44px;margin-bottom:12px}
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.node{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s,opacity .25s;position:relative;min-height:158px}
+.node:hover{border-color:var(--line-strong);transform:translateY(-2px);box-shadow:var(--shadow)}
+.node.dim{opacity:.34}
+.node.dim:hover{opacity:.8}
+.node.hide{display:none}
+.node[data-status="doing"]{border-color:var(--line-strong)}
+.node[data-status="done"]{border-color:color-mix(in srgb,var(--good) 45%,var(--line))}
+.node-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:2px}
+.status{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;--p:0;background:conic-gradient(var(--bar) calc(var(--p) * 1%),var(--bar-track) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px))}
+.status svg{display:none}
+.node[data-status="done"] .status{background:var(--good);-webkit-mask:none;mask:none}
+.node[data-status="done"] .status svg{display:block}
+.node-title{display:block;font-weight:600;font-size:16.5px;line-height:1.4}
+.node-en{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);line-height:1.45}
+.node-meta{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:8px;flex-wrap:wrap}
+.node-prog{display:flex;align-items:center;gap:10px}
+.node-bar{flex:1;height:4px;background:var(--bar-track);border-radius:2px;overflow:hidden}
+.node-bar i{display:block;height:100%;width:0;background:var(--bar);transition:width .35s}
+.node[data-status="done"] .node-bar i{background:var(--good)}
+.node-count{font-size:11.5px;color:var(--muted);min-width:28px;text-align:right}
+.empty{padding:48px 24px;text-align:center;border:1px dashed var(--line-strong);border-radius:18px;color:var(--ink-2)}
+
+/* ---------- Matrix ---------- */
+.matrix-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.mx-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.mx-legend{display:flex;gap:6px 18px;flex-wrap:wrap}
+.mx-box{position:relative;width:100%}
+.mx-box svg{display:block;width:100%;height:auto;overflow:visible}
+.mx-grid{stroke:var(--line);stroke-width:1;shape-rendering:crispEdges}
+.mx-split{stroke:var(--line-strong);stroke-width:1;shape-rendering:crispEdges}
+.mx-tick{fill:var(--muted);font-size:11px;font-family:"IBM Plex Mono",monospace}
+.mx-axis-title{fill:var(--ink-2);font-size:12.5px}
+.mx-q-title{fill:var(--ink-2);font-size:13px;font-weight:600}
+.mx-q-sub{fill:var(--muted);font-size:11.5px}
+.mx-pt{cursor:pointer;outline:none;transition:opacity .25s}
+.mx-pt.dim{opacity:.14}
+.mx-dot{stroke:var(--surface);stroke-width:2;transition:r .15s}
+.mx-dot.must{fill:var(--p-must)} .mx-dot.should{fill:var(--p-should)} .mx-dot.nice{fill:var(--p-nice)}
+.mx-pt:hover .mx-dot,.mx-pt:focus-visible .mx-dot{r:9}
+.mx-pt:focus-visible .mx-ring{stroke:var(--ink);stroke-width:2}
+.mx-done{fill:none;stroke:var(--good);stroke-width:2}
+.tooltip{position:absolute;left:0;top:0;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.5;padding:9px 12px;border-radius:10px;max-width:250px;opacity:0;transform:translate(-50%,calc(-100% - 14px));transition:opacity .12s;z-index:5;box-shadow:var(--shadow)}
+.tooltip.show{opacity:1}
+.tooltip b{display:block;font-size:13.5px}
+.tooltip span{display:block;color:color-mix(in srgb,var(--bg) 75%,transparent);font-size:12px}
+.mx-note{font-size:12.5px;color:var(--muted);margin:12px 0 0}
+.table-wrap{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:14px}
+.mx-table{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+.mx-table th,.mx-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.mx-table th{font-weight:500;color:var(--muted);font-size:12.5px;background:var(--surface-2)}
+.mx-table tr:last-child td{border-bottom:0}
+.mx-table td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.mx-table th.num{text-align:right}
+.linkish{background:none;border:0;padding:0;cursor:pointer;text-align:left;font-weight:500;text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:3px}
+.linkish:hover{text-decoration-color:var(--ink)}
+
+/* ---------- Drawer ---------- */
+.scrim{position:fixed;inset:0;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity .22s;z-index:60}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;height:100dvh;width:min(620px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:70;transform:translateX(102%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.12)}
+.drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;gap:10px;padding:12px 16px 12px 24px;border-bottom:1px solid var(--line)}
+.drawer-head .eyebrow{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drawer-body{overflow:auto;padding:24px 28px 48px;flex:1;overscroll-behavior:contain}
+.drawer-foot{display:flex;justify-content:space-between;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:var(--surface)}
+.drawer-foot .btn{max-width:48%;overflow:hidden}
+.drawer-foot .btn span{overflow:hidden;text-overflow:ellipsis}
+@media (max-width:560px){.drawer-body{padding:20px 18px 40px}.drawer-head{padding-left:18px}}
+.d-title{font-size:clamp(25px,3.2vw,32px);line-height:1.25;margin:0 0 6px;letter-spacing:-.01em}
+.d-en{font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:13px}
+.d-badges{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 18px}
+.badge{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:999px;background:var(--surface-2);font-size:13px;color:var(--ink-2);white-space:nowrap}
+.d-progress{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.d-pbar{flex:1;height:6px;border-radius:3px;background:var(--bar-track);overflow:hidden}
+.d-pbar i{display:block;height:100%;background:var(--bar);transition:width .35s}
+.d-pbar.done i{background:var(--good)}
+.d-progress .mono{font-size:13px;color:var(--ink-2)}
+.d-desc{font-size:16.5px;margin:0 0 18px}
+.callout{border-left:3px solid var(--ink);background:var(--surface-2);padding:14px 18px;border-radius:0 14px 14px 0}
+.callout-k{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.callout p{margin:0}
+.d-sec{margin-top:30px}
+.d-sec>h3{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:500}
+.meters{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.meters{grid-template-columns:1fr}}
+.meter{border:1px solid var(--line);border-radius:14px;padding:14px}
+.meter-label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--ink-2)}
+.meter-label b{font-size:22px;color:var(--ink);font-weight:700}
+.meter-track{height:6px;background:var(--bar-track);border-radius:3px;margin:8px 0 8px;overflow:hidden}
+.meter-track i{display:block;height:100%;background:var(--bar);border-radius:3px}
+.meter p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.5}
+.zone{display:flex;gap:12px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--surface-2);font-size:14px;color:var(--ink-2)}
+.zone-name{flex:none;font-weight:600;color:var(--on-accent);background:var(--accent);padding:1px 10px;border-radius:999px;font-size:13px;white-space:nowrap}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.check{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;border-radius:12px;border:1px solid var(--line);cursor:pointer;transition:background .15s,border-color .15s}
+.check:hover{border-color:var(--line-strong);background:var(--surface-2)}
+.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line-strong);flex:none;margin:2px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--surface);transition:background .15s}
+.check input:checked{background:var(--good);border-color:var(--good)}
+.check input:checked::after{content:"";width:10px;height:5px;border:2px solid #fff;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.check input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-strong)}
+.d-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.tip{margin:0 0 12px}
+.prompt-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.prompt-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 8px 8px 14px;background:var(--surface-2);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+.prompt{margin:0;padding:14px 16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;white-space:pre-wrap;word-break:break-word;line-height:1.7;max-height:260px;overflow:auto;color:var(--ink-2);background:var(--surface)}
+.project{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:14px;border:1px dashed var(--line-strong)}
+.project-ico{flex:none;width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center}
+.project p{margin:0}
+.res{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.res a,.res .res-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);text-decoration:none;font-size:14.5px}
+.res a:hover{border-color:var(--ink)}
+.res small{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11.5px;white-space:nowrap}
+.res .host{overflow:hidden;text-overflow:ellipsis;max-width:45%}
+
+/* ---------- Modal ---------- */
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity .2s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-card{width:min(660px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--surface);border-radius:24px;border:1px solid var(--line);padding:28px;box-shadow:0 24px 80px rgba(0,0,0,.28);transform:translateY(12px) scale(.98);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.modal.open .modal-card{transform:none}
+@media (max-width:560px){.modal-card{padding:22px 18px;border-radius:20px}}
+.m-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.q-steps{display:flex;gap:6px;margin-bottom:22px}
+.q-steps i{flex:1;height:4px;border-radius:2px;background:var(--bar-track);transition:background .2s}
+.q-steps i.on{background:var(--bar)}
+.q-title{font-size:clamp(21px,2.6vw,26px);line-height:1.35;margin:0 0 18px}
+.q-opts{display:grid;gap:8px}
+.q-opt{text-align:left;padding:14px 16px;border-radius:14px;border:1px solid var(--line-strong);background:var(--surface);cursor:pointer;display:flex;gap:14px;align-items:center;transition:border-color .15s,transform .15s}
+.q-opt:hover{border-color:var(--ink);transform:translateX(2px)}
+.q-opt.sel{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.q-opt .k{flex:none;width:28px;height:28px;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-2)}
+.q-opt b{display:block;font-weight:600}
+.q-opt small{display:block;color:var(--muted);font-size:13px}
+.q-foot{display:flex;justify-content:space-between;margin-top:18px}
+.r-title{font-size:clamp(24px,3vw,30px);line-height:1.3;margin:6px 0 18px}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.r-grid{grid-template-columns:1fr}}
+.r-stat{border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.r-stat span{display:block;font-size:12.5px;color:var(--muted)}
+.r-stat b{display:block;font-size:22px;margin:2px 0}
+.r-stat small{display:block;font-size:13px;color:var(--ink-2)}
+.r-h{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px;font-weight:500}
+.r-focus{margin:0;padding:0;list-style:none;display:grid;gap:6px;counter-reset:f}
+.r-focus li{counter-increment:f}
+.r-focus button{width:100%;display:flex;gap:12px;align-items:center;text-align:left;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.r-focus button:hover{border-color:var(--ink)}
+.r-focus button::before{content:counter(f);flex:none;width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
+.r-focus small{margin-left:auto;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11.5px;white-space:nowrap}
+.r-tips{margin:0;padding-left:20px;color:var(--ink-2);display:grid;gap:6px}
+.r-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+
+/* ---------- Toast & footer ---------- */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s,transform .2s;z-index:100;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--ink-2);font-size:14px;margin-top:24px}
+.foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer p{margin:4px 0;max-width:70ch}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
 </head>
-
 <body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
+<noscript><p style="padding:16px;text-align:center">หน้านี้ต้องเปิด JavaScript เพื่อแสดง Roadmap แบบ interactive</p></noscript>
 
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="กลับขึ้นด้านบน"><span class="brand-mark">AI/</span><span>Dev Roadmap</span></a>
+    <nav class="topnav" aria-label="เมนูหลัก">
+      <a href="#principles">หลักคิด</a>
+      <a href="#roadmap-section">Roadmap</a>
+      <a href="#matrix-section">Skill Matrix</a>
+    </nav>
+    <div class="top-actions">
+      <button class="btn btn-accent btn-sm top-quiz" type="button" data-action="quiz" aria-label="หาจุดเริ่มต้นของคุณ">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
+        <span class="lbl">หาจุดเริ่มต้น</span>
+      </button>
+      <button class="icon-btn" type="button" id="themeBtn" aria-label="สลับธีมสว่าง/มืด"></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Developer Roadmap · ฉบับปี 2026</div>
+        <h1>เส้นทางนักพัฒนา<br><span class="hl">ในยุค AI</span></h1>
+        <p class="lede">Roadmap แบบละเอียด <b data-count="stages">9</b> ช่วง <b data-count="nodes">64</b> หัวข้อ <b data-count="skills">300+</b> ทักษะย่อย สำหรับนักพัฒนาที่อยากประสบความสำเร็จในวันที่ AI เขียนโค้ดได้ ตั้งแต่พื้นฐานที่ AI แทนไม่ได้ การทำงานร่วมกับ AI agent การสร้างผลิตภัณฑ์ด้วย LLM ไปจนถึงทักษะที่ทำให้คุณโดดเด่นกว่าใคร</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button" data-action="quiz">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
+            หาจุดเริ่มต้นของคุณ (4 คำถาม)
+          </button>
+          <a class="btn" href="#roadmap-section">ดู Roadmap ทั้งหมด</a>
+        </div>
+      </div>
+
+      <aside class="progress-card" aria-label="ความคืบหน้าของคุณ">
+        <div class="pc-head">
+          <span class="eyebrow">ความคืบหน้าของคุณ</span>
+          <span class="track-pill" id="pcTrack">ทุกสาย</span>
+        </div>
+        <div class="pc-main">
+          <div class="ring">
+            <svg width="124" height="124" viewBox="0 0 124 124" aria-hidden="true">
+              <circle class="r-track" cx="62" cy="62" r="54" fill="none" stroke-width="9"/>
+              <circle class="r-fill" id="ringFill" cx="62" cy="62" r="54" fill="none" stroke-width="9" stroke-linecap="round" stroke-dasharray="339.29" stroke-dashoffset="339.29"/>
+            </svg>
+            <div class="ring-label"><div><b id="pcPct">0%</b><small>ทักษะย่อย</small></div></div>
+          </div>
+          <div class="pc-stats">
+            <div class="pc-stat"><span>ทักษะที่ติ๊กแล้ว</span><b id="pcSkills">0 / 0</b></div>
+            <div class="pc-stat"><span>หัวข้อที่จบแล้ว</span><b id="pcDone">0 / 0</b></div>
+            <div class="pc-stat"><span>เวลาที่เหลือ*</span><b id="pcTime">–</b></div>
+          </div>
+        </div>
+        <div class="pc-doing">
+          <div class="eyebrow">กำลังเรียนอยู่</div>
+          <div class="doing-list" id="pcDoing"></div>
+        </div>
+        <div class="pc-tools">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="export">ส่งออก</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-action="import">นำเข้า</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-action="reset">ล้างความคืบหน้า</button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="principles" style="padding-top:24px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">ก่อนเริ่มเดินทาง</div>
+          <h2>6 หลักคิดของนักพัฒนาในยุค AI</h2>
+          <p>เครื่องมือเปลี่ยนทุกไม่กี่เดือน แต่หลักคิดเหล่านี้คือเข็มทิศที่ใช้ได้ตลอดเส้นทาง</p>
+        </div>
+      </div>
+      <div class="principles" id="principlesGrid"></div>
+    </div>
+  </section>
+
+  <section id="roadmap-section" aria-labelledby="roadmapTitle">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:20px">
+        <div>
+          <div class="eyebrow">The Roadmap</div>
+          <h2 id="roadmapTitle">เส้นทางการเรียนรู้ 9 ช่วง</h2>
+          <p>คลิกที่หัวข้อเพื่อดูรายละเอียด ติ๊กทักษะย่อยที่เรียนแล้ว และคัดลอก prompt ไปใช้เรียนกับ AI ได้ทันที ความคืบหน้าจะถูกบันทึกไว้ในเบราว์เซอร์นี้</p>
+        </div>
+        <div class="legend-row" aria-label="คำอธิบายสัญลักษณ์">
+          <span class="pri must">ต้องรู้</span>
+          <span class="pri should">ควรรู้</span>
+          <span class="pri nice">เสริม</span>
+          <span class="lg mono" style="font-size:12.5px">AI xx% = AI ทำแทนได้ประมาณ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar" id="toolbar">
+      <div class="wrap">
+        <div class="toolbar-row">
+          <label class="search">
+            <span class="sr-only">ค้นหาหัวข้อ</span>
+            <svg class="s-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input type="search" id="search" placeholder="ค้นหา เช่น RAG, testing, Docker, prompt…" autocomplete="off">
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+          <select class="select" id="priFilter" aria-label="กรองตามระดับความสำคัญ">
+            <option value="all">ทุกระดับความสำคัญ</option>
+            <option value="core">ต้องรู้ + ควรรู้</option>
+            <option value="must">ต้องรู้เท่านั้น</option>
+          </select>
+          <label class="toggle"><input type="checkbox" id="hideDone"> ซ่อนที่เรียนจบแล้ว</label>
+        </div>
+        <div class="chips" id="trackChips" role="group" aria-label="เลือกสายงาน">
+          <span class="chips-label">สายงาน</span>
+        </div>
+        <div class="result-line" id="resultLine" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="wrap layout">
+      <nav class="rail" id="rail" aria-label="สารบัญช่วงการเรียนรู้"></nav>
+      <div>
+        <div id="roadmap"></div>
+        <div class="empty" id="emptyState" hidden>
+          <p style="margin:0 0 12px">ไม่พบหัวข้อที่ตรงกับเงื่อนไข</p>
+          <button class="btn btn-sm" type="button" data-action="clear-filters">ล้างตัวกรอง</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="matrix-section" aria-labelledby="matrixTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Skill Matrix</div>
+          <h2 id="matrixTitle">AI ทำแทนได้แค่ไหน เทียบกับคุณค่าระยะยาว</h2>
+          <p>แต่ละจุดคือหนึ่งหัวข้อใน Roadmap แกนนอนคือสัดส่วนงานที่ AI ทำแทนได้ในปัจจุบัน แกนตั้งคือความสำคัญต่ออาชีพนักพัฒนาในอีก 3–5 ปี ใช้แผนภาพนี้ตัดสินใจว่าจะลงทุนเวลาลึกแค่ไหนกับแต่ละทักษะ</p>
+        </div>
+      </div>
+      <div class="matrix-card">
+        <div class="mx-top">
+          <div class="mx-legend" aria-label="คำอธิบายสี">
+            <span class="pri must">ต้องรู้</span>
+            <span class="pri should">ควรรู้</span>
+            <span class="pri nice">เสริม</span>
+            <span class="pri" style="--pc:transparent"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" style="margin-left:-16px;margin-right:2px"><circle cx="6" cy="6" r="4.5" fill="none" stroke="var(--good)" stroke-width="2"/></svg>เรียนจบแล้ว</span>
+          </div>
+          <button class="btn btn-sm" type="button" id="tableToggle" aria-expanded="false" aria-controls="mxTableWrap">ดูเป็นตาราง</button>
+        </div>
+        <div class="mx-box" id="mxBox">
+          <div class="tooltip" id="mxTip" role="status"></div>
+        </div>
+        <p class="mx-note">* ตัวเลขเป็นค่าประเมินเชิงบรรณาธิการ ณ ปี 2026 เพื่อช่วยจัดลำดับการเรียน ไม่ใช่ผลการวิจัย และจะเปลี่ยนไปตามความสามารถของ AI · จุดที่จางคือหัวข้อนอกสายงาน/ตัวกรองที่เลือก</p>
+        <div class="table-wrap" id="mxTableWrap" hidden></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <b>Developer Roadmap ในยุค AI</b>
+      <p>เครื่องมือ AI เปลี่ยนเร็วมาก แต่หลักการเปลี่ยนช้า ใช้ Roadmap นี้เป็นแผนที่ ไม่ใช่กฎตายตัว แล้วทบทวนเส้นทางของตัวเองทุกไตรมาส</p>
+      <p>* เวลาที่เหลือคำนวณจากหัวข้อ “ต้องรู้ + ควรรู้” ในสายที่เลือก ที่ราว 10 ชั่วโมงต่อสัปดาห์ ไม่รวมหัวข้อที่ทำควบคู่ไปตลอด</p>
+    </div>
+    <div>
+      <p class="mono" style="font-size:12.5px;color:var(--muted)">ความคืบหน้าบันทึกในเบราว์เซอร์นี้เท่านั้น · ใช้ “ส่งออก” เพื่อสำรองข้อมูล</p>
+      <p class="mono" style="font-size:12.5px;color:var(--muted)">คีย์ลัด: <b>/</b> ค้นหา · <b>Esc</b> ปิด · <b>← →</b> หัวข้อก่อน/ถัดไป</p>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" inert>
+  <div class="drawer-head">
+    <span class="eyebrow" id="dEyebrow"></span>
+    <button class="icon-btn" type="button" id="dClose" aria-label="ปิดรายละเอียด">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="dBody"></div>
+  <div class="drawer-foot">
+    <button class="btn btn-sm" type="button" id="dPrev"></button>
+    <button class="btn btn-sm" type="button" id="dNext"></button>
+  </div>
+</aside>
+
+<div class="modal" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quizTitle" inert>
+  <div class="modal-card">
+    <div class="m-head">
+      <span class="eyebrow" id="quizTitle">หาจุดเริ่มต้นของคุณ</span>
+      <button class="icon-btn" type="button" data-action="close-quiz" aria-label="ปิดแบบทดสอบ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div id="quizBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+"use strict";
+
+/* =========================================================
+   DATA
+   ========================================================= */
+var PRINCIPLES = [
+  ["พื้นฐานสำคัญ<span>ขึ้น</span> ไม่ใช่น้อยลง", "คุณตรวจงาน AI ได้ดีแค่ไหน ขึ้นกับว่าเข้าใจสิ่งที่อยู่เบื้องหลังแค่ไหน AI ทำให้คนพื้นฐานแน่นเก่งขึ้นหลายเท่า และทำให้คนพื้นฐานหลวมผิดพลาดเร็วขึ้นหลายเท่า"],
+  ["จากคนเขียนโค้ด สู่คนออกแบบและตรวจสอบ", "เวลาของคุณจะย้ายจากการพิมพ์โค้ด ไปสู่การนิยามปัญหา เขียน spec วางสถาปัตยกรรม มอบหมายงานให้ agent และ review ผลลัพธ์"],
+  ["Verify, don't trust", "ทุกอย่างที่ AI สร้างคือ draft จนกว่าจะผ่าน test, code review และข้อมูลจริง ความมั่นใจของ AI ไม่ใช่หลักฐาน"],
+  ["Context คือทุกอย่าง", "คุณภาพผลลัพธ์ขึ้นกับคุณภาพบริบทที่ให้ คนที่สื่อสารชัด เขียนเป็นระบบ และเข้าใจโดเมน จะได้ผลลัพธ์จาก AI ดีกว่าเสมอ"],
+  ["T-shaped + AI Leverage", "รู้กว้างพอจะเชื่อมทั้งระบบ ลึกหนึ่งด้านพอจะเป็นผู้เชี่ยวชาญ แล้วใช้ AI ขยายขอบเขตงานที่คุณทำได้ด้วยตัวคนเดียว"],
+  ["ลงทุนกับ Human Edge", "วิจารณญาณ รสนิยม ความเข้าใจคนและธุรกิจ และความรับผิดชอบต่อผลลัพธ์ คือสิ่งที่ AI ยังแทนไม่ได้ และมีค่าขึ้นทุกปี"]
+];
+
+var STAGES = [
+  {id:"stage-0", n:"00", short:"Mindset", en:"AI-Native Mindset", title:"Mindset และวิธีเรียนในยุค AI",
+   desc:"ก่อนเรียนเครื่องมือใด ๆ ต้องปรับวิธีคิดก่อน AI ทำให้การเขียนโค้ดถูกลงมาก แต่ทำให้การคิด การตัดสินใจ และการตรวจสอบมีค่ามากขึ้น",
+   goal:"มีวิธีคิดและระบบการเรียนที่ใช้ AI ช่วยให้เก่งขึ้นจริง ไม่ใช่พึ่งพาจนคิดเองไม่เป็น"},
+  {id:"stage-1", n:"01", short:"Foundations", en:"Foundations", title:"รากฐานที่ AI แทนไม่ได้",
+   desc:"พื้นฐานคือสิ่งที่ทำให้คุณ “ตรวจ” งานของ AI ได้ ยิ่ง AI เขียนโค้ดให้มากเท่าไหร่ คนที่เข้าใจว่าเบื้องหลังทำงานอย่างไรยิ่งมีค่ามากขึ้นเท่านั้น",
+   goal:"เขียนโปรแกรมเล็ก ๆ ได้เองโดยไม่ใช้ AI อ่านโค้ดและ debug เป็น และใช้ Git กับ terminal ได้คล่อง"},
+  {id:"stage-2", n:"02", short:"Core Engineering", en:"Core Software Engineering", title:"วิศวกรรมซอฟต์แวร์แกนหลัก",
+   desc:"ทักษะวิศวกรรมที่ทำให้สร้างระบบที่ใช้งานได้จริง ดูแลได้ และขยายได้ ส่วนนี้คือสิ่งที่ทำให้คุณ “สั่ง” และ “ตรวจ” AI ได้อย่างมืออาชีพ",
+   goal:"สร้างแอป full-stack ที่มี database, API, test และความปลอดภัยพื้นฐานได้ด้วยตัวเอง และอธิบายการตัดสินใจทุกจุดได้"},
+  {id:"stage-3", n:"03", short:"AI-Augmented Dev", en:"AI-Augmented Development", title:"พัฒนาซอฟต์แวร์ร่วมกับ AI",
+   desc:"เปลี่ยนจากการใช้ AI แบบถาม-ตอบ เป็นการทำงานร่วมกับ AI อย่างเป็นระบบ นี่คือตัวคูณ productivity ที่ใหญ่ที่สุดของนักพัฒนาในตอนนี้",
+   goal:"ใช้ AI agent ส่งมอบฟีเจอร์ได้เร็วขึ้นหลายเท่าโดยคุณภาพไม่ลดลง เพราะมี spec, test และ review ที่ดี"},
+  {id:"stage-4", n:"04", short:"LLM Fundamentals", en:"LLM Fundamentals", title:"เข้าใจ LLM ที่คุณใช้อยู่",
+   desc:"นักพัฒนาทุกคนควรเข้าใจว่า LLM ทำงานอย่างไร มีขีดจำกัดอะไร และเรียกใช้ผ่าน API อย่างไร เหมือนที่ทุกคนเคยต้องเข้าใจ database และ HTTP",
+   goal:"อธิบายได้ว่า LLM ทำงานอย่างไร เรียก API ได้คล่อง และรู้ว่าเมื่อไหร่ไม่ควรเชื่อมัน"},
+  {id:"stage-5", n:"05", short:"AI Engineering", en:"AI Engineering", title:"AI Engineering: สร้างผลิตภัณฑ์ด้วย AI",
+   desc:"จากผู้ใช้ AI สู่ผู้สร้างระบบ AI ทั้ง RAG, agents, evals และการนำ LLM ขึ้น production อย่างน่าเชื่อถือ ปลอดภัย และคุ้มต้นทุน",
+   goal:"สร้างระบบ AI (RAG หรือ agent) ที่วัดผลได้ ปลอดภัย และพร้อมขึ้น production"},
+  {id:"stage-6", n:"06", short:"Production & Cloud", en:"Ship to Production", title:"Production, Cloud และ DevOps",
+   desc:"โค้ดที่ไม่ได้ deploy ยังไม่สร้างคุณค่า เรียนรู้การนำระบบขึ้น production อย่างอัตโนมัติ มองเห็นสถานะได้ และคุ้มค่า",
+   goal:"Deploy ระบบขึ้น production อัตโนมัติ มองเห็นสถานะระบบ และควบคุมต้นทุนได้"},
+  {id:"stage-7", n:"07", short:"Specialization", en:"Specialization Tracks", title:"ความเชี่ยวชาญเฉพาะทาง",
+   desc:"เลือก 1 สายหลักเพื่อเจาะลึกแบบ T-shaped กว้างพอจะทำงานข้ามสาย ลึกพอจะเป็นผู้เชี่ยวชาญที่ทั้งทีมและ AI ต้องพึ่ง",
+   goal:"มีความเชี่ยวชาญเชิงลึกหนึ่งด้านที่ทำให้คุณเป็นคนที่ทีม “ต้องปรึกษา”"},
+  {id:"stage-8", n:"08", short:"Human Edge", en:"Career & Human Edge", title:"Human Edge: ทักษะที่ทำให้คุณโดดเด่น",
+   desc:"เมื่อ AI ทำให้ใครก็เขียนโค้ดได้ สิ่งที่แยกคุณออกจากคนอื่นคือความเข้าใจคน ธุรกิจ การตัดสินใจ และชื่อเสียงที่สะสมไว้ หลายหัวข้อในช่วงนี้ควรทำควบคู่ไปตั้งแต่วันแรก",
+   goal:"เป็นนักพัฒนาที่ทั้งเก่งเทคนิคและสร้างผลกระทบต่อผู้ใช้ ทีม และธุรกิจได้จริง"}
+];
+
+var TRACKS = [
+  {id:"all", label:"ทุกสาย"},
+  {id:"fe", label:"Frontend"},
+  {id:"be", label:"Backend"},
+  {id:"fs", label:"Full-stack"},
+  {id:"ai", label:"AI Engineer"},
+  {id:"data", label:"Data / ML"},
+  {id:"ops", label:"DevOps / Platform"},
+  {id:"mobile", label:"Mobile"}
+];
+
+/* s=stage, p=priority, w=weeks (~10 ชม./สัปดาห์), o=ongoing, t=tracks, a=AI ทำแทนได้ (%), v=คุณค่าระยะยาว */
+var NODES = [
+/* ---------- Stage 0 ---------- */
+{s:0,id:"mindset",title:"ปรับ Mindset แบบ AI-Native",en:"Role Shift: Coder → Orchestrator",p:"must",w:1,t:["core"],a:10,v:95,
+ d:"เข้าใจว่างานของนักพัฒนากำลังเปลี่ยนจาก “คนพิมพ์โค้ด” ไปเป็น “คนนิยามปัญหา ออกแบบ มอบหมายงาน และรับผิดชอบผลลัพธ์” AI คือเพื่อนร่วมทีมที่เร็วมาก แต่ผิดได้อย่างมั่นใจ",
+ why:"คนที่ได้เปรียบไม่ใช่คนที่พิมพ์เร็วที่สุด แต่คือคนที่รู้ว่าจะสร้างอะไร ทำไม และรู้ว่าผลลัพธ์ที่ AI ให้มาถูกหรือผิด",
+ sk:["แยกให้ออกว่างานไหนควรให้ AI ทำ งานไหนต้องคิดเอง","มองตัวเองเป็นเจ้าของผลลัพธ์ ไม่ใช่แค่ผู้เขียนโค้ด","ฝึกถามตัวเองเสมอว่า “จะพิสูจน์ได้อย่างไรว่าสิ่งนี้ถูก?”","ลงทุนกับหลักการที่ไม่เปลี่ยน มากกว่าเครื่องมือที่เปลี่ยนทุกเดือน","หลีกเลี่ยงทั้ง “กลัว AI” และ “เชื่อ AI ทุกอย่าง”"],
+ tip:"ให้ AI ช่วยวิเคราะห์ job description ของตำแหน่งที่อยากได้ แล้วแยกว่าทักษะไหน AI ช่วยได้มาก ทักษะไหนยังต้องใช้คนตัดสินใจ",
+ proj:"เขียนบันทึก 1 หน้า “งานของฉันใน 3 ปีข้างหน้าจะเปลี่ยนไปอย่างไร” แล้วกลับมาทบทวนทุก 6 เดือน",
+ res:[["Simon Willison's Weblog","https://simonwillison.net/"],["Latent Space (AI Engineer newsletter)","https://www.latent.space/"]]},
+{s:0,id:"learn",title:"เรียนรู้อย่างไรเมื่อมี AI เป็นติวเตอร์",en:"Learning How to Learn with AI",p:"must",w:1,t:["core"],a:20,v:90,
+ d:"AI ทำให้เข้าถึงความรู้ได้ทันที แต่ก็ทำให้ “รู้สึกว่าเข้าใจ” ง่ายเกินไป ต้องมีระบบการเรียนที่บังคับให้สมองทำงานจริง",
+ why:"ถ้าให้ AI คิดแทนตั้งแต่วันแรก คุณจะไม่มีพื้นฐานพอจะตรวจงานของ AI ได้ ใช้ AI เพื่อเรียนให้ลึกขึ้น ไม่ใช่เพื่อข้ามการเรียน",
+ sk:["ใช้ AI แบบ Socratic: ให้ถามกลับ ไม่ใช่ให้เฉลยทันที","Feynman Technique: อธิบายให้ AI ฟังแล้วให้มันจับผิด","Active recall และ spaced repetition (เช่น Anki)","กฎ “เขียนเองก่อน แล้วค่อยเทียบกับ AI”","สร้าง learning log หรือ digital garden ของตัวเอง"],
+ tip:"สั่ง AI ว่า “อย่าเฉลย ให้ถามคำถามนำทีละข้อจนกว่าฉันจะหาคำตอบเอง” วิธีนี้ทำให้จำได้นานกว่าการอ่านคำตอบหลายเท่า",
+ proj:"เลือกหัวข้อหนึ่ง เรียนกับ AI แบบ Socratic 7 วัน แล้วเขียนบทความอธิบายด้วยคำของตัวเอง",
+ res:[["Learning How to Learn (Coursera)","https://www.coursera.org/learn/learning-how-to-learn"],["Anki","https://apps.ankiweb.net/"]]},
+{s:0,id:"ct",title:"การคิดเชิงคำนวณและการแตกปัญหา",en:"Computational Thinking",p:"must",w:2,t:["core"],a:25,v:95,
+ d:"ทักษะแตกปัญหาใหญ่เป็นปัญหาย่อย หา pattern ตัดสิ่งที่ไม่จำเป็นออก (abstraction) และออกแบบขั้นตอนการแก้ปัญหา ก่อนจะเขียนโค้ดแม้แต่บรรทัดเดียว",
+ why:"AI เก่งการแก้ปัญหาที่ถูกนิยามชัดแล้ว งานที่เหลือให้มนุษย์คือการนิยามปัญหาและแตกงานให้ AI ทำทีละส่วนได้อย่างถูกต้อง",
+ sk:["Decomposition: แตกปัญหาเป็นชิ้นที่ทดสอบได้","Pattern recognition และ abstraction","เขียน pseudocode หรือ flowchart ก่อนลงมือ","คิดถึง edge cases และ input ที่ผิดปกติ","ประเมินว่าปัญหานี้ “ควร” แก้ด้วยโค้ดหรือไม่"],
+ tip:"เขียนแผนแตกงานเองก่อน แล้วให้ AI วิจารณ์ว่าขาดอะไร อย่าให้ AI วางแผนแทนตั้งแต่ต้น",
+ proj:"เลือกแอปที่ใช้ทุกวัน (เช่น แอปธนาคาร หรือแอปสั่งอาหาร) แตกฟีเจอร์หนึ่งออกเป็น component, data และ flow บนกระดาษ",
+ res:[["CS50x: Harvard","https://cs50.harvard.edu/x/"]]},
+{s:0,id:"english",title:"ภาษาอังกฤษสำหรับนักพัฒนา",en:"English for Developers",p:"must",w:4,o:1,t:["core"],a:35,v:85,
+ d:"เอกสารทางเทคนิค งานวิจัย ชุมชน และโมเดล AI ส่วนใหญ่ใช้ภาษาอังกฤษเป็นหลัก การอ่านเข้าใจและเขียนสื่อสารได้ชัดคือตัวคูณของทุกทักษะ ฝึกควบคู่ไปตลอดเส้นทาง",
+ why:"Prompt, spec และ code review ล้วนเป็นงานเขียน ยิ่งสื่อสารได้แม่นยำ AI และเพื่อนร่วมทีมยิ่งเข้าใจคุณถูกต้อง",
+ sk:["อ่าน official docs และ changelog โดยไม่ต้องแปลทุกคำ","เขียน commit message, PR description และ issue ที่ชัดเจน","ศัพท์เทคนิคพื้นฐานและการออกเสียง","ติดตาม content ภาษาอังกฤษ (blog, podcast, talk)","เขียน prompt ภาษาอังกฤษเมื่อต้องการความแม่นยำสูง"],
+ tip:"ให้ AI ตรวจ PR description ที่คุณเขียน พร้อมอธิบายว่าทำไมควรแก้ ไม่ใช่แค่ให้เขียนใหม่ให้",
+ proj:"เขียน README ภาษาอังกฤษให้โปรเจกต์ของตัวเอง 3 โปรเจกต์",
+ res:[["Google Technical Writing Courses","https://developers.google.com/tech-writing"]]},
+
+/* ---------- Stage 1 ---------- */
+{s:1,id:"lang1",title:"ภาษาโปรแกรมแรก (Python หรือ JavaScript)",en:"Programming Fundamentals",p:"must",w:8,t:["core"],a:75,v:85,
+ d:"เรียนภาษาแรกให้แน่น: ตัวแปร ชนิดข้อมูล เงื่อนไข ลูป ฟังก์ชัน โครงสร้างข้อมูลพื้นฐาน การจัดการ error และ module แนะนำ Python (สาย AI/Data) หรือ JavaScript (สายเว็บ)",
+ why:"AI เขียน syntax ได้ดีกว่าคนส่วนใหญ่แล้ว แต่คุณต้องอ่านออกทุกบรรทัด ถ้าอ่านโค้ดที่ AI เขียนไม่ออก แปลว่าคุณกำลัง deploy สิ่งที่ตัวเองไม่เข้าใจ",
+ sk:["Variables, types, control flow, functions","Collections: list/array, dict/object, set","Error handling และการอ่าน stack trace","Modules, packages และ package manager (pip/uv, npm/pnpm)","Async พื้นฐาน (async/await)","เขียนโปรแกรมเล็ก ๆ ได้เองโดยไม่ใช้ AI"],
+ tip:"ช่วง 1–2 เดือนแรก ปิด AI autocomplete แล้วใช้ AI แค่ถามอธิบาย concept กล้ามเนื้อการเขียนโค้ดต้องสร้างด้วยมือ",
+ proj:"CLI app จัดการรายรับรายจ่าย: เพิ่ม ลบ สรุปยอดรายเดือน และบันทึกเป็นไฟล์ JSON",
+ res:[["Python Tutorial (official)","https://docs.python.org/3/tutorial/"],["javascript.info","https://javascript.info/"],["Exercism","https://exercism.org/"]]},
+{s:1,id:"dsa",title:"โครงสร้างข้อมูลและอัลกอริทึม",en:"Data Structures & Algorithms",p:"must",w:6,t:["core"],a:70,v:75,
+ d:"Array, Hash Map, Stack, Queue, Tree, Graph, Heap รวมถึง Big-O, sorting, searching, recursion และ BFS/DFS เน้นเข้าใจ trade-off มากกว่าท่องจำโจทย์",
+ why:"AI แก้โจทย์ LeetCode ได้แทบทุกข้อ แต่การเลือก data structure ผิดในระบบจริงยังทำให้ระบบช้าหรือล่มได้ คุณต้องเห็นปัญหานั้นตอน code review",
+ sk:["Big-O: time และ space complexity","Array, Linked List, Hash Map, Set","Stack, Queue, Heap / Priority Queue","Tree, BST, Graph และ BFS/DFS","Sorting, Binary Search, Two Pointers, Sliding Window","Recursion และ Dynamic Programming เบื้องต้น"],
+ tip:"ให้ AI สร้างโค้ด 2 แบบที่ทำงานเหมือนกันแต่ complexity ต่างกัน แล้วฝึกวิเคราะห์ว่าแบบไหนดีกว่าในสถานการณ์ไหน",
+ proj:"ระบบ autocomplete จากรายการคำ 100,000 คำ เปรียบเทียบ linear search, binary search และ Trie",
+ res:[["NeetCode Roadmap","https://neetcode.io/roadmap"],["VisuAlgo","https://visualgo.net/"]]},
+{s:1,id:"git",title:"Git, GitHub และการทำงานเป็นทีม",en:"Version Control",p:"must",w:2,t:["core"],a:55,v:85,
+ d:"Version control คือ safety net ของการพัฒนาซอฟต์แวร์: commit, branch, merge, rebase, pull request, code review และการแก้ conflict",
+ why:"เมื่อ AI agent แก้ไขทีละหลายสิบไฟล์ Git คือปุ่ม undo ประวัติการเปลี่ยนแปลง และกลไกตรวจสอบของคุณ commit เล็ก ๆ บ่อย ๆ สำคัญกว่าที่เคย",
+ sk:["commit, branch, merge, rebase, stash","อ่าน git diff และ git log อย่างคล่องแคล่ว","Pull Request, code review และ conventional commits","แก้ merge conflict ด้วยความเข้าใจ","git worktree สำหรับรัน AI agent หลายตัวพร้อมกัน",".gitignore และการไม่ commit secrets"],
+ tip:"ก่อนให้ AI agent แก้โค้ดชุดใหญ่ ให้ commit หรือแตก branch ใหม่เสมอ แล้วอ่าน diff ทุกครั้งก่อน merge",
+ proj:"ส่ง PR แรกให้ open source (แก้ docs ก็นับ) และฝึก resolve conflict ใน repo ทดลอง",
+ res:[["Pro Git (ฟรี)","https://git-scm.com/book/en/v2"],["Learn Git Branching","https://learngitbranching.js.org/"]]},
+{s:1,id:"cli",title:"Command Line และ Linux",en:"Terminal & Linux",p:"must",w:2,t:["core"],a:60,v:75,
+ d:"ใช้ terminal อย่างมั่นใจ: shell, file system, permissions, process, environment variables, pipes, SSH และ script อัตโนมัติ",
+ why:"AI coding agent ส่วนใหญ่ทำงานผ่าน terminal ถ้าไม่เข้าใจคำสั่งที่ agent ขออนุญาตรัน คุณอาจอนุมัติคำสั่งอันตรายโดยไม่รู้ตัว",
+ sk:["Navigation, file operations, permissions (chmod/chown)","Pipes, redirection, grep, find และ sed/awk พื้นฐาน","Process, ports และ environment variables","SSH, keys และการทำงานบน remote server","Shell scripting (bash) เบื้องต้น","อ่านและประเมินคำสั่งที่ AI เสนอก่อนกด approve"],
+ tip:"ถ้า AI เสนอคำสั่งที่ไม่เข้าใจ ให้ถามว่า “คำสั่งนี้ทำอะไรทีละส่วน และมีผลข้างเคียงอะไรบ้าง” ก่อนรันทุกครั้ง",
+ proj:"เขียน shell script สำรองโฟลเดอร์โปรเจกต์อัตโนมัติ และเล่น OverTheWire Bandit ให้ถึง level 15",
+ res:[["The Missing Semester (MIT)","https://missing.csail.mit.edu/"],["OverTheWire: Bandit","https://overthewire.org/wargames/bandit/"]]},
+{s:1,id:"network",title:"เครือข่ายและพื้นฐานเว็บ",en:"Networking & Web Fundamentals",p:"must",w:3,t:["core"],a:45,v:80,
+ d:"อินเทอร์เน็ตทำงานอย่างไร: TCP/IP, DNS, HTTP/HTTPS, TLS, cookies, CORS, WebSocket และสิ่งที่เกิดขึ้นเมื่อพิมพ์ URL ในเบราว์เซอร์",
+ why:"แอป AI เกือบทั้งหมดคือ network call ไปยัง API การเข้าใจ timeout, streaming (SSE), rate limit และ retry คือสิ่งที่แยกแอปของเล่นออกจากแอป production",
+ sk:["TCP/IP, ports และ DNS","HTTP methods, status codes และ headers","HTTPS/TLS และ certificate","Cookies, sessions และ CORS","WebSocket และ Server-Sent Events (streaming)","Debug ด้วย DevTools Network tab และ curl"],
+ tip:"เปิด DevTools ดู network ของเว็บที่ใช้บ่อย แล้วถาม AI ให้อธิบาย header ทุกตัวที่ไม่รู้จัก",
+ proj:"เขียน HTTP server ง่าย ๆ จาก socket โดยไม่ใช้ framework",
+ res:[["MDN: HTTP","https://developer.mozilla.org/en-US/docs/Web/HTTP"],["High Performance Browser Networking","https://hpbn.co/"]]},
+{s:1,id:"debug",title:"การอ่านโค้ดและ Debugging",en:"Code Reading & Debugging",p:"must",w:3,t:["core"],a:40,v:95,
+ d:"ทักษะอ่านโค้ดที่ไม่ได้เขียนเอง ไล่ flow ใช้ debugger, logging, breakpoint และกระบวนการ debug แบบวิทยาศาสตร์ (ตั้งสมมติฐาน → ทดสอบ → สรุป)",
+ why:"ในยุค AI คุณจะ “อ่าน” โค้ดมากกว่า “เขียน” หลายเท่า นี่คือทักษะที่มีค่าเพิ่มขึ้นมากที่สุด เพราะเป็นด่านสุดท้ายก่อนโค้ดขึ้น production",
+ sk:["อ่านโค้ดเบสใหญ่: หา entry point และไล่ call flow","ใช้ debugger: breakpoint, step, watch","Debug แบบตั้งสมมติฐาน และ git bisect","อ่าน log และ stack trace อย่างเป็นระบบ","สร้าง minimal reproducible example","จับ pattern บั๊กที่ AI ชอบทำ (off-by-one, API ที่ไม่มีอยู่จริง)"],
+ tip:"เมื่อเจอบั๊ก ให้เขียนสมมติฐานของตัวเอง 3 ข้อก่อน แล้วค่อยถาม AI เทียบว่าใครคิดถูก วิธีนี้ฝึก intuition ได้เร็วมาก",
+ proj:"เลือก open source ที่ใช้อยู่ อ่านจนอธิบาย architecture ได้ แล้วแก้ good-first-issue หนึ่งข้อ",
+ res:[["Chrome DevTools Docs","https://developer.chrome.com/docs/devtools"],["Debugging: David J. Agans (หนังสือ)",""]]},
+{s:1,id:"computers",title:"คอมพิวเตอร์ทำงานอย่างไร",en:"How Computers Work",p:"should",w:4,t:["core"],a:30,v:70,
+ d:"CPU, memory, storage, process vs thread, concurrency, file system, character encoding (UTF-8 สำคัญมากกับภาษาไทย) และ OS พื้นฐาน",
+ why:"บั๊กที่ยากที่สุด เช่น memory leak, race condition, deadlock หรือภาษาไทยกลายเป็นตัวอักษรต่างดาว คือบั๊กที่ AI มักแก้ผิดจุดถ้าคุณอธิบายปัญหาไม่ถูก",
+ sk:["CPU, RAM, cache, disk และ latency ที่ต่างกันมาก","Process, thread, concurrency vs parallelism","Memory: stack vs heap และ garbage collection","Character encoding: ASCII, Unicode, UTF-8","Race condition, deadlock และ locking พื้นฐาน"],
+ tip:"ให้ AI สร้างตัวอย่างโค้ดที่เกิด race condition จริง แล้วลองแก้เองก่อนดูเฉลย",
+ proj:"เขียนโปรแกรม multi-thread นับคำจากไฟล์ขนาดใหญ่ แล้ววัดผลเทียบกับ single-thread",
+ res:[["OSTEP (ฟรี)","https://pages.cs.wisc.edu/~remzi/OSTEP/"],["Teach Yourself CS","https://teachyourselfcs.com/"]]},
+
+/* ---------- Stage 2 ---------- */
+{s:2,id:"ts",title:"TypeScript และ Type System",en:"TypeScript & Static Typing",p:"must",w:4,t:["fe","be","mobile","ai"],a:70,v:75,
+ d:"Static typing, generics, union/intersection, narrowing และการออกแบบ type ให้สะท้อน domain ใช้ได้ทั้ง frontend, backend (Node/Bun/Deno) และ mobile",
+ why:"Type คือ “สัญญา” ที่ AI อ่านเข้าใจและตรวจได้อัตโนมัติ โค้ดเบสที่ type แน่นทำให้ AI เขียนผิดน้อยลงอย่างเห็นได้ชัด และ compiler ช่วยจับผิด AI ให้ฟรี",
+ sk:["Basic types, interfaces, type aliases","Generics และ utility types","Union, discriminated union, narrowing","Strict mode และ tsconfig","Runtime validation ด้วย Zod หรือ Valibot","Type-safe API (tRPC / OpenAPI codegen)"],
+ tip:"ให้ AI สร้าง type จาก JSON ตัวอย่าง แล้วคุณปรับให้แม่นขึ้น (เช่น เปลี่ยน string เป็น union literal) เพื่อฝึกคิดแบบ type-first",
+ proj:"แปลงโปรเจกต์ JavaScript เดิมเป็น TypeScript แบบ strict mode",
+ res:[["TypeScript Handbook","https://www.typescriptlang.org/docs/handbook/intro.html"],["Total TypeScript","https://www.totaltypescript.com/"]]},
+{s:2,id:"db",title:"ฐานข้อมูลและ SQL",en:"Databases & SQL",p:"must",w:5,t:["core"],a:60,v:85,
+ d:"Relational model, SQL (JOIN, GROUP BY, window functions), indexing, transactions, normalization รวมถึง NoSQL (document, key-value) และการเลือกใช้ให้เหมาะกับงาน",
+ why:"ข้อมูลคือสินทรัพย์สำคัญที่สุดของแอป AI schema ที่ออกแบบผิดแก้ยากกว่าโค้ดผิดหลายเท่า และ query ที่ AI เขียนมักช้าถ้าคุณไม่รู้เรื่อง index",
+ sk:["SQL: SELECT, JOIN, GROUP BY, subquery, CTE","Schema design และ normalization","Index และการอ่าน query plan (EXPLAIN)","Transactions, ACID, isolation levels","PostgreSQL ในฐานะฐานข้อมูลที่ทำได้เกือบทุกอย่าง","NoSQL (Redis, MongoDB) ควรใช้เมื่อไหร่"],
+ tip:"ให้ AI เขียน query แล้วรัน EXPLAIN ANALYZE ทุกครั้ง ฝึกอ่าน query plan จนรู้ว่า AI เขียน query ช้าตรงไหน",
+ proj:"ออกแบบ schema ระบบจองคิวร้านอาหาร seed ข้อมูล 1 ล้านแถว แล้ว optimize query ให้เร็วกว่า 50ms",
+ res:[["SQLBolt","https://sqlbolt.com/"],["Use The Index, Luke","https://use-the-index-luke.com/"],["PostgreSQL Tutorial","https://www.postgresql.org/docs/current/tutorial.html"]]},
+{s:2,id:"api",title:"ออกแบบ API และ Authentication",en:"API Design & Auth",p:"must",w:3,t:["be","fe","ai","mobile"],a:60,v:80,
+ d:"REST, GraphQL, gRPC, OpenAPI spec, versioning, pagination, idempotency, rate limiting และ auth ทั้ง session, JWT, OAuth 2.0 / OIDC",
+ why:"AI agent ใช้งานซอฟต์แวร์ผ่าน API และ tool API ที่ออกแบบดีและมีเอกสารชัดจะถูกใช้ได้ทั้งโดยคนและ AI ในยุคที่ “ผู้ใช้” ของ API อาจเป็น agent",
+ sk:["REST principles และ resource design","OpenAPI / Swagger spec","Pagination, filtering, idempotency","AuthN vs AuthZ, JWT, OAuth 2.0, OIDC","Rate limiting และรูปแบบ error ที่ดี","GraphQL / gRPC ควรใช้เมื่อไหร่"],
+ tip:"เขียน OpenAPI spec ก่อน แล้วให้ AI generate server stub และ client แบบ spec-first ทำให้ AI ทำงานตรงตามที่ต้องการมากกว่า",
+ proj:"REST API ระบบ todo ที่มี auth, pagination, rate limit และเอกสาร OpenAPI ครบถ้วน",
+ res:[["Microsoft REST API Guidelines","https://github.com/microsoft/api-guidelines"],["OAuth 2.0 Simplified","https://www.oauth.com/"]]},
+{s:2,id:"testing",title:"Testing และ TDD",en:"Automated Testing",p:"must",w:3,t:["core"],a:65,v:90,
+ d:"Unit, integration, E2E testing, test pyramid, mocking, TDD, property-based testing และ coverage ที่มีความหมายจริง",
+ why:"Test คือ spec ที่รันได้ เมื่อ AI เขียนโค้ด test คือวิธีพิสูจน์ว่าโค้ดถูก และเป็น feedback loop ที่ทำให้ AI agent แก้งานตัวเองได้",
+ sk:["Unit test ด้วย Vitest, Jest หรือ pytest","Integration test กับ database จริง (Testcontainers)","E2E test ด้วย Playwright","TDD: red → green → refactor","Mocking อย่างพอดี (ไม่ mock ทุกอย่าง)","ตรวจว่า test ที่ AI เขียน “ทดสอบจริง” ไม่ใช่แค่ผ่าน"],
+ tip:"เขียน test หรือ test cases เป็นภาษาคนเองก่อน แล้วให้ AI implement จนผ่าน ระวัง AI แก้ test ให้ผ่านแทนการแก้โค้ด!",
+ proj:"เพิ่ม test ให้โปรเจกต์เดิมจน coverage ส่วน business logic เกิน 80% พร้อม E2E ที่ critical path",
+ res:[["Playwright","https://playwright.dev/"],["Testing Library","https://testing-library.com/"],["Martin Fowler: Testing","https://martinfowler.com/testing/"]]},
+{s:2,id:"frontend",title:"พื้นฐาน Frontend: HTML, CSS, JS และ Framework",en:"Frontend Fundamentals",p:"must",w:6,t:["fe","mobile"],a:75,v:65,
+ d:"Semantic HTML, CSS (Flexbox, Grid, responsive), DOM, accessibility และ framework อย่าง React, Vue หรือ Svelte รวมถึง state management และ rendering patterns",
+ why:"AI สร้าง UI ได้เร็วมาก แต่ accessibility, performance, state ที่ซับซ้อน และ UX ที่ดียังต้องใช้วิจารณญาณของคน คนที่มี “ตา” ด้านดีไซน์จะโดดเด่น",
+ sk:["Semantic HTML และ accessibility (a11y)","CSS layout: Flexbox, Grid, responsive","JavaScript DOM และ event loop","React (หรือ Vue/Svelte): components, state, effects","Rendering: CSR, SSR, SSG, Server Components","Core Web Vitals และ performance"],
+ tip:"ให้ AI สร้าง UI จาก screenshot แล้วตรวจด้วย Lighthouse และลองใช้งานด้วยคีย์บอร์ดล้วน AI มักลืมเรื่อง accessibility",
+ proj:"Dashboard ที่ responsive รองรับ dark mode และได้คะแนน Lighthouse accessibility เกิน 95",
+ res:[["MDN Learn Web Development","https://developer.mozilla.org/en-US/docs/Learn"],["react.dev","https://react.dev/learn"],["web.dev Learn","https://web.dev/learn"]]},
+{s:2,id:"sysdesign",title:"System Design และ Software Architecture",en:"System Design",p:"must",w:6,t:["be","ops","ai","data"],a:30,v:95,
+ d:"Scalability, caching, load balancing, message queue, consistency vs availability, monolith vs microservices, event-driven และการเขียน design doc",
+ why:"AI ช่วย implement ทีละส่วนได้ดี แต่การตัดสินใจระดับสถาปัตยกรรมที่ผิดแล้วแก้ยาก ต้องอาศัยประสบการณ์ บริบทธุรกิจ และคนที่รับผิดชอบ",
+ sk:["Scalability: vertical vs horizontal","Caching (CDN, Redis) และ load balancing","Message queues และ event-driven (Kafka, RabbitMQ, SQS)","CAP theorem และ consistency models","Monolith → modular monolith → microservices","เขียน design doc / ADR และสื่อสาร trade-off"],
+ tip:"ออกแบบระบบเองก่อน แล้วให้ AI สวมบท “principal engineer จอมจับผิด” โจมตีจุดอ่อนของ design คุณ",
+ proj:"เขียน design doc ระบบแชตแบบ real-time ที่รองรับผู้ใช้ 1 ล้านคน พร้อม ADR อย่างน้อย 3 ข้อ",
+ res:[["System Design Primer","https://github.com/donnemartin/system-design-primer"],["Designing Data-Intensive Applications","https://dataintensive.net/"],["ByteByteGo","https://bytebytego.com/"]]},
+{s:2,id:"security",title:"Security พื้นฐาน",en:"Application Security",p:"must",w:3,t:["core"],a:45,v:90,
+ d:"OWASP Top 10, injection, XSS, CSRF, authentication ที่ปลอดภัย, การจัดการ secrets, dependency security และหลัก least privilege",
+ why:"งานวิจัยหลายชิ้นพบว่าโค้ดที่ AI สร้างมีช่องโหว่ไม่น้อย และ AI อาจแนะนำ package ที่ไม่มีอยู่จริง ซึ่งผู้ไม่หวังดีอาจจดชื่อไว้ดักรอ (slopsquatting) ความรู้ security คือเกราะของคุณ",
+ sk:["OWASP Top 10","SQL injection, XSS, CSRF, SSRF","Password hashing และ session security","Secrets management (ไม่ hardcode, ใช้ vault/env)","Dependency scanning และ supply chain security","Least privilege และ threat modeling เบื้องต้น"],
+ tip:"ให้ AI สวมบท pentester review โค้ดของคุณตาม OWASP Top 10 แต่ยืนยันทุกข้อค้นพบด้วยตัวเอง",
+ proj:"ฝึกโจมตีและป้องกันใน OWASP Juice Shop แล้วเขียนสรุปช่องโหว่ 5 แบบที่เจอ",
+ res:[["OWASP Top 10","https://owasp.org/www-project-top-ten/"],["OWASP Juice Shop","https://owasp.org/www-project-juice-shop/"]]},
+{s:2,id:"clean",title:"Clean Code, Refactoring และ Design Patterns",en:"Code Quality",p:"should",w:3,t:["core"],a:60,v:75,
+ d:"การตั้งชื่อ, single responsibility, coupling/cohesion, SOLID, design patterns ที่ใช้บ่อย, code smells และการ refactor อย่างปลอดภัย",
+ why:"AI ผลิตโค้ดได้มหาศาล ถ้าไม่มีรสนิยมเรื่องโค้ดที่ดี codebase จะกลายเป็นกองโค้ดที่ไม่มีใครเข้าใจ รวมถึง AI เองด้วย เพราะ context ยิ่งรกผลลัพธ์ยิ่งแย่",
+ sk:["Naming และฟังก์ชันเล็กที่ทำสิ่งเดียว","Coupling, cohesion และ SOLID","Design patterns: Strategy, Factory, Adapter, Observer","Code smells และเทคนิค refactoring","รู้ว่าเมื่อไหร่ “ไม่ควร” abstract (YAGNI)","Code review ด้วยมาตรฐานที่ชัดเจน"],
+ tip:"ให้ AI refactor โค้ด แล้วคุณตัดสินว่าดีขึ้นจริงไหม ฝึก “taste” ด้วยการปฏิเสธข้อเสนอที่ซับซ้อนเกินจำเป็น",
+ proj:"Refactor โค้ดเก่าที่ตัวเองเขียนเมื่อ 6 เดือนก่อน โดยมี test คุมพฤติกรรมไว้",
+ res:[["Refactoring.Guru","https://refactoring.guru/"],["Refactoring: Martin Fowler (หนังสือ)",""]]},
+{s:2,id:"lang2",title:"ภาษาที่สอง: Go, Python, Java หรือ Rust",en:"Second Language",p:"should",w:6,t:["be","ops","data","ai"],a:65,v:65,
+ d:"เรียนภาษาที่สองที่มีแนวคิดต่างจากภาษาแรก เช่น Go (concurrency, cloud-native), Python (AI/data), Java/Kotlin (enterprise) หรือ Rust (performance, safety)",
+ why:"การรู้หลายภาษาทำให้เข้าใจ “แนวคิด” แยกจาก “syntax” เมื่อ AI แปลภาษาให้ได้ คุณค่าอยู่ที่การรู้ว่าแต่ละภาษาเหมาะกับงานไหน",
+ sk:["Syntax และ idioms ของภาษา","Concurrency model (goroutine, async, threads)","Package ecosystem และ build tools","Error handling patterns","เปรียบเทียบ trade-off ระหว่างภาษา"],
+ tip:"ให้ AI แปลโปรเจกต์เล็กจากภาษาแรกเป็นภาษาใหม่ แล้วถามว่า “แบบนี้ idiomatic หรือยัง” จะเห็นความต่างของแนวคิดได้เร็ว",
+ proj:"URL shortener ด้วยภาษาที่สอง พร้อม benchmark เทียบกับภาษาแรก",
+ res:[["A Tour of Go","https://go.dev/tour/"],["The Rust Book","https://doc.rust-lang.org/book/"]]},
+
+/* ---------- Stage 3 ---------- */
+{s:3,id:"tools",title:"รู้จักเครื่องมือ AI Coding",en:"AI Coding Tools Landscape",p:"must",w:1,t:["core"],a:50,v:70,
+ d:"เข้าใจเครื่องมือ 3 ระดับ: (1) Autocomplete (2) Chat ใน IDE (3) Agentic ที่อ่าน codebase รันคำสั่ง แก้หลายไฟล์ และรัน test เองได้ เช่น Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI",
+ why:"เครื่องมือเปลี่ยนทุกไม่กี่เดือน ทักษะที่ยั่งยืนคือเข้าใจว่าเครื่องมือแต่ละแบบเหมาะกับงานแบบไหน และประเมินเครื่องมือใหม่ได้เร็ว",
+ sk:["Inline completion vs Chat vs Agent","CLI agents vs IDE agents vs background/cloud agents","เลือกโมเดลให้เหมาะกับงาน (เร็ว/ถูก vs ฉลาด/แพง)","ตั้งค่า permission และ sandbox ของ agent","ประเมินเครื่องมือใหม่ด้วยงานจริงของตัวเอง"],
+ tip:"ทำงานชิ้นเดียวกันด้วยเครื่องมือ 2–3 ตัว แล้วจดว่าตัวไหนเก่งเรื่องอะไร เพื่อสร้าง mental model ของเครื่องมือเอง",
+ proj:"ใช้ agentic coding tool สร้างฟีเจอร์เดียวกันในโปรเจกต์จริง แล้วเขียนรีวิวเปรียบเทียบ",
+ res:[["Claude Code Docs","https://docs.claude.com/en/docs/claude-code/overview"],["GitHub Copilot Docs","https://docs.github.com/en/copilot"],["Cursor Docs","https://cursor.com/docs"]]},
+{s:3,id:"context",title:"Prompting และ Context Engineering สำหรับโค้ด",en:"Context Engineering",p:"must",w:2,t:["core"],a:35,v:90,
+ d:"ศิลปะการให้บริบทที่ถูกต้องแก่ AI: เป้าหมาย ข้อจำกัด ไฟล์ที่เกี่ยวข้อง ตัวอย่าง และเกณฑ์ความสำเร็จ รวมถึงการจัดการ context window ไม่ให้รก",
+ why:"คุณภาพผลลัพธ์จาก AI ขึ้นกับคุณภาพ context เกือบทั้งหมด คนสองคนใช้โมเดลเดียวกันได้ผลต่างกันราวฟ้ากับเหวเพราะทักษะข้อนี้",
+ sk:["ระบุเป้าหมาย ข้อจำกัด และ definition of done","ให้ตัวอย่าง (examples) และ anti-examples","อ้างอิงไฟล์และฟังก์ชันที่เกี่ยวข้องอย่างเจาะจง","แตกงานใหญ่เป็นขั้นเล็ก (plan ก่อน code)","จัดการ context: เริ่ม session ใหม่เมื่อ context รก","เขียนไฟล์ project rules (CLAUDE.md / AGENTS.md)"],
+ tip:"ก่อนสั่งงานใหญ่ ให้ AI “สัมภาษณ์” คุณก่อนว่ายังขาดข้อมูลอะไร วิธีนี้ช่วยเผยสมมติฐานที่คุณลืมบอก",
+ proj:"เขียน AGENTS.md หรือ CLAUDE.md ให้โปรเจกต์ของตัวเอง (คำสั่ง build/test, conventions, ข้อห้าม) แล้ววัดว่า AI ทำงานดีขึ้นไหม",
+ res:[["Effective Context Engineering for AI Agents","https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"],["AGENTS.md","https://agents.md/"]]},
+{s:3,id:"spec",title:"Spec-Driven Development",en:"Spec-Driven Development",p:"must",w:2,t:["core"],a:30,v:90,
+ d:"เขียน spec, requirements และ acceptance criteria ให้ชัดก่อน แล้วให้ AI implement ตาม spec และตรวจด้วย test เปลี่ยนจาก vibe coding เป็น engineering",
+ why:"เมื่อการเขียนโค้ดถูกลงมาก คอขวดย้ายไปอยู่ที่ “การรู้ว่าต้องการอะไรอย่างแม่นยำ” spec ที่ดีคือ prompt ที่ดีที่สุด",
+ sk:["เขียน user story และ acceptance criteria","เขียน technical spec หรือ design doc สั้น ๆ","Plan mode: ให้ AI เสนอแผนแล้ว review ก่อนลงมือ","แปลง spec เป็น test cases","รู้ว่าเมื่อไหร่ vibe coding ได้ (prototype) และเมื่อไหร่ไม่ได้ (production)"],
+ tip:"ใช้ AI ช่วยร่าง spec จากไอเดียหยาบ ๆ แต่คุณต้องตัดสินทุก requirement เอง แล้วใช้ spec นั้นเป็น input ของ agent",
+ proj:"เลือกฟีเจอร์หนึ่ง เขียน spec 1 หน้า ให้ agent implement แล้ววัดว่าต้องแก้กี่รอบ เทียบกับการสั่งแบบไม่มี spec",
+ res:[["Shape Up: Basecamp","https://basecamp.com/shapeup"],["Claude Code Best Practices","https://www.anthropic.com/engineering/claude-code-best-practices"]]},
+{s:3,id:"agentic",title:"Agentic Coding Workflow",en:"Working with Coding Agents",p:"must",w:3,t:["core"],a:40,v:85,
+ d:"ทำงานกับ AI agent แบบมืออาชีพ: วงจร explore → plan → implement → verify, subagents, hooks, custom commands, MCP tools และการรัน agent หลายตัวขนานกันด้วย worktrees",
+ why:"นักพัฒนาที่ใช้ agent เป็นจะทำงานได้เหมือนมีทีมเล็ก ๆ ทักษะใหม่คือการ “บริหาร” agent: มอบหมายงาน ตรวจงาน และรู้ว่าเมื่อไหร่ต้องเข้าไปแทรก",
+ sk:["วงจร Explore → Plan → Implement → Verify","ให้ agent มี feedback loop (test, lint, type check)","Subagents และการแบ่งงานขนาน","Hooks, custom commands และ skills","Git worktrees สำหรับ agent หลายตัว","รู้ว่าเมื่อไหร่ควรหยุด agent และลงมือเอง"],
+ tip:"ให้ agent มีวิธีตรวจงานตัวเองเสมอ (รัน test, lint, build ได้) agent ที่มองเห็นผลลัพธ์ของตัวเองทำงานดีกว่าหลายเท่า",
+ proj:"สร้างแอปเล็ก ๆ ตั้งแต่ศูนย์ด้วย agent โดยเขียนโค้ดเองไม่เกิน 10% แต่ review 100%",
+ res:[["Claude Code Best Practices","https://www.anthropic.com/engineering/claude-code-best-practices"],["Model Context Protocol","https://modelcontextprotocol.io/"]]},
+{s:3,id:"review",title:"Review และตรวจสอบโค้ดจาก AI",en:"Reviewing AI-Generated Code",p:"must",w:2,t:["core"],a:25,v:95,
+ d:"กระบวนการ review โค้ดที่ AI สร้างอย่างเป็นระบบ: ความถูกต้อง, security, performance, maintainability, license และ “โค้ดที่ดูถูกแต่ผิด”",
+ why:"AI ผิดได้อย่างมั่นใจและดูน่าเชื่อถือ คนที่ review เก่งคือคนที่ทีมไว้ใจให้ merge และเป็นทักษะที่ทดแทนได้ยาก เพราะต้องมีคนรับผิดชอบ",
+ sk:["Checklist review: logic, edge cases, error handling","จับ hallucination: API, library หรือ flag ที่ไม่มีอยู่จริง","ตรวจ security: injection, secrets, permission","ตรวจว่า test ไม่ได้ถูกแก้ให้ผ่านแบบโกง","ระวังโค้ดเกินจำเป็น (over-engineering) และ dead code","ใช้ AI review อีกชั้น แต่คนตัดสินเป็นคนสุดท้าย"],
+ tip:"เปิด session ใหม่ให้ AI review โค้ดจาก session แรกโดยไม่บอกว่าใครเขียน มักจับข้อผิดพลาดได้มากขึ้น",
+ proj:"Review PR ที่ AI สร้าง 10 ชิ้น จด pattern ข้อผิดพลาดที่พบ แล้วสร้าง checklist ของตัวเอง",
+ res:[["Google Engineering Practices: Code Review","https://google.github.io/eng-practices/review/"]]},
+{s:3,id:"responsible",title:"ใช้ AI อย่างรับผิดชอบและปลอดภัย",en:"Responsible AI Usage",p:"must",w:1,t:["core"],a:15,v:85,
+ d:"นโยบายบริษัท, privacy ของโค้ดและข้อมูลลูกค้า, ลิขสิทธิ์และ license, การไม่ส่ง secrets ให้ AI, PDPA และการระวัง prompt injection จากไฟล์หรือเว็บที่ agent อ่าน",
+ why:"ความผิดพลาดครั้งเดียว เช่น ส่งข้อมูลลูกค้าเข้าเครื่องมือที่ไม่ได้รับอนุญาต หรือ agent รันคำสั่งจาก prompt injection อาจทำลายความเชื่อใจที่สะสมมาหลายปี",
+ sk:["เข้าใจ data retention และ training policy ของเครื่องมือ","ไม่ใส่ secrets, PII หรือข้อมูลลูกค้าใน prompt","PDPA และกฎหมายคุ้มครองข้อมูลส่วนบุคคล","License ของโค้ดที่ AI สร้าง","Prompt injection ในบริบท coding agent","ตั้ง permission ของ agent แบบ least privilege"],
+ tip:"ตรวจ settings ของเครื่องมือ AI ทุกตัวที่ใช้ ว่าข้อมูลถูกนำไป train หรือเก็บไว้นานแค่ไหน และตั้งค่าให้ตรงกับนโยบายองค์กร",
+ proj:"เขียน AI usage policy 1 หน้าสำหรับทีมสมมติ: อะไรทำได้ อะไรห้าม และขั้นตอน review",
+ res:[["OWASP GenAI Security Project","https://genai.owasp.org/"]]},
+{s:3,id:"aiassist",title:"ใช้ AI ช่วย Test, Debug และเขียนเอกสาร",en:"AI for Testing, Debugging & Docs",p:"should",w:2,t:["core"],a:70,v:70,
+ d:"ใช้ AI สร้าง test cases ไล่ stack trace อธิบาย legacy code สร้างเอกสาร เขียน migration และ onboarding เข้าโค้ดเบสใหม่อย่างรวดเร็ว",
+ why:"งานที่เคยน่าเบื่อและถูกละเลย (test, docs, migration) กลายเป็นงานที่ทำได้ถูกมาก ทีมที่ใช้ AI ทำงานส่วนนี้จะคุณภาพสูงขึ้นโดยไม่ช้าลง",
+ sk:["Generate test cases และ edge cases","วิเคราะห์ error log และ stack trace","อธิบายและทำเอกสาร legacy code","Codebase Q&A สำหรับ onboarding","Automated migration (เช่น อัปเกรด framework)"],
+ tip:"ให้ AI หา edge cases ที่ test ของคุณยังไม่ครอบคลุม มักเจอกรณีที่คิดไม่ถึง",
+ proj:"เลือก legacy codebase หนึ่ง ใช้ AI สร้าง architecture doc และ diagram แล้วตรวจความถูกต้องด้วยตัวเอง",
+ res:[["Mermaid (diagram as code)","https://mermaid.js.org/"]]},
+
+/* ---------- Stage 4 ---------- */
+{s:4,id:"llmhow",title:"LLM ทำงานอย่างไร",en:"How LLMs Work",p:"must",w:2,t:["core"],a:20,v:85,
+ d:"Tokens, embeddings, transformer, attention, next-token prediction, pre-training vs fine-tuning vs RLHF, context window, temperature และ reasoning models",
+ why:"เมื่อเข้าใจว่า LLM “ทำนายคำถัดไป” คุณจะเข้าใจว่าทำไมมัน hallucinate ทำไมนับตัวอักษรพลาด ทำไมภาษาไทยใช้ token มากกว่า และออกแบบระบบรอบข้อจำกัดเหล่านี้ได้",
+ sk:["Tokenization (และทำไมภาษาไทยใช้ token มาก)","Embeddings และ semantic space","Transformer และ attention ระดับ intuition","Pre-training, instruction tuning, RLHF","Context window, temperature, sampling","Reasoning / thinking models ต่างจากโมเดลปกติอย่างไร"],
+ tip:"ลองใช้ tokenizer playground เทียบจำนวน token ของข้อความไทยกับอังกฤษที่ความหมายเดียวกัน จะเข้าใจเรื่องต้นทุนทันที",
+ proj:"ทำตาม “Let's build GPT” ของ Karpathy สร้าง language model ตัวเล็กด้วยตัวเอง",
+ res:[["Neural Networks: Zero to Hero (Karpathy)","https://karpathy.ai/zero-to-hero.html"],["3Blue1Brown: Neural Networks","https://www.3blue1brown.com/topics/neural-networks"],["The Illustrated Transformer","https://jalammar.github.io/illustrated-transformer/"]]},
+{s:4,id:"llmapi",title:"ใช้งาน LLM API",en:"LLM APIs",p:"must",w:2,t:["core"],a:65,v:80,
+ d:"เรียก API ของ Claude, OpenAI, Gemini: messages, system prompt, streaming, structured output (JSON schema), tool use / function calling, vision, prompt caching และ batch",
+ why:"การเรียก LLM API กำลังเป็นทักษะพื้นฐานเหมือนการเรียก REST API ทุกแอปจะมี “ความฉลาด” ฝังอยู่ และคุณต้องเป็นคนต่อมันเข้ากับระบบ",
+ sk:["Messages API, roles, system prompt","Streaming response ไปยัง UI","Structured output / JSON schema","Tool use (function calling)","Prompt caching และ batch เพื่อลดต้นทุน","Error handling: rate limit, retry, timeout, fallback model"],
+ tip:"เริ่มจาก SDK ทางการก่อนใช้ framework จะเข้าใจว่า framework ทำอะไรให้ และ debug ได้เมื่อมีปัญหา",
+ proj:"CLI สรุปข่าวจาก RSS ภาษาไทยออกมาเป็น JSON (หัวข้อ, สรุป, หมวด) ด้วย structured output พร้อม streaming",
+ res:[["Claude API Docs","https://docs.claude.com/en/api/overview"],["OpenAI API Docs","https://platform.openai.com/docs"],["Gemini API Docs","https://ai.google.dev/"]]},
+{s:4,id:"prompt",title:"Prompt Engineering อย่างเป็นระบบ",en:"Production Prompt Engineering",p:"must",w:2,t:["core"],a:45,v:80,
+ d:"เทคนิค prompt สำหรับ production: ความชัดเจน, role, few-shot, chain-of-thought, XML/structured tags, prompt templates, versioning และการทดสอบ prompt อย่างเป็นระบบ",
+ why:"Prompt ในแอปคือ “โค้ด” ที่เขียนด้วยภาษาคน ต้องมี version control, test และ review เหมือนโค้ดทั่วไป ไม่ใช่เวทมนตร์ที่ลองผิดลองถูก",
+ sk:["คำสั่งชัด บริบทครบ กำหนดรูปแบบผลลัพธ์","Few-shot examples","Chain-of-thought และ extended thinking","แยกส่วน prompt ด้วย XML tags หรือ delimiters","Prompt templates และ versioning","Prompt chaining: แตกงานเป็นหลายขั้น"],
+ tip:"ให้ AI ช่วยปรับ prompt ของคุณ (meta-prompting) แต่วัดผลด้วยชุดทดสอบเสมอ อย่าเชื่อว่า prompt ดีขึ้นเพียงเพราะ “รู้สึก”",
+ proj:"Prompt จัดหมวดหมู่ feedback ลูกค้า ทดสอบกับตัวอย่าง 50 ข้อ ปรับจนแม่นยำเกิน 90%",
+ res:[["Anthropic Prompt Engineering Guide","https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview"],["Prompt Engineering Guide","https://www.promptingguide.ai/"]]},
+{s:4,id:"limits",title:"ขีดจำกัดและจุดล้มเหลวของ LLM",en:"LLM Limitations & Failure Modes",p:"must",w:1,t:["core"],a:15,v:90,
+ d:"Hallucination, non-determinism, knowledge cutoff, sycophancy (เออออตามผู้ใช้), bias, prompt injection, jailbreak และ context rot เมื่อ context ยาวเกินไป",
+ why:"การรู้ว่าเมื่อไหร่ “ไม่ควรเชื่อ” AI สำคัญพอ ๆ กับการรู้ว่ามันทำอะไรได้ ระบบที่ดีถูกออกแบบโดยสมมติว่า AI จะผิดเป็นบางครั้ง",
+ sk:["Hallucination: สาเหตุและวิธีลด","Non-determinism และผลต่อการทดสอบ","Knowledge cutoff และการเติมข้อมูลปัจจุบัน","Sycophancy และ bias","Prompt injection (direct และ indirect)","ออกแบบระบบแบบ trust but verify"],
+ tip:"ถามคำถามเดียวกัน 5 ครั้งด้วย temperature สูง แล้วสังเกตความไม่คงที่ จะเข้าใจว่าทำไมต้องมี evals",
+ proj:"รวบรวม “hall of shame” กรณีที่ AI ตอบผิดในงานของคุณ 20 กรณี วิเคราะห์สาเหตุและวิธีป้องกัน",
+ res:[["OWASP Top 10 for LLM Applications","https://genai.owasp.org/"]]},
+{s:4,id:"embeddings",title:"Embeddings และ Vector Search",en:"Embeddings & Vector Search",p:"must",w:2,t:["ai","be","data"],a:50,v:75,
+ d:"แปลงข้อความเป็นเวกเตอร์, cosine similarity, vector databases (pgvector, Qdrant, Pinecone), ANN index (HNSW), hybrid search (BM25 + vector) และ reranking",
+ why:"Semantic search คือรากฐานของ RAG, recommendation และ memory ของ agent และเป็นสิ่งที่ทำให้ AI “รู้” ข้อมูลเฉพาะขององค์กรคุณ",
+ sk:["Embedding models และ dimension","Cosine similarity และ distance metrics","pgvector, Qdrant หรือ Pinecone","HNSW และ approximate nearest neighbor","Hybrid search: keyword + semantic","Embedding ภาษาไทย: เลือก multilingual model"],
+ tip:"ให้ AI อธิบายด้วยตัวอย่างเวกเตอร์ 3 มิติเล็ก ๆ ก่อน แล้วค่อยขยับไปใช้ library จริง",
+ proj:"Semantic search สำหรับคำถามที่พบบ่อย (FAQ) ภาษาไทยด้วย pgvector",
+ res:[["pgvector","https://github.com/pgvector/pgvector"],["Pinecone Learning Center","https://www.pinecone.io/learn/"],["Qdrant Docs","https://qdrant.tech/documentation/"]]},
+{s:4,id:"models",title:"เลือกโมเดลและเข้าใจ Trade-off",en:"Model Selection",p:"should",w:1,t:["ai","be","data"],a:40,v:75,
+ d:"Frontier models vs open-weight models (Llama, Qwen, Gemma, Mistral, DeepSeek), small vs large, reasoning vs fast, ต้นทุนต่อ token, latency, benchmark และการวัดบน use case จริง",
+ why:"โมเดลใหม่ออกทุกเดือน การเลือกโมเดลที่ “ดีพอ” ในราคาที่ถูกกว่า 10 เท่า อาจเป็นความต่างระหว่างธุรกิจที่มีกำไรกับขาดทุน",
+ sk:["Frontier vs open-weight vs small models","Trade-off ระหว่าง cost, latency และ quality","อ่าน benchmark อย่างมีวิจารณญาณ","Model routing: งานง่ายใช้โมเดลเล็ก งานยากใช้โมเดลใหญ่","Self-hosted vs API: privacy, cost, ops"],
+ tip:"อย่าเชื่อ leaderboard อย่างเดียว สร้างชุดทดสอบ 20–30 ข้อจากงานจริงของคุณ แล้วรันกับหลายโมเดล",
+ proj:"เปรียบเทียบ 3–4 โมเดลกับงานเดียวกัน (เช่น สรุปเอกสารภาษาไทย) แล้วทำตาราง cost / latency / quality",
+ res:[["Artificial Analysis","https://artificialanalysis.ai/"],["LMArena","https://lmarena.ai/"]]},
+{s:4,id:"math",title:"คณิตศาสตร์สำหรับ AI",en:"Math for AI",p:"nice",w:6,t:["data","ai"],a:40,v:55,
+ d:"Linear algebra (เวกเตอร์ เมทริกซ์), calculus (gradient), probability และ statistics ในระดับที่เข้าใจว่าโมเดลเรียนรู้อย่างไร ไม่จำเป็นต้องพิสูจน์ทฤษฎีบท",
+ why:"AI Engineer ทั่วไปไม่จำเป็นต้องเก่งคณิตลึก แต่ถ้าจะไปสาย ML/Research หรือ fine-tune โมเดล คณิตคือภาษาที่ใช้คุยกับงานวิจัย",
+ sk:["Vectors, matrices, dot product","Gradient และ gradient descent","Probability, distributions, Bayes","Statistics: mean, variance, hypothesis testing","อ่านสมการใน paper ได้ในระดับพื้นฐาน"],
+ tip:"ให้ AI สอนแต่ละ concept ด้วยโค้ด Python + NumPy แทนสมการล้วน จะเห็นภาพชัดกว่ามาก",
+ proj:"เขียน linear regression และ neural network 2 ชั้นด้วย NumPy ล้วน",
+ res:[["Mathematics for Machine Learning (ฟรี)","https://mml-book.github.io/"],["Khan Academy","https://www.khanacademy.org/"]]},
+
+/* ---------- Stage 5 ---------- */
+{s:5,id:"rag",title:"RAG: Retrieval-Augmented Generation",en:"Retrieval-Augmented Generation",p:"must",w:3,t:["ai","be","data"],a:45,v:80,
+ d:"ดึงข้อมูลที่เกี่ยวข้องมาใส่ context ก่อนให้ LLM ตอบ: ingestion, chunking, embedding, retrieval, reranking, contextual retrieval, citation และการวัดผล RAG",
+ why:"องค์กรส่วนใหญ่อยากให้ AI ตอบจากข้อมูลของตัวเอง RAG คือ pattern ที่ใช้มากที่สุดใน production และการทำให้ดีต้องใช้วิศวกรรมจริง ไม่ใช่แค่ต่อ library",
+ sk:["Document ingestion และ parsing (PDF, HTML)","Chunking strategies","Retrieval และ reranking","Contextual retrieval และ query rewriting","Citation และการลด hallucination","วัดผล: retrieval recall, faithfulness, answer quality"],
+ tip:"เริ่มจาก baseline ที่ง่ายที่สุด (chunk + vector search) แล้ววัดผล ปรับทีละอย่าง ไม่ต้องใส่ทุกเทคนิคตั้งแต่แรก",
+ proj:"Chatbot ตอบคำถามจากคู่มือพนักงานหรือเอกสาร PDF ภาษาไทย พร้อมอ้างอิงหน้าที่มา",
+ res:[["Contextual Retrieval: Anthropic","https://www.anthropic.com/news/contextual-retrieval"],["Patterns for Building LLM Systems (Eugene Yan)","https://eugeneyan.com/writing/llm-patterns/"]]},
+{s:5,id:"agents",title:"AI Agents และ Tool Use",en:"Building AI Agents",p:"must",w:4,t:["ai","be"],a:35,v:85,
+ d:"Agent loop (คิด → ใช้ tool → สังเกตผล), workflows vs agents, planning, memory, multi-agent, human-in-the-loop และการเลือก framework เช่น Claude Agent SDK, OpenAI Agents SDK, LangGraph, Pydantic AI, Vercel AI SDK",
+ why:"Agent เปลี่ยน AI จาก “ตอบคำถาม” เป็น “ทำงานแทน” แต่ agent ที่ออกแบบไม่ดีจะแพง ช้า และคาดเดาไม่ได้ ความสามารถในการออกแบบให้เรียบง่ายที่สุดคือหัวใจ",
+ sk:["Agent loop และ tool calling","Workflow patterns: chaining, routing, parallelization, orchestrator-workers","รู้ว่าเมื่อไหร่ “ไม่ควร” ใช้ agent","Memory: short-term และ long-term","Multi-agent และ subagents","Human-in-the-loop, approval และ guardrails"],
+ tip:"สร้าง agent loop ด้วยมือเปล่า (แค่ SDK + while loop) ก่อนใช้ framework จะเข้าใจว่าทุก framework ทำอะไรอยู่เบื้องหลัง",
+ proj:"Agent อ่าน GitHub issues แล้ว triage: ติด label หา issue ซ้ำ และร่างคำตอบให้คนอนุมัติก่อนส่ง",
+ res:[["Building Effective Agents: Anthropic","https://www.anthropic.com/engineering/building-effective-agents"],["Claude Agent SDK (Python)","https://github.com/anthropics/claude-agent-sdk-python"]]},
+{s:5,id:"evals",title:"Evals: วัดคุณภาพระบบ AI",en:"LLM Evaluation",p:"must",w:3,t:["ai","data","be"],a:25,v:95,
+ d:"สร้างชุดทดสอบสำหรับระบบ AI: error analysis, golden datasets, code-based checks, LLM-as-judge, human evaluation, regression testing และ A/B testing ใน production",
+ why:"Evals คือ “unit test ของ AI” และเป็นทักษะที่แยก AI Engineer มืออาชีพออกจากคนทำ demo ถ้าวัดไม่ได้ ก็ปรับปรุงไม่ได้ และไม่กล้าเปลี่ยนโมเดล",
+ sk:["Error analysis: อ่าน traces และจัดหมวดความผิดพลาด","สร้าง golden dataset จากข้อมูลจริง","Code-based assertions","LLM-as-judge และการ calibrate กับคน","Regression evals ใน CI","Online evals และ user feedback"],
+ tip:"เริ่มจากอ่านผลลัพธ์จริง 50–100 ตัวอย่างด้วยตาตัวเองก่อนสร้าง metric ใด ๆ error analysis สำคัญกว่าเครื่องมือ",
+ proj:"สร้าง eval suite ให้ RAG chatbot ของคุณด้วย promptfoo หรือสคริปต์ของตัวเอง แล้วผูกเข้ากับ CI",
+ res:[["Your AI Product Needs Evals (Hamel Husain)","https://hamel.dev/blog/posts/evals/"],["promptfoo","https://www.promptfoo.dev/"]]},
+{s:5,id:"aisec",title:"AI Security และ Safety",en:"Securing LLM Applications",p:"must",w:2,t:["ai","be","ops"],a:25,v:90,
+ d:"ป้องกัน prompt injection, data exfiltration ผ่าน tools, PII leakage, excessive agency และ insecure output handling ตาม OWASP Top 10 for LLM ด้วยหลัก defense in depth",
+ why:"เมื่อ AI มีสิทธิ์ใช้ tools เช่น ส่งอีเมล query database หรือรันโค้ด ช่องโหว่ไม่ใช่แค่คำตอบแปลก ๆ แต่คือข้อมูลถูกขโมยจริง และยังไม่มีวิธีแก้ prompt injection ได้ 100%",
+ sk:["OWASP Top 10 for LLM Applications","Direct vs indirect prompt injection","Least privilege สำหรับ tools ของ agent","PII detection และ redaction","Sandboxing การรันโค้ด","Red teaming ระบบ AI ของตัวเอง"],
+ tip:"ออกแบบโดยสมมติว่า prompt injection “จะสำเร็จ” แล้วจำกัดความเสียหายด้วยการจำกัดสิทธิ์และให้คนอนุมัติ",
+ proj:"Red team chatbot ของตัวเองด้วยการโจมตี 30 รูปแบบ แล้วเพิ่มมาตรการป้องกันแบบหลายชั้น",
+ res:[["OWASP GenAI Security Project","https://genai.owasp.org/"],["Simon Willison: Prompt Injection","https://simonwillison.net/tags/prompt-injection/"]]},
+{s:5,id:"mcp",title:"Model Context Protocol (MCP)",en:"Model Context Protocol",p:"should",w:2,t:["ai","be","ops"],a:50,v:75,
+ d:"มาตรฐานเปิดสำหรับเชื่อม AI เข้ากับ tools และข้อมูล: MCP servers, clients, tools, resources, prompts, transports (stdio, Streamable HTTP) และ security ของ MCP",
+ why:"MCP ทำให้ระบบของคุณถูกใช้งานโดย AI ได้หลายตัว การสร้าง MCP server ให้ product คือการเปิดประตูสู่ “ผู้ใช้” ที่เป็น AI agent",
+ sk:["MCP architecture: host, client, server","Tools, resources และ prompts","Transports: stdio vs Streamable HTTP","สร้าง MCP server ด้วย SDK (TypeScript/Python)","Auth และ security ของ MCP server","ออกแบบ tool ให้ AI ใช้ง่าย (ชื่อ คำอธิบาย และ error ที่ชัด)"],
+ tip:"ห่อ API ภายในที่ใช้บ่อยเป็น MCP server แล้วต่อเข้า coding agent ของคุณ จะเห็นทันทีว่า tool ที่ออกแบบดีต่างกันอย่างไร",
+ proj:"MCP server สำหรับระบบจริงหนึ่งตัว เช่น ฐานข้อมูลภายใน ระบบ ticket หรือเครื่องมือที่ทีมใช้",
+ res:[["modelcontextprotocol.io","https://modelcontextprotocol.io/"],["MCP Servers (GitHub)","https://github.com/modelcontextprotocol/servers"]]},
+{s:5,id:"llmops",title:"LLMOps: Observability, ต้นทุน และ Reliability",en:"LLMOps",p:"should",w:2,t:["ai","ops","be"],a:50,v:75,
+ d:"Tracing ทุก LLM call, monitoring latency/cost/quality, caching, fallback, rate limits, prompt management และ guardrails ใน production ด้วยเครื่องมืออย่าง Langfuse, LangSmith, Arize Phoenix, OpenTelemetry",
+ why:"แอป AI ล้มเหลวแบบเงียบ ๆ ไม่มี error แต่คำตอบแย่ลง หรือบิลพุ่งขึ้น 10 เท่าข้ามคืน การมองเห็นระบบคือสิ่งที่ทำให้หลับสบาย",
+ sk:["Tracing LLM calls และ agent steps","Token/cost tracking และ budget alert","Semantic caching และ prompt caching","Fallback model และ graceful degradation","Prompt versioning และ deployment","Guardrails: input/output validation"],
+ tip:"ใส่ tracing ตั้งแต่วันแรกของโปรเจกต์ AI เพราะ traces คือวัตถุดิบหลักของ evals และการ debug",
+ proj:"ต่อ Langfuse (self-host ได้) เข้ากับแอป AI ของคุณ แล้วสร้าง dashboard ต้นทุนต่อผู้ใช้",
+ res:[["Langfuse Docs","https://langfuse.com/docs"],["OpenTelemetry","https://opentelemetry.io/docs/"]]},
+{s:5,id:"aiux",title:"ออกแบบ UX สำหรับแอป AI",en:"AI UX Patterns",p:"should",w:2,t:["ai","fe","mobile"],a:35,v:75,
+ d:"Streaming UI, generative UI, การแสดงความไม่แน่นอน, citations, การแก้ไขผลลัพธ์, feedback loop, human-in-the-loop และการจัดการความคาดหวังของผู้ใช้",
+ why:"โมเดลเดียวกันให้ประสบการณ์ต่างกันสุดขั้วได้ด้วย UX ที่ต่างกัน ผลิตภัณฑ์ AI ที่ชนะมักไม่ใช่ตัวที่โมเดลเก่งสุด แต่คือตัวที่ออกแบบประสบการณ์ได้ดีสุด",
+ sk:["Streaming และ loading states","Generative UI / structured responses","แสดงแหล่งอ้างอิงและระดับความมั่นใจ","Undo, edit และ regenerate","เก็บ feedback (👍/👎) ไปใช้ทำ evals","ออกแบบ approval flow สำหรับ agent actions"],
+ tip:"สังเกตแอป AI ที่ชอบ 3 ตัว แล้วให้ AI ช่วยวิเคราะห์ UX patterns ที่ใช้ เพื่อสร้าง pattern library ของตัวเอง",
+ proj:"Chat UI ที่มี streaming, citations, regenerate และปุ่ม feedback ที่ส่งข้อมูลเข้า eval dataset",
+ res:[["AI SDK (Vercel)","https://ai-sdk.dev/docs"],["People + AI Guidebook (Google)","https://pair.withgoogle.com/guidebook/"]]},
+{s:5,id:"finetune",title:"Fine-tuning และ Open-weight Models",en:"Fine-tuning & Local Models",p:"nice",w:4,t:["ai","data"],a:45,v:65,
+ d:"เมื่อไหร่ควร fine-tune vs prompt vs RAG, LoRA/QLoRA, distillation, การเตรียม dataset, การรันโมเดลบนเครื่องตัวเอง (Ollama, llama.cpp), quantization และ serving (vLLM)",
+ why:"งานส่วนใหญ่ไม่ต้อง fine-tune แต่เมื่อต้องการ privacy ต้นทุนต่ำในปริมาณมาก หรือโมเดลเล็กที่เก่งเฉพาะงาน ทักษะนี้คือความได้เปรียบที่หายาก",
+ sk:["Prompting → RAG → Fine-tuning: ใช้เมื่อไหร่","LoRA / QLoRA และ PEFT","เตรียมและทำความสะอาด training data","Distillation จากโมเดลใหญ่สู่โมเดลเล็ก","รันโมเดล local ด้วย Ollama หรือ llama.cpp","Quantization และ serving ด้วย vLLM"],
+ tip:"ลอง fine-tune โมเดลเล็กด้วย Unsloth บน Google Colab ฟรีก่อน จะเห็นภาพทั้ง pipeline โดยไม่ต้องลงทุน GPU",
+ proj:"Fine-tune โมเดลเล็กให้จัดหมวดหมู่ข้อความภาษาไทยเฉพาะทาง แล้วเทียบผลกับการ prompt โมเดลใหญ่",
+ res:[["Ollama","https://ollama.com/"],["Unsloth Docs","https://docs.unsloth.ai/"],["Hugging Face Learn","https://huggingface.co/learn"]]},
+{s:5,id:"multimodal",title:"Multimodal AI: ภาพ เสียง และวิดีโอ",en:"Multimodal AI",p:"nice",w:2,t:["ai","fe","mobile"],a:50,v:60,
+ d:"Vision (อ่านภาพ, OCR, document understanding), speech-to-text, text-to-speech, voice agents แบบ real-time และ image/video generation",
+ why:"อินเทอร์เฟซกำลังขยายจากข้อความไปสู่เสียงและภาพ โอกาสใหม่จำนวนมากอยู่ในงานที่เคยต้องใช้คนดูเอกสารหรือฟังเสียง",
+ sk:["Vision API: วิเคราะห์ภาพและเอกสาร","OCR และ document extraction (ใบเสร็จ, ฟอร์ม)","Speech-to-text / text-to-speech (รวมภาษาไทย)","Real-time voice agents","Image generation API และข้อควรระวังด้านลิขสิทธิ์"],
+ tip:"ลองให้ vision model ดึงข้อมูลจากใบเสร็จหรือใบกำกับภาษีไทยออกมาเป็น JSON เป็น use case จริงที่ธุรกิจต้องการ",
+ proj:"แอปถ่ายรูปใบเสร็จแล้วบันทึกรายจ่ายอัตโนมัติ โดยให้ผู้ใช้ตรวจแก้ก่อนบันทึก",
+ res:[["Claude Vision Docs","https://docs.claude.com/en/docs/build-with-claude/vision"]]},
+
+/* ---------- Stage 6 ---------- */
+{s:6,id:"docker",title:"Docker และ Containers",en:"Containers",p:"must",w:2,t:["be","ops","ai","data"],a:65,v:75,
+ d:"Images, containers, Dockerfile, multi-stage builds, volumes, networking, docker compose และหลักการใช้ container อย่างปลอดภัย",
+ why:"Container คือหน่วยมาตรฐานของการ deploy และเป็น sandbox ที่ปลอดภัยสำหรับรัน AI agent หรือโค้ดที่ AI สร้าง",
+ sk:["Image vs container และ layers","เขียน Dockerfile ที่ดี (multi-stage, เล็ก, ปลอดภัย)","Docker Compose สำหรับ dev environment","Volumes และ networking","Dev containers","ใช้ container เป็น sandbox ให้ AI agent"],
+ tip:"ให้ AI เขียน Dockerfile แล้วถามต่อว่า “ทำให้ image เล็กลงและปลอดภัยขึ้นได้อย่างไร” เรียนรู้ best practices จากการเปรียบเทียบ",
+ proj:"Containerize แอป full-stack (frontend + API + Postgres + Redis) ด้วย docker compose",
+ res:[["Docker Get Started","https://docs.docker.com/get-started/"]]},
+{s:6,id:"cicd",title:"CI/CD และ Automation",en:"Continuous Integration & Delivery",p:"must",w:2,t:["core"],a:60,v:80,
+ d:"Continuous integration, automated tests, linting, build และ deploy pipelines ด้วย GitHub Actions หรือ GitLab CI, preview environments และการใช้ AI review ใน pipeline",
+ why:"เมื่อ AI ทำให้ปริมาณโค้ดเพิ่มขึ้นหลายเท่า pipeline อัตโนมัติคือด่านป้องกันคุณภาพที่ไม่มีวันเหนื่อย ยิ่งโค้ดเยอะ CI ยิ่งสำคัญ",
+ sk:["GitHub Actions workflows","Automated test, lint, type check, security scan","Build และ deploy อัตโนมัติ","Preview environment ต่อ PR","AI code review ใน CI","Feature flags และ safe rollout"],
+ tip:"ให้ AI ช่วยเขียน workflow YAML ได้ แต่ตรวจเรื่อง secrets และ permissions ของ token ด้วยตัวเองเสมอ",
+ proj:"Pipeline: PR → test + lint + AI review → preview deploy → merge → production deploy",
+ res:[["GitHub Actions Docs","https://docs.github.com/en/actions"]]},
+{s:6,id:"cloud",title:"Cloud Fundamentals",en:"Cloud Platforms",p:"should",w:4,t:["be","ops","ai","data"],a:55,v:70,
+ d:"บริการหลักของ AWS, GCP, Azure: compute, storage, database, networking, IAM, serverless และ platform อย่าง Vercel, Cloudflare, Railway, Fly.io รวมถึงบริการ AI ของแต่ละ cloud",
+ why:"การรู้จัก cloud ทำให้คุณเปลี่ยนไอเดียเป็นผลิตภัณฑ์ที่คนใช้ได้จริงด้วยตัวคนเดียว ในยุคที่คนหนึ่งคนกับ AI สร้าง startup ได้ ทักษะนี้คือ leverage สำคัญ",
+ sk:["Compute: VM, containers, serverless","Storage และ managed databases","IAM และ security พื้นฐาน","Networking: VPC, DNS, CDN","PaaS: Vercel, Cloudflare, Railway ฯลฯ","บริการ AI: Amazon Bedrock, Google Vertex AI, Azure AI"],
+ tip:"ตั้ง billing alert ก่อนทำอะไรทั้งหมด! แล้วให้ AI อธิบาย IAM policy ทุกตัวที่คุณจะใช้",
+ proj:"Deploy แอป AI ของคุณขึ้น cloud พร้อม custom domain, HTTPS และ budget alert",
+ res:[["AWS Skill Builder","https://skillbuilder.aws/"],["Google Cloud Skills Boost","https://www.cloudskillsboost.google/"]]},
+{s:6,id:"observability",title:"Observability: Logs, Metrics, Traces",en:"Observability & SRE",p:"should",w:2,t:["be","ops","ai"],a:50,v:80,
+ d:"Structured logging, metrics, distributed tracing, OpenTelemetry, dashboards, alerting, SLO/SLI และการจัดการ incident",
+ why:"เมื่อระบบซับซ้อนขึ้นและโค้ดถูกเขียนโดย AI มากขึ้น คุณอาจไม่รู้จักทุกบรรทัด observability คือวิธีเข้าใจว่าระบบทำงานจริงอย่างไร",
+ sk:["Structured logging","Metrics และ dashboards (Prometheus, Grafana)","Distributed tracing ด้วย OpenTelemetry","Alerting และ on-call","SLO / SLI / error budget","Incident response และ postmortem"],
+ tip:"ส่ง log และ trace ของ incident ให้ AI ช่วยสรุป timeline และหา root cause เบื้องต้น แต่ยืนยันด้วยข้อมูลจริงเสมอ",
+ proj:"ใส่ OpenTelemetry ในแอป ทำ dashboard และ alert เมื่อ error rate หรือ latency เกินเกณฑ์",
+ res:[["OpenTelemetry Docs","https://opentelemetry.io/docs/"],["Google SRE Books","https://sre.google/books/"]]},
+{s:6,id:"iac",title:"Infrastructure as Code",en:"Terraform / OpenTofu / Pulumi",p:"should",w:2,t:["ops","be"],a:65,v:65,
+ d:"จัดการ infrastructure ด้วยโค้ด: Terraform/OpenTofu, Pulumi, state management, modules และ GitOps",
+ why:"AI เขียน Terraform ได้ดีมาก แต่ความผิดพลาดใน IaC อาจลบ production database ได้ในคำสั่งเดียว คุณต้องอ่าน plan ให้เป็น",
+ sk:["Terraform/OpenTofu: resources, state, modules","อ่าน terraform plan อย่างละเอียด","Pulumi / CDK (IaC ด้วยภาษาโปรแกรม)","GitOps workflow","Policy as code และ drift detection"],
+ tip:"ห้ามให้ AI agent รัน terraform apply เองโดยไม่ผ่านการ review plan ตั้ง permission ให้ชัดเจน",
+ proj:"Terraform สร้าง infrastructure ของแอป (network, DB, compute) ที่ทำลายและสร้างใหม่ได้ด้วยคำสั่งเดียว",
+ res:[["Terraform Tutorials","https://developer.hashicorp.com/terraform/tutorials"],["OpenTofu","https://opentofu.org/"]]},
+{s:6,id:"k8s",title:"Kubernetes และ Container Orchestration",en:"Kubernetes",p:"nice",w:4,t:["ops"],a:60,v:60,
+ d:"Pods, deployments, services, ingress, config/secrets, Helm, autoscaling และการ deploy workload AI (GPU scheduling)",
+ why:"ไม่ใช่ทุกทีมต้องใช้ Kubernetes แต่สำหรับสาย Platform/DevOps และองค์กรใหญ่ที่รัน AI workload เอง นี่ยังเป็นมาตรฐานหลัก",
+ sk:["Pod, Deployment, Service, Ingress","ConfigMap และ Secret","Helm charts","Autoscaling (HPA)","GPU workloads และ model serving บน K8s"],
+ tip:"ให้ AI สร้าง manifest แล้วคุณอธิบายทุกบรรทัดกลับให้มันฟัง ถ้าอธิบายไม่ได้ แปลว่ายังไม่เข้าใจ",
+ proj:"Deploy แอปบน local Kubernetes (kind หรือ k3d) พร้อม autoscaling และ zero-downtime deploy",
+ res:[["Kubernetes Tutorials","https://kubernetes.io/docs/tutorials/"]]},
+
+/* ---------- Stage 7 ---------- */
+{s:7,id:"feadv",title:"Frontend ขั้นสูงและ Design Engineering",en:"Advanced Frontend",p:"must",w:8,t:["fe"],a:55,v:70,
+ d:"Next.js / React Server Components, performance optimization, design systems, animation, accessibility ขั้นสูง และ design engineering ที่เป็นสะพานระหว่างดีไซน์กับโค้ด",
+ why:"AI ทำให้การสร้าง UI ทั่วไปเป็นของที่ใครก็ทำได้ frontend dev ที่โดดเด่นคือคนที่มี taste ด้านดีไซน์ เข้าใจผู้ใช้ และทำ interaction ที่ประณีต",
+ sk:["Meta-framework: Next.js, Nuxt หรือ SvelteKit","Design systems และ component libraries","Performance: bundle, rendering, Core Web Vitals","Animation และ micro-interactions","Accessibility ขั้นสูง (WCAG)","Generative UI และ AI-powered interfaces"],
+ tip:"ใช้ AI สร้าง prototype หลายแบบอย่างรวดเร็ว แล้วใช้ “ตา” ของคุณเลือกและขัดเกลา คุณคือ art director",
+ proj:"Design system ขนาดเล็กพร้อมเอกสาร (Storybook) แล้วใช้มันสร้างแอปจริงหนึ่งตัว",
+ res:[["Next.js Docs","https://nextjs.org/docs"],["patterns.dev","https://www.patterns.dev/"]]},
+{s:7,id:"beadv",title:"Backend ขั้นสูงและ Distributed Systems",en:"Advanced Backend",p:"must",w:8,t:["be"],a:40,v:85,
+ d:"Distributed systems, concurrency, caching strategies, queues, event sourcing, database scaling (replication, sharding), resilience patterns และ performance tuning",
+ why:"ระบบที่ต้องรองรับผู้ใช้จำนวนมาก ข้อมูลสำคัญ และ workload AI ที่หนัก ต้องการวิศวกรที่เข้าใจความล้มเหลวของระบบกระจาย ซึ่ง AI ยังเดาผิดบ่อย",
+ sk:["Replication, sharding, partitioning","Caching strategies และ cache invalidation","Queues, event sourcing, CQRS","Resilience: retry, circuit breaker, idempotency","Background jobs และ durable workflows (Temporal)","Performance profiling และ load testing"],
+ tip:"ให้ AI จำลองสถานการณ์ failure เช่น “ถ้า Redis ล่มกลางทาง จะเกิดอะไรขึ้น?” แล้วคุณออกแบบวิธีรับมือ",
+ proj:"ระบบ order processing ที่ทนต่อ failure: queue + retry + idempotency และ load test ที่ 1,000 RPS",
+ res:[["Designing Data-Intensive Applications","https://dataintensive.net/"],["Temporal Docs","https://docs.temporal.io/"]]},
+{s:7,id:"aieng",title:"AI Engineer: ระบบ AI ระดับ Production",en:"AI Engineering in Depth",p:"must",w:10,t:["ai"],a:35,v:90,
+ d:"ต่อยอดจาก Stage 05 สู่ระดับลึก: agent architecture ที่ซับซ้อน, evaluation pipelines, AI infrastructure, cost optimization ในระดับใหญ่ และการนำงานวิจัยใหม่มาใช้",
+ why:"AI Engineer เป็นตำแหน่งที่เติบโตเร็วมาก คนที่ทั้งเขียนซอฟต์แวร์เก่งและเข้าใจพฤติกรรมของโมเดลยังมีน้อยเมื่อเทียบกับความต้องการ",
+ sk:["ออกแบบ agent ที่ซับซ้อนแต่เชื่อถือได้","Eval pipelines ระดับองค์กร","Cost optimization: caching, routing, batching","Long-running agents และ durable execution","อ่านและนำงานวิจัยใหม่มาใช้งาน","สร้าง AI product แบบ end-to-end"],
+ tip:"ติดตาม engineering blog ของ AI labs และนำเทคนิคใหม่มาลองกับโปรเจกต์จริงทุกเดือน",
+ proj:"AI product ที่มีผู้ใช้จริง พร้อม evals, observability และ cost dashboard",
+ res:[["Anthropic Engineering Blog","https://www.anthropic.com/engineering"],["AI Engineering: Chip Huyen (หนังสือ)",""]]},
+{s:7,id:"dataeng",title:"Data Engineering สำหรับยุค AI",en:"Data Engineering",p:"must",w:8,t:["data"],a:50,v:80,
+ d:"Data pipelines, ETL/ELT, data warehouse/lakehouse, dbt, orchestration (Airflow, Dagster), data quality และข้อมูลสำหรับ AI (ingestion, labeling, versioning)",
+ why:"โมเดลเก่งแค่ไหนก็ขึ้นกับข้อมูล “garbage in, garbage out” ยังจริงเสมอ ข้อมูลคุณภาพสูงคือ moat ที่แท้จริงขององค์กรในยุค AI",
+ sk:["SQL ขั้นสูงและ data modeling","ETL/ELT และ dbt","Orchestration: Airflow หรือ Dagster","Warehouse/Lakehouse: BigQuery, Snowflake, Databricks, DuckDB","Data quality และ data observability","Data pipelines สำหรับ RAG และ training"],
+ tip:"ให้ AI เขียน dbt models และ data tests ได้ แต่คุณต้องเข้าใจ business logic ของตัวเลขทุกตัว",
+ proj:"Pipeline ดึงข้อมูลเปิดภาครัฐ (data.go.th) → transform ด้วย dbt → dashboard",
+ res:[["Data Engineering Zoomcamp","https://github.com/DataTalksClub/data-engineering-zoomcamp"],["dbt Docs","https://docs.getdbt.com/"]]},
+{s:7,id:"mleng",title:"Machine Learning Engineering และ MLOps",en:"ML Engineering",p:"should",w:10,t:["data","ai"],a:45,v:75,
+ d:"ML แบบดั้งเดิม (scikit-learn), deep learning ด้วย PyTorch, training pipeline, experiment tracking, model registry, deployment และ monitoring model drift",
+ why:"ไม่ใช่ทุกปัญหาต้องใช้ LLM โมเดลเฉพาะทางที่เล็กและเร็วยังเป็นคำตอบที่ดีกว่าในหลายกรณี ML engineer ที่เข้าใจทั้งสองโลกจึงมีคุณค่าสูง",
+ sk:["Classical ML: regression, trees, clustering","PyTorch และ deep learning","Feature engineering","Experiment tracking (MLflow, W&B)","Model serving และ monitoring drift","เลือกระหว่าง ML แบบดั้งเดิมกับ LLM"],
+ tip:"ทุกครั้งที่จะใช้ LLM ลองถามตัวเองว่า “โมเดล ML เล็ก ๆ ทำได้ดีกว่าและถูกกว่าไหม?”",
+ proj:"ร่วม Kaggle competition หนึ่งรายการ แล้ว deploy โมเดลเป็น API พร้อม monitoring",
+ res:[["fast.ai","https://course.fast.ai/"],["PyTorch Tutorials","https://pytorch.org/tutorials/"],["MLOps Zoomcamp","https://github.com/DataTalksClub/mlops-zoomcamp"]]},
+{s:7,id:"platform",title:"Platform Engineering และ DevSecOps",en:"Platform Engineering",p:"must",w:8,t:["ops"],a:45,v:80,
+ d:"Internal Developer Platform, golden paths, developer experience, security automation, policy as code, AI infrastructure (GPU, model serving) และ FinOps",
+ why:"เมื่อทุกทีมใช้ AI agent องค์กรต้องมี platform ที่ปลอดภัย มี guardrails และคุมต้นทุนได้ Platform engineer คือคนสร้าง “ถนน” ให้ทั้งคนและ agent วิ่ง",
+ sk:["Internal Developer Platform (เช่น Backstage)","Golden paths และ project templates","DevSecOps: SAST, DAST, SBOM","Policy as code (OPA)","AI infrastructure: GPU, vLLM, inference gateways","FinOps: ควบคุมต้นทุน cloud และ AI"],
+ tip:"สร้าง template โปรเจกต์ที่มี CI, security scan และ AGENTS.md ในตัว ให้ทั้งคนและ AI เริ่มงานบนมาตรฐานเดียวกัน",
+ proj:"Internal template ที่ deploy service ใหม่ได้ใน 5 นาที พร้อม observability และ security ครบ",
+ res:[["platformengineering.org","https://platformengineering.org/"],["Backstage","https://backstage.io/"]]},
+{s:7,id:"mobile",title:"Mobile Development และ On-device AI",en:"Mobile Development",p:"must",w:8,t:["mobile"],a:55,v:70,
+ d:"Cross-platform (React Native, Flutter) หรือ native (Swift/SwiftUI, Kotlin/Jetpack Compose), app lifecycle, offline-first, push notification, การขึ้น store และ on-device AI",
+ why:"AI บนอุปกรณ์ให้ความเป็นส่วนตัวและความเร็ว mobile dev ที่ผสาน AI เข้ากับประสบการณ์บนมือถือได้อย่างลงตัวจะเป็นที่ต้องการ",
+ sk:["React Native / Flutter หรือ Swift / Kotlin","State management และ navigation","Offline-first และ local storage","Push notifications และ deep links","On-device AI และ API ของแพลตฟอร์ม","Release บน App Store / Play Store"],
+ tip:"ใช้ AI สร้าง screen ที่ซ้ำ ๆ ให้เร็ว แล้วทุ่มเวลาไปกับ UX, performance และการทดสอบบนอุปกรณ์จริง",
+ proj:"แอปมือถือที่มีฟีเจอร์ AI (เช่น สแกนเมนูอาหารแล้วแปลและแนะนำ) และขึ้น store ได้จริง",
+ res:[["React Native Docs","https://reactnative.dev/docs/getting-started"],["Flutter Docs","https://docs.flutter.dev/"],["SwiftUI Tutorials","https://developer.apple.com/tutorials/swiftui"]]},
+
+/* ---------- Stage 8 ---------- */
+{s:8,id:"product",title:"Product Thinking และ Domain Knowledge",en:"Product & Domain",p:"must",w:4,t:["core"],a:20,v:95,
+ d:"เข้าใจผู้ใช้ ปัญหา และธุรกิจ: user research, metrics, prioritization, MVP และความรู้เชิงลึกในอุตสาหกรรมเฉพาะ (การเงิน สุขภาพ โลจิสติกส์ ฯลฯ)",
+ why:"เมื่อ “การสร้าง” ถูกลง คำถามสำคัญคือ “ควรสร้างอะไร” วิศวกรที่เข้าใจธุรกิจและผู้ใช้จะเป็นคนกำหนดทิศทาง ไม่ใช่แค่รับ ticket",
+ sk:["คุยกับผู้ใช้และหาปัญหาที่แท้จริง","กำหนด metrics และวัดผลลัพธ์","Prioritization: impact vs effort","MVP และ iterative delivery","Domain expertise ในอุตสาหกรรมหนึ่ง","เข้าใจ unit economics (รวมต้นทุน AI)"],
+ tip:"ก่อนเริ่มฟีเจอร์ใหม่ ให้ AI สวมบทผู้ใช้หลายแบบแล้วตั้งคำถาม แต่คุยกับผู้ใช้จริงอย่างน้อย 5 คนเสมอ",
+ proj:"สัมภาษณ์ผู้ใช้จริง 5 คนเกี่ยวกับปัญหาหนึ่ง แล้วสร้าง MVP แก้ปัญหานั้นภายใน 2 สัปดาห์ด้วย AI",
+ res:[["Shape Up","https://basecamp.com/shapeup"],["The Mom Test: Rob Fitzpatrick (หนังสือ)",""]]},
+{s:8,id:"judgment",title:"วิจารณญาณทางเทคนิคและ Taste",en:"Technical Judgment",p:"must",w:4,o:1,t:["core"],a:10,v:100,
+ d:"ความสามารถในการตัดสินใจภายใต้ความไม่แน่นอน: เลือก trade-off รู้ว่าอะไร “ดีพอ” ประเมินความเสี่ยง ปฏิเสธความซับซ้อนที่ไม่จำเป็น และรสนิยมว่าซอฟต์แวร์ที่ดีควรเป็นอย่างไร",
+ why:"AI สร้างทางเลือกได้ไม่จำกัด แต่การเลือก “ทางที่ถูก” สำหรับบริบทเฉพาะและรับผิดชอบผลลัพธ์ คือหัวใจของ senior engineer ที่ AI ยังแทนไม่ได้",
+ sk:["วิเคราะห์ trade-off อย่างเป็นระบบ","Systems thinking: มองผลกระทบลำดับที่ 2 และ 3","ประเมินความเสี่ยงและความย้อนกลับได้ของการตัดสินใจ","Simplicity: กล้าตัดสิ่งที่ไม่จำเป็น","เรียนรู้จากความล้มเหลว (postmortem ของตัวเอง)"],
+ tip:"ทุกครั้งที่ AI เสนอทางเลือก ให้ถามว่า “ถ้าเลือกแบบนี้แล้วผิด จะย้อนกลับยากแค่ไหน?” ฝึกแยกการตัดสินใจแบบประตูทางเดียวกับสองทาง",
+ proj:"เก็บ decision journal บันทึกการตัดสินใจทางเทคนิคพร้อมเหตุผล แล้วกลับมาทบทวนผลทุก 3 เดือน",
+ res:[["StaffEng","https://staffeng.com/"],["Thinking in Systems: Donella Meadows (หนังสือ)",""]]},
+{s:8,id:"writing",title:"การสื่อสารและ Technical Writing",en:"Communication & Writing",p:"must",w:3,o:1,t:["core"],a:40,v:90,
+ d:"เขียนเอกสาร design doc, RFC, ADR อธิบายเรื่องซับซ้อนให้คนที่ไม่ใช่สายเทคนิคเข้าใจ นำเสนองาน และสื่อสารในทีมแบบ async",
+ why:"เขียนชัด = คิดชัด = prompt ที่ดี คนที่สื่อสารเก่งได้ประโยชน์จาก AI มากกว่า และมีอิทธิพลในองค์กรมากกว่า",
+ sk:["เขียน design doc, RFC และ ADR","อธิบายเรื่องเทคนิคให้คนทั่วไปเข้าใจ","Async communication ที่มีประสิทธิภาพ","นำเสนอและ demo","ให้และรับ feedback อย่างสร้างสรรค์"],
+ tip:"เขียน draft ด้วยตัวเองก่อนเสมอ แล้วใช้ AI เป็น editor ถ้าให้ AI เขียนตั้งแต่แรก ความคิดของคุณจะไม่ได้ถูกฝึก",
+ proj:"เขียน technical blog 4 บทความใน 2 เดือน อธิบายสิ่งที่เรียนรู้จาก Roadmap นี้",
+ res:[["Google Technical Writing","https://developers.google.com/tech-writing"],["Write the Docs Guide","https://www.writethedocs.org/guide/"]]},
+{s:8,id:"portfolio",title:"Portfolio และ Learn in Public",en:"Building in Public",p:"must",w:4,o:1,t:["core"],a:30,v:85,
+ d:"สร้างหลักฐานความสามารถ: โปรเจกต์จริงบน GitHub, blog, open source contribution, แชร์สิ่งที่เรียนรู้ และสร้าง network ในชุมชน (meetup, Discord, LinkedIn)",
+ why:"เมื่อ AI ทำให้ใครก็สร้าง demo ได้ resume อย่างเดียวไม่พอ สิ่งที่น่าเชื่อถือคือโปรเจกต์ที่มีผู้ใช้จริง ความคิดที่เขียนออกมา และคนที่ยืนยันฝีมือคุณได้",
+ sk:["โปรเจกต์ portfolio ที่แก้ปัญหาจริง (ไม่ใช่แค่ todo app)","GitHub profile และ README ที่ดี","Open source contribution","เขียน blog หรือทำ content แชร์ความรู้","Networking: meetup, conference, community"],
+ tip:"จด TIL (Today I Learned) สั้น ๆ ทุกวัน แล้วใช้ AI ช่วยเรียบเรียงเป็นบทความรายสัปดาห์",
+ proj:"เลือก 3 โปรเจกต์ที่ดีที่สุดจาก Roadmap นี้ เขียน case study: ปัญหา → การตัดสินใจ → ผลลัพธ์",
+ res:[["Learn in Public (swyx)","https://www.swyx.io/learn-in-public"]]},
+{s:8,id:"current",title:"ตามทัน AI โดยไม่จมกับ Hype",en:"Staying Current",p:"must",w:1,o:1,t:["core"],a:20,v:85,
+ d:"สร้างระบบติดตามความเปลี่ยนแปลงอย่างมีประสิทธิภาพ: เลือกแหล่งข้อมูลคุณภาพ ทดลองเครื่องมือใหม่อย่างมีเป้าหมาย และแยก signal ออกจาก noise",
+ why:"วงการ AI เปลี่ยนเร็วจนตามทุกอย่างไม่ไหว คนที่ชนะคือคนที่มีระบบกรองข้อมูล ลงลึกเฉพาะสิ่งที่สำคัญ และไม่ไล่ตามทุกกระแส",
+ sk:["เลือกแหล่งข่าว บล็อก และ podcast คุณภาพ 5–10 แหล่ง","Time-box การทดลองเครื่องมือใหม่","แยก hype ออกจากความก้าวหน้าจริง","ทบทวน roadmap ของตัวเองทุกไตรมาส","เข้าใจ AI ethics และผลกระทบต่อสังคม"],
+ tip:"ใช้ AI สรุปข่าว AI ประจำสัปดาห์ได้ แต่เลือกอ่านต้นฉบับเต็มเฉพาะ 1–2 เรื่องที่เกี่ยวกับงานของคุณจริง ๆ",
+ proj:"สร้าง AI radar ส่วนตัว (Adopt / Trial / Assess / Hold) สำหรับเครื่องมือและเทคนิค อัปเดตทุก 3 เดือน",
+ res:[["Simon Willison's Weblog","https://simonwillison.net/"],["Latent Space","https://www.latent.space/"],["Thoughtworks Technology Radar","https://www.thoughtworks.com/radar"]]},
+{s:8,id:"leadership",title:"ทำงานเป็นทีม ภาวะผู้นำ และ Mentoring",en:"Collaboration & Leadership",p:"should",w:4,o:1,t:["core"],a:10,v:90,
+ d:"ทำงานกับคนที่หลากหลาย จัดการความเห็นต่าง mentoring นำทีมโดยไม่ต้องมีตำแหน่ง ทำงานข้ามสายงาน และนำ AI เข้ามาใช้ในทีมอย่างเหมาะสม",
+ why:"ซอฟต์แวร์ที่มีความหมายสร้างโดยทีม และทีมยุคใหม่ต้องการคนที่ช่วยให้ทั้งทีมใช้ AI ได้อย่างมีประสิทธิภาพและปลอดภัย",
+ sk:["Collaboration และ conflict resolution","Mentoring และการสอน","Leading without authority","Stakeholder management","ผลักดันการใช้ AI ในทีมอย่างมีกระบวนการ"],
+ tip:"สอนคนอื่นใช้ AI coding tools การสอนทำให้คุณเข้าใจลึกขึ้น และสร้างชื่อเสียงในทีม",
+ proj:"จัด workshop ในทีมหรือชุมชน หัวข้อ “AI-assisted development ที่ปลอดภัยและมีประสิทธิภาพ”",
+ res:[["StaffEng","https://staffeng.com/"],["The Manager's Path: Camille Fournier (หนังสือ)",""]]},
+{s:8,id:"career",title:"สัมภาษณ์งานและเติบโตในสายอาชีพ",en:"Interviews & Career Growth",p:"should",w:3,t:["core"],a:35,v:70,
+ d:"เตรียมสัมภาษณ์ยุคใหม่: coding (บางที่อนุญาตให้ใช้ AI), system design, AI/LLM system design, behavioral รวมถึงการวางแผนเส้นทาง IC vs management และการต่อรองเงินเดือน",
+ why:"รูปแบบการสัมภาษณ์กำลังเปลี่ยน หลายบริษัทเริ่มประเมินความสามารถในการทำงานร่วมกับ AI และ system thinking มากกว่าการท่องโจทย์",
+ sk:["Coding interview (ทั้งแบบใช้และไม่ใช้ AI)","System design interview","AI system design (RAG, agents, evals)","Behavioral interview ด้วย STAR method","Career ladder: IC track vs management","ต่อรองเงินเดือนและข้อเสนอ"],
+ tip:"ให้ AI เป็นผู้สัมภาษณ์ mock interview แบบ system design แล้วขอ feedback ตรง ๆ แบบไม่ต้องเกรงใจ",
+ proj:"Mock interview 10 รอบ (กับคน 5 รอบ และ AI 5 รอบ) แล้วสรุปจุดอ่อนที่ต้องพัฒนา",
+ res:[["Tech Interview Handbook","https://www.techinterviewhandbook.org/"],["System Design Primer","https://github.com/donnemartin/system-design-primer"]]},
+{s:8,id:"builder",title:"Solo Builder และการสร้างธุรกิจด้วย AI",en:"Indie Building with AI",p:"nice",w:6,t:["core"],a:30,v:80,
+ d:"ใช้ AI เป็น leverage สร้างผลิตภัณฑ์คนเดียวหรือทีมเล็ก: หาไอเดีย validate ตลาด สร้าง launch ทำ marketing ตั้งราคา และสร้างรายได้",
+ why:"ต้นทุนการสร้างซอฟต์แวร์ลดลงมาก นักพัฒนาที่เข้าใจธุรกิจสามารถสร้างรายได้ของตัวเองได้มากกว่าที่เคยเป็นไปได้",
+ sk:["หาและ validate ไอเดีย","สร้าง MVP อย่างรวดเร็วด้วย AI","Launch และหาผู้ใช้กลุ่มแรก","Pricing และระบบชำระเงิน","Marketing พื้นฐาน, SEO และ content"],
+ tip:"ให้ AI ช่วยวิเคราะห์คู่แข่งและร่าง landing page แต่การคุยกับลูกค้าจริงและการตัดสินใจทางธุรกิจต้องเป็นคุณ",
+ proj:"สร้าง micro-SaaS หรือเครื่องมือเล็ก ๆ ที่มีคนยอมจ่ายเงินอย่างน้อย 1 คน",
+ res:[["Y Combinator Startup School","https://www.startupschool.org/"],["Indie Hackers","https://www.indiehackers.com/"]]}
+];
+
+var PRI = {must:"ต้องรู้", should:"ควรรู้", nice:"เสริม"};
+var TRACK_LABEL = {}; TRACKS.forEach(function (t) { TRACK_LABEL[t.id] = t.label; });
+var ZONES = {
+  edge:{name:"Human Edge", th:"ลงทุนให้ลึกที่สุด AI ทำแทนได้น้อยแต่มีค่ามาก"},
+  mult:{name:"AI Multiplier", th:"เข้าใจลึกพอจะสั่งและตรวจ AI แล้วให้ AI คูณผลงาน"},
+  deleg:{name:"Delegate", th:"ให้ AI ทำเป็นหลัก รู้พอจะตรวจได้"},
+  situ:{name:"Situational", th:"เรียนเมื่องานหรือสายที่เลือกต้องใช้"}
+};
+var ZONE_ORDER = ["edge","mult","deleg","situ"];
+function zoneOf(n) { var hi = n.v >= 75, ai = n.a >= 50; return hi ? (ai ? "mult" : "edge") : (ai ? "deleg" : "situ"); }
+
+var byId = {};
+NODES.forEach(function (n, i) { n.i = i; byId[n.id] = n; });
+
+/* =========================================================
+   STATE
+   ========================================================= */
+var KEY = "aidr.v1";
+var state = { checks:{}, track:"all", pri:"all", hideDone:false, q:"" };
+
+function load() {
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (!raw) return;
+    var d = JSON.parse(raw);
+    if (d && typeof d === "object") {
+      state.checks = cleanChecks(d.checks);
+      if (TRACK_LABEL[d.track]) state.track = d.track;
+    }
+  } catch (e) {}
+}
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify({ checks:state.checks, track:state.track })); } catch (e) {}
+}
+function cleanChecks(c) {
+  var out = {};
+  if (!c || typeof c !== "object") return out;
+  Object.keys(c).forEach(function (id) {
+    var n = byId[id];
+    if (!n || !Array.isArray(c[id])) return;
+    var arr = c[id].filter(function (i) { return Number.isInteger(i) && i >= 0 && i < n.sk.length; });
+    arr = arr.filter(function (v, i) { return arr.indexOf(v) === i; });
+    if (arr.length) out[id] = arr;
+  });
+  return out;
+}
+
+function prog(n) { var c = (state.checks[n.id] || []).length; return { c:c, t:n.sk.length }; }
+function statusOf(n) { var p = prog(n); return p.c === 0 ? "todo" : (p.c >= p.t ? "done" : "doing"); }
+function relevant(n, tr) {
+  tr = tr || state.track;
+  if (tr === "all") return true;
+  var t = n.t;
+  return t.indexOf("core") > -1 || t.indexOf(tr) > -1 || (tr === "fs" && (t.indexOf("fe") > -1 || t.indexOf("be") > -1));
+}
+function priOk(n) { return state.pri === "all" || (state.pri === "must" ? n.p === "must" : n.p !== "nice"); }
+function matches(n, q) {
+  if (!q) return true;
+  var hay = (n.title + " " + n.en + " " + n.d + " " + n.sk.join(" ") + " " + n.why).toLowerCase();
+  return q.split(/\s+/).every(function (w) { return hay.indexOf(w) > -1; });
+}
+function remainingWeeks(nodes) {
+  return nodes.reduce(function (s, n) {
+    if (n.o || n.p === "nice") return s;
+    var p = prog(n); return s + n.w * (1 - p.c / p.t);
+  }, 0);
+}
+function fmtDuration(weeks) {
+  if (weeks <= 0.05) return "เสร็จแล้ว";
+  if (weeks < 8) return "~" + Math.max(1, Math.round(weeks)) + " สัปดาห์";
+  var m = weeks / 4.345;
+  if (m >= 24) return "~" + (Math.round(m / 6) / 2) + " ปี";
+  return "~" + Math.round(m) + " เดือน";
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+function $(s, r) { return (r || document).querySelector(s); }
+function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+var toastTimer;
+function toast(msg) {
+  var t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2200);
+}
+var ICON = {
+  check:'<svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M6 10.5l2.6 2.6L14 7.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  ext:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>',
+  sun:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  moon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>',
+  left:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>',
+  right:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>',
+  wrench:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.5 2.5-2.5-.5-.5-2.5z"/></svg>'
+};
+
+/* =========================================================
+   BUILD STATIC PARTS
+   ========================================================= */
+function buildPrinciples() {
+  $("#principlesGrid").innerHTML = PRINCIPLES.map(function (p, i) {
+    return '<article class="principle"><div class="num">0' + (i + 1) + '</div><h3>' + p[0] + '</h3><p>' + esc(p[1]) + '</p></article>';
+  }).join("");
+}
+
+function buildChips() {
+  var wrap = $("#trackChips");
+  wrap.insertAdjacentHTML("beforeend", TRACKS.map(function (t) {
+    return '<button class="chip" type="button" data-track="' + t.id + '" aria-pressed="false">' + esc(t.label) + '</button>';
+  }).join(""));
+}
+
+function nodeHTML(n) {
+  return '<button class="node" type="button" data-id="' + n.id + '" data-status="todo">' +
+    '<span class="node-top"><span class="pri ' + n.p + '">' + PRI[n.p] + '</span><span class="status" aria-hidden="true">' + ICON.check + '</span></span>' +
+    '<span class="node-title">' + esc(n.title) + '</span>' +
+    '<span class="node-en">' + esc(n.en) + '</span>' +
+    '<span class="node-meta"><span>' + (n.o ? "ทำควบคู่ต่อเนื่อง" : "~" + n.w + " สัปดาห์") + '</span><span aria-hidden="true">·</span><span title="AI ทำแทนได้ประมาณ ' + n.a + '%">AI ' + n.a + '%</span></span>' +
+    '<span class="node-prog"><span class="node-bar"><i></i></span><span class="node-count mono">0/' + n.sk.length + '</span></span>' +
+  '</button>';
+}
+
+function buildRoadmap() {
+  $("#roadmap").innerHTML = STAGES.map(function (st, si) {
+    var nodes = NODES.filter(function (n) { return n.s === si; });
+    return '<section class="stage" id="' + st.id + '" data-stage="' + si + '" aria-labelledby="' + st.id + '-t">' +
+      '<div class="stage-num" aria-hidden="true">' + st.n + '</div>' +
+      '<header class="stage-head">' +
+        '<div class="stage-en">Stage ' + st.n + ' · ' + esc(st.en) + '</div>' +
+        '<h3 class="stage-title" id="' + st.id + '-t">' + esc(st.title) + '</h3>' +
+        '<p class="stage-desc">' + esc(st.desc) + '</p>' +
+        '<div class="stage-goal"><b>เป้าหมาย</b><span>' + esc(st.goal) + '</span></div>' +
+        '<div class="stage-meta"><span data-k="count"></span><span data-k="weeks"></span><span><span class="sbar"><i></i></span></span><span data-k="pct"></span></div>' +
+      '</header>' +
+      '<div class="grid">' + nodes.map(nodeHTML).join("") + '</div>' +
+    '</section>';
+  }).join("");
+}
+
+function buildRail() {
+  $("#rail").innerHTML = '<div class="rail-title">สารบัญ</div>' + STAGES.map(function (st) {
+    return '<a href="#' + st.id + '" data-stage-link="' + st.id + '"><span class="rn">' + st.n + '</span><span>' + esc(st.short) + '</span><span class="rbar"><i></i></span></a>';
+  }).join("");
+}
+
+/* =========================================================
+   REFRESH (progress + filters)
+   ========================================================= */
+function refreshCards() {
+  $$(".node").forEach(function (el) {
+    var n = byId[el.dataset.id], p = prog(n), st = statusOf(n);
+    el.dataset.status = st;
+    el.querySelector(".status").style.setProperty("--p", Math.round(p.c / p.t * 100));
+    el.querySelector(".node-bar i").style.width = (p.c / p.t * 100) + "%";
+    el.querySelector(".node-count").textContent = p.c + "/" + p.t;
+    el.setAttribute("aria-label", n.title + " (" + PRI[n.p] + ") ความคืบหน้า " + p.c + " จาก " + p.t + (relevant(n) ? "" : " · นอกสายที่เลือก"));
+  });
+}
+
+function applyFilters() {
+  var q = state.q.trim().toLowerCase();
+  var shown = 0, shownRel = 0;
+  $$(".stage").forEach(function (sec) {
+    var vis = 0;
+    $$(".node", sec).forEach(function (el) {
+      var n = byId[el.dataset.id];
+      var hide = !matches(n, q) || !priOk(n) || (state.hideDone && statusOf(n) === "done");
+      var rel = relevant(n);
+      el.classList.toggle("hide", hide);
+      el.classList.toggle("dim", !hide && !rel);
+      if (!hide) { vis++; shown++; if (rel) shownRel++; }
+    });
+    sec.classList.toggle("hide", vis === 0);
+  });
+  $("#emptyState").hidden = shown > 0;
+  var line = "แสดง " + shown + " หัวข้อ";
+  if (state.track !== "all") line += " · " + shownRel + " หัวข้ออยู่ในสาย " + TRACK_LABEL[state.track] + " (หัวข้อนอกสายแสดงแบบจาง)";
+  if (q) line += " · ค้นหา “" + state.q.trim() + "”";
+  $("#resultLine").textContent = line;
+  refreshMatrixDim();
+}
+
+function refreshStages() {
+  STAGES.forEach(function (st, si) {
+    var sec = document.getElementById(st.id);
+    var rel = NODES.filter(function (n) { return n.s === si && relevant(n); });
+    var c = 0, t = 0, weeks = 0;
+    rel.forEach(function (n) { var p = prog(n); c += p.c; t += p.t; if (!n.o && n.p !== "nice") weeks += n.w; });
+    var pct = t ? Math.round(c / t * 100) : 0;
+    $('[data-k="count"]', sec).textContent = rel.length + " หัวข้อ";
+    $('[data-k="weeks"]', sec).textContent = weeks ? "~" + weeks + " สัปดาห์" : "ทำควบคู่";
+    $('[data-k="pct"]', sec).textContent = pct + "%";
+    $(".sbar i", sec).style.width = pct + "%";
+    sec.classList.toggle("complete", t > 0 && c >= t);
+    var link = $('[data-stage-link="' + st.id + '"] .rbar i');
+    if (link) link.style.width = pct + "%";
+  });
+}
+
+function refreshHero() {
+  var rel = NODES.filter(function (n) { return relevant(n); });
+  var c = 0, t = 0, done = 0, doing = [];
+  rel.forEach(function (n) {
+    var p = prog(n); c += p.c; t += p.t;
+    if (p.c >= p.t) done++; else if (p.c > 0) doing.push(n);
+  });
+  var pct = t ? Math.round(c / t * 100) : 0;
+  var C = 2 * Math.PI * 54;
+  $("#ringFill").style.strokeDashoffset = (C * (1 - c / Math.max(t, 1))).toFixed(2);
+  $("#pcPct").textContent = pct + "%";
+  $("#pcSkills").textContent = c + " / " + t;
+  $("#pcDone").textContent = done + " / " + rel.length;
+  $("#pcTime").textContent = fmtDuration(remainingWeeks(rel));
+  $("#pcTrack").textContent = "สาย: " + TRACK_LABEL[state.track];
+  var dl = $("#pcDoing");
+  if (!doing.length) {
+    dl.innerHTML = '<span class="doing-empty">ยังไม่มี เปิดหัวข้อใดก็ได้แล้วติ๊กทักษะย่อยเพื่อเริ่มต้น</span>';
+  } else {
+    dl.innerHTML = doing.slice(0, 5).map(function (n) {
+      var p = prog(n);
+      return '<button class="doing-chip" type="button" data-open="' + n.id + '">' + esc(n.title) + ' · ' + p.c + '/' + p.t + '</button>';
+    }).join("") + (doing.length > 5 ? '<span class="doing-empty">และอีก ' + (doing.length - 5) + ' หัวข้อ</span>' : "");
+  }
+}
+
+function refreshChips() {
+  $$("#trackChips .chip").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.track === state.track)); });
+}
+
+function refreshAll() {
+  refreshCards(); refreshStages(); refreshHero(); refreshChips(); applyFilters(); refreshMatrixDone();
+  if (!$("#mxTableWrap").hidden) buildTable();
+}
+
+/* =========================================================
+   SCROLL SPY
+   ========================================================= */
+function initSpy() {
+  if (!("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        $$("#rail a").forEach(function (a) { a.classList.toggle("active", a.dataset.stageLink === e.target.id); });
+      }
+    });
+  }, { rootMargin: "-35% 0px -60% 0px" });
+  $$(".stage").forEach(function (s) { io.observe(s); });
+}
+
+/* =========================================================
+   DRAWER
+   ========================================================= */
+var current = null, lastFocus = null;
+var drawer = $("#drawer"), scrim = $("#scrim");
+
+function hostOf(url) { try { return new URL(url).hostname.replace(/^www\./, ""); } catch (e) { return ""; } }
+
+function buildPrompt(n) {
+  var checks = state.checks[n.id] || [];
+  var list = n.sk.filter(function (_, i) { return checks.indexOf(i) === -1; });
+  var partial = list.length > 0 && list.length < n.sk.length;
+  if (!list.length) list = n.sk;
+  return "ฉันกำลังเรียนหัวข้อ “" + n.title + "” (" + n.en + ") ตาม Developer Roadmap ในยุค AI\n" +
+    (partial ? "หัวข้อย่อยที่ฉันยังไม่ได้เรียน:" : "หัวข้อย่อยที่ต้องการเรียน:") + "\n" +
+    list.map(function (s) { return "- " + s; }).join("\n") + "\n\n" +
+    "ช่วยเป็นติวเตอร์แบบ Socratic ให้หน่อย:\n" +
+    "1. เริ่มด้วยคำถาม 2–3 ข้อ เพื่อประเมินว่าฉันรู้อะไรแล้วบ้าง\n" +
+    "2. สอนทีละหัวข้อย่อยด้วยตัวอย่างที่ใช้ได้จริง อธิบายเป็นภาษาไทย (ศัพท์เทคนิคใช้ภาษาอังกฤษได้)\n" +
+    "3. จบแต่ละหัวข้อด้วยแบบฝึกหัดสั้น ๆ และห้ามเฉลยจนกว่าฉันจะลองตอบเอง\n" +
+    "4. บอกข้อผิดพลาดที่ AI มักทำในหัวข้อนี้ เพื่อให้ฉันตรวจงานของ AI ได้\n" +
+    "5. สุดท้ายช่วยวางแผนมินิโปรเจกต์: " + n.proj;
+}
+
+function renderDrawer() {
+  var n = current, st = STAGES[n.s], p = prog(n), checks = state.checks[n.id] || [], z = ZONES[zoneOf(n)];
+  var tracks = n.t.indexOf("core") > -1
+    ? '<span class="badge">ทุกสายงาน</span>'
+    : n.t.map(function (t) { return '<span class="badge">' + esc(TRACK_LABEL[t]) + '</span>'; }).join("");
+  $("#dEyebrow").textContent = "Stage " + st.n + " · " + st.title;
+  $("#dBody").innerHTML =
+    '<h2 class="d-title" id="dTitle">' + esc(n.title) + '</h2>' +
+    '<div class="d-en">' + esc(n.en) + '</div>' +
+    '<div class="d-badges"><span class="badge pri ' + n.p + '">' + PRI[n.p] + '</span>' +
+      '<span class="badge">' + (n.o ? "ทำควบคู่ตลอดเส้นทาง" : "ประมาณ " + n.w + " สัปดาห์") + '</span>' + tracks + '</div>' +
+    '<div class="d-progress"><div class="d-pbar' + (p.c >= p.t ? " done" : "") + '" id="dPbar"><i style="width:' + (p.c / p.t * 100) + '%"></i></div><span class="mono" id="dPct">' + p.c + '/' + p.t + ' ทักษะ</span></div>' +
+    '<p class="d-desc">' + esc(n.d) + '</p>' +
+    '<div class="callout"><div class="callout-k">ทำไมสำคัญในยุค AI</div><p>' + esc(n.why) + '</p></div>' +
+
+    '<section class="d-sec"><h3>AI กับทักษะนี้</h3>' +
+      '<div class="meters">' +
+        '<div class="meter"><div class="meter-label"><span>AI ทำแทนได้</span><b>' + n.a + '%</b></div><div class="meter-track"><i style="width:' + n.a + '%"></i></div><p>สัดส่วนงานในทักษะนี้ที่ AI ทำได้ดีในปัจจุบัน</p></div>' +
+        '<div class="meter"><div class="meter-label"><span>คุณค่าระยะยาว</span><b>' + n.v + '</b></div><div class="meter-track"><i style="width:' + n.v + '%"></i></div><p>ความสำคัญต่ออาชีพนักพัฒนาในอีก 3–5 ปี (เต็ม 100)</p></div>' +
+      '</div>' +
+      '<div class="zone"><span class="zone-name">' + z.name + '</span><span>' + esc(z.th) + '</span></div>' +
+    '</section>' +
+
+    '<section class="d-sec"><h3><span>สิ่งที่ต้องเรียนรู้</span><span id="dCount">' + p.c + '/' + p.t + '</span></h3>' +
+      '<ul class="checklist">' + n.sk.map(function (s, i) {
+        return '<li><label class="check"><input type="checkbox" data-sk="' + i + '"' + (checks.indexOf(i) > -1 ? " checked" : "") + '><span>' + esc(s) + '</span></label></li>';
+      }).join("") + '</ul>' +
+      '<div class="d-actions"><button class="btn btn-sm" type="button" data-action="check-all">ติ๊กครบทั้งหมด</button><button class="btn btn-sm btn-ghost" type="button" data-action="check-none">ล้างหัวข้อนี้</button></div>' +
+    '</section>' +
+
+    '<section class="d-sec"><h3>ใช้ AI ช่วยเรียนอย่างไร</h3>' +
+      '<p class="tip">' + esc(n.tip) + '</p>' +
+      '<div class="prompt-wrap"><div class="prompt-head"><span>Prompt สำหรับเรียนหัวข้อนี้กับ AI</span><button class="btn btn-sm" type="button" data-action="copy-prompt">คัดลอก</button></div>' +
+      '<pre class="prompt" id="dPrompt">' + esc(buildPrompt(n)) + '</pre></div>' +
+    '</section>' +
+
+    '<section class="d-sec"><h3>โปรเจกต์ฝึกมือ</h3><div class="project"><span class="project-ico">' + ICON.wrench + '</span><p>' + esc(n.proj) + '</p></div></section>' +
+
+    '<section class="d-sec"><h3>แหล่งเรียนรู้</h3><ul class="res">' + n.res.map(function (r) {
+      return r[1]
+        ? '<li><a href="' + esc(r[1]) + '" target="_blank" rel="noopener noreferrer"><span>' + esc(r[0]) + '</span><small class="host">' + esc(hostOf(r[1])) + ' ' + ICON.ext + '</small></a></li>'
+        : '<li><span class="res-item"><span>' + esc(r[0]) + '</span><small>ค้นหาเพิ่มเติม</small></span></li>';
+    }).join("") + '</ul></section>';
+
+  var prev = NODES[n.i - 1], next = NODES[n.i + 1];
+  var bp = $("#dPrev"), bn = $("#dNext");
+  bp.disabled = !prev; bn.disabled = !next;
+  bp.style.visibility = prev ? "visible" : "hidden";
+  bn.style.visibility = next ? "visible" : "hidden";
+  bp.innerHTML = prev ? ICON.left + '<span>' + esc(prev.title) + '</span>' : "";
+  bn.innerHTML = next ? '<span>' + esc(next.title) + '</span>' + ICON.right : "";
+  bp.setAttribute("aria-label", prev ? "หัวข้อก่อนหน้า: " + prev.title : "");
+  bn.setAttribute("aria-label", next ? "หัวข้อถัดไป: " + next.title : "");
+}
+
+function updateDrawerProgress() {
+  if (!current) return;
+  var p = prog(current);
+  $("#dCount").textContent = p.c + "/" + p.t;
+  $("#dPct").textContent = p.c + "/" + p.t + " ทักษะ";
+  var bar = $("#dPbar"); bar.classList.toggle("done", p.c >= p.t); $("i", bar).style.width = (p.c / p.t * 100) + "%";
+  $("#dPrompt").textContent = buildPrompt(current);
+}
+
+function openNode(id) {
+  var n = byId[id]; if (!n) return;
+  if (!drawer.classList.contains("open")) lastFocus = document.activeElement;
+  current = n;
+  renderDrawer();
+  $("#dBody").scrollTop = 0;
+  drawer.inert = false;
+  drawer.classList.add("open"); scrim.classList.add("open");
+  document.body.classList.add("lock");
+  try { history.replaceState(null, "", "#topic=" + id); } catch (e) {}
+  setTimeout(function () { $("#dClose").focus({ preventScroll:true }); }, 60);
+}
+function closeDrawer() {
+  if (!drawer.classList.contains("open")) return;
+  drawer.classList.remove("open"); scrim.classList.remove("open");
+  drawer.inert = true;
+  document.body.classList.remove("lock");
+  try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  var back = current && document.querySelector('.node[data-id="' + current.id + '"]');
+  current = null;
+  var target = (lastFocus && document.body.contains(lastFocus)) ? lastFocus : back;
+  if (target && target.focus) target.focus({ preventScroll:true });
+}
+
+function setChecks(n, arr) {
+  if (arr.length) state.checks[n.id] = arr; else delete state.checks[n.id];
+  save(); refreshAll(); updateDrawerProgress();
+}
+
+function copyText(t) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(t).then(function () { return true; }, function () { return fallbackCopy(t); });
+  }
+  return Promise.resolve(fallbackCopy(t));
+}
+function fallbackCopy(t) {
+  var ta = document.createElement("textarea");
+  ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+  ta.remove(); return ok;
+}
+
+/* =========================================================
+   QUIZ
+   ========================================================= */
+var QUIZ = [
+  {k:"exp", q:"คุณมีประสบการณ์เขียนโปรแกรมมาแค่ไหน?", opts:[
+    ["0","ยังไม่เคย / เพิ่งเริ่ม","อยากเริ่มจากศูนย์อย่างถูกวิธี"],
+    ["1","น้อยกว่า 1 ปี","เขียนได้บ้าง แต่พื้นฐานยังไม่แน่น"],
+    ["2","1–3 ปี","ทำงานจริงหรือมีโปรเจกต์ของตัวเองแล้ว"],
+    ["3","มากกว่า 3 ปี","ประสบการณ์ระดับ mid / senior"]]},
+  {k:"track", q:"งานแบบไหนที่คุณอยากทำมากที่สุด?", opts:[
+    ["fe","Frontend","สร้าง UI และประสบการณ์ผู้ใช้"],
+    ["be","Backend","ระบบหลังบ้าน API และ database"],
+    ["fs","Full-stack","ทำได้ครบทั้งระบบ"],
+    ["ai","AI Engineer","สร้างแอปและ agent ด้วย LLM"],
+    ["data","Data / ML","ข้อมูล pipeline และโมเดล"],
+    ["ops","DevOps / Platform","Infra, cloud และ automation"],
+    ["mobile","Mobile","แอป iOS / Android"]]},
+  {k:"ai", q:"ตอนนี้คุณใช้ AI ช่วยเขียนโค้ดแค่ไหน?", opts:[
+    ["0","ยังไม่เคยใช้","อยากเริ่มแต่ยังไม่รู้จะเริ่มตรงไหน"],
+    ["1","ถาม AI ในแชตเป็นครั้งคราว","copy โค้ดมาวางเป็นบางครั้ง"],
+    ["2","ใช้ AI ใน IDE ทุกวัน","autocomplete และ chat ในตัวแก้ไขโค้ด"],
+    ["3","ใช้ AI agent ทำงานทั้งฟีเจอร์","เช่น Claude Code, Cursor Agent, Codex"]]},
+  {k:"hrs", q:"มีเวลาเรียนต่อสัปดาห์ประมาณเท่าไหร่?", opts:[
+    ["4","น้อยกว่า 5 ชั่วโมง","เรียนในช่วงเวลาว่าง"],
+    ["8","5–10 ชั่วโมง","สม่ำเสมอพอสมควร"],
+    ["15","10–20 ชั่วโมง","จริงจัง"],
+    ["25","มากกว่า 20 ชั่วโมง","เรียนแบบเต็มเวลา"]]}
+];
+var quizStep = 0, quizAns = {}, quizLastFocus = null, lastResult = null;
+var quizEl = $("#quiz");
+
+function openQuiz() {
+  quizLastFocus = document.activeElement;
+  if (drawer.classList.contains("open")) closeDrawer();
+  quizStep = 0; quizAns = {};
+  renderQuiz();
+  quizEl.inert = false; quizEl.classList.add("open"); document.body.classList.add("lock");
+  setTimeout(function () { var f = $(".q-opt", quizEl); if (f) f.focus({ preventScroll:true }); }, 80);
+}
+function closeQuiz(restore) {
+  if (!quizEl.classList.contains("open")) return;
+  quizEl.classList.remove("open"); quizEl.inert = true;
+  if (!drawer.classList.contains("open")) document.body.classList.remove("lock");
+  if (restore !== false && quizLastFocus && quizLastFocus.focus) quizLastFocus.focus({ preventScroll:true });
+}
+function renderQuiz() {
+  var body = $("#quizBody");
+  if (quizStep >= QUIZ.length) { renderResult(); return; }
+  var q = QUIZ[quizStep];
+  body.innerHTML =
+    '<div class="q-steps" aria-hidden="true">' + QUIZ.map(function (_, i) { return '<i class="' + (i <= quizStep ? "on" : "") + '"></i>'; }).join("") + '</div>' +
+    '<div class="eyebrow">คำถามที่ ' + (quizStep + 1) + ' จาก ' + QUIZ.length + '</div>' +
+    '<h2 class="q-title">' + esc(q.q) + '</h2>' +
+    '<div class="q-opts">' + q.opts.map(function (o, i) {
+      return '<button class="q-opt' + (quizAns[q.k] === o[0] ? " sel" : "") + '" type="button" data-q="' + o[0] + '"><span class="k">' + String.fromCharCode(65 + i) + '</span><span><b>' + esc(o[1]) + '</b>' + (o[2] ? '<small>' + esc(o[2]) + '</small>' : "") + '</span></button>';
+    }).join("") + '</div>' +
+    '<div class="q-foot">' + (quizStep > 0 ? '<button class="btn btn-sm btn-ghost" type="button" data-action="quiz-back">' + ICON.left + ' ย้อนกลับ</button>' : '<span></span>') + '<span></span></div>';
+}
+function computeResult(a) {
+  var exp = +a.exp, ai = +a.ai, hrs = +a.hrs, track = a.track;
+  var start = [0, 1, 2, 3][exp];
+  if (exp === 3 && ai >= 2) start = 4;
+  var path = NODES.filter(function (n) { return n.s >= start && relevant(n, track) && n.p !== "nice"; });
+  var weeks = remainingWeeks(path) * 10 / hrs;
+  var focus = path.filter(function (n) { return n.p === "must" && !n.o && statusOf(n) !== "done"; }).slice(0, 5);
+  var tips = [];
+  if (exp === 0) tips.push("ช่วงแรกใช้ AI เป็นติวเตอร์ ไม่ใช่คนเขียนโค้ดแทน เขียนเองก่อนเสมอแล้วค่อยให้ AI ตรวจ");
+  if (start > 0) tips.push("เปิดดู Stage ก่อนหน้าแบบเร็ว ๆ แล้วติ๊กทักษะที่มั่นใจแล้ว เพื่อให้การประเมินเวลาแม่นขึ้นและเจอช่องโหว่ที่อาจมองข้าม");
+  if (ai <= 1 && exp >= 1) tips.push("เริ่มใช้ AI coding tool ทุกวันควบคู่ไปด้วยทันที (Stage 03) นี่คือตัวคูณ productivity ที่ใหญ่ที่สุดในตอนนี้");
+  if (ai === 3) tips.push("คุณใช้ agent อยู่แล้ว เน้น Review, Testing, Security และ Evals เพื่อคุมคุณภาพของงานที่ agent สร้าง");
+  if (hrs <= 4) tips.push("เวลาจำกัด ให้กรองเฉพาะ “ต้องรู้” ก่อน และทำโปรเจกต์เล็กให้เสร็จทีละชิ้น ดีกว่าเริ่มหลายอย่างพร้อมกัน");
+  if (track === "ai" && exp <= 1) tips.push("สาย AI Engineer ต้องมีพื้นฐานวิศวกรรมแน่นก่อน อย่าข้าม Stage 01–02 แม้จะอยากสร้าง agent เร็ว ๆ");
+  tips.push("หัวข้อใน Stage 08 อย่างการเขียน การสื่อสาร และ portfolio ทำควบคู่ไปได้ตั้งแต่วันแรก");
+  return { start:start, track:track, hrs:hrs, weeks:weeks, focus:focus, tips:tips.slice(0, 4) };
+}
+function renderResult() {
+  var r = lastResult = computeResult(quizAns), st = STAGES[r.start];
+  $("#quizBody").innerHTML =
+    '<div class="q-steps" aria-hidden="true">' + QUIZ.map(function () { return '<i class="on"></i>'; }).join("") + '</div>' +
+    '<div class="eyebrow">ผลลัพธ์ของคุณ</div>' +
+    '<h2 class="r-title">เส้นทางที่แนะนำ: ' + esc(TRACK_LABEL[r.track]) + '</h2>' +
+    '<div class="r-grid">' +
+      '<div class="r-stat"><span>เริ่มต้นที่</span><b>Stage ' + st.n + '</b><small>' + esc(st.title) + '</small></div>' +
+      '<div class="r-stat"><span>ระยะเวลาโดยประมาณ</span><b>' + fmtDuration(r.weeks) + '</b><small>ที่ ~' + r.hrs + ' ชม./สัปดาห์ (ต้องรู้ + ควรรู้)</small></div>' +
+    '</div>' +
+    '<h3 class="r-h">5 หัวข้อแรกที่ควรโฟกัส</h3>' +
+    '<ol class="r-focus">' + r.focus.map(function (n) {
+      return '<li><button type="button" data-open="' + n.id + '"><span>' + esc(n.title) + '</span><small>Stage ' + STAGES[n.s].n + '</small></button></li>';
+    }).join("") + '</ol>' +
+    '<h3 class="r-h">คำแนะนำสำหรับคุณ</h3>' +
+    '<ul class="r-tips">' + r.tips.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>' +
+    '<div class="r-actions"><button class="btn btn-primary" type="button" data-action="quiz-apply">ใช้เส้นทางนี้</button><button class="btn" type="button" data-action="quiz-restart">ทำแบบทดสอบใหม่</button></div>';
+  setTimeout(function () { var b = $('[data-action="quiz-apply"]', quizEl); if (b) b.focus({ preventScroll:true }); }, 50);
+}
+function applyQuiz() {
+  if (!lastResult) return;
+  state.track = lastResult.track; state.pri = "all"; $("#priFilter").value = "all";
+  save(); refreshAll();
+  closeQuiz(false);
+  var target = document.getElementById(STAGES[lastResult.start].id);
+  if (target) target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start" });
+  toast("ตั้งค่าเส้นทาง " + TRACK_LABEL[lastResult.track] + " แล้ว เริ่มที่ Stage " + STAGES[lastResult.start].n);
+}
+
+/* =========================================================
+   SKILL MATRIX
+   ========================================================= */
+var mxW = 0;
+function buildMatrix() {
+  var box = $("#mxBox");
+  var W = Math.max(300, Math.round(box.clientWidth));
+  mxW = W;
+  var small = W < 600;
+  var H = Math.round(small ? W * 1.1 : Math.min(540, W * 0.56));
+  var m = { l: small ? 46 : 58, r: 14, t: 14, b: small ? 46 : 54 };
+  var iw = W - m.l - m.r, ih = H - m.t - m.b;
+  var X = function (a) { return m.l + a / 100 * iw; };
+  var Y = function (v) { return m.t + (1 - (v - 50) / 60) * ih; };
+  var R = small ? 5 : 6;
+
+  var pts = NODES.map(function (n) { return { n:n, x:X(n.a), y:Y(n.v) }; });
+  var min = R * 2 + 3;
+  for (var it = 0; it < 80; it++) {
+    var moved = false;
+    for (var i = 0; i < pts.length; i++) for (var j = i + 1; j < pts.length; j++) {
+      var p = pts[i], q = pts[j], dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy);
+      if (d < min) {
+        if (d < 0.01) { dx = Math.cos(i * 2.39 + j); dy = Math.sin(i * 2.39 + j); d = 1; }
+        var push = (min - d) / 2, ux = dx / d, uy = dy / d;
+        p.x -= ux * push; p.y -= uy * push; q.x += ux * push; q.y += uy * push; moved = true;
+      }
+    }
+    pts.forEach(function (p) {
+      p.x = Math.min(m.l + iw - R - 2, Math.max(m.l + R + 2, p.x));
+      p.y = Math.min(m.t + ih - R - 2, Math.max(m.t + R + 2, p.y));
+    });
+    if (!moved) break;
+  }
+
+  var g = [];
+  [0, 25, 75, 100].forEach(function (a) { g.push('<line class="mx-grid" x1="' + X(a) + '" x2="' + X(a) + '" y1="' + m.t + '" y2="' + (m.t + ih) + '"/>'); });
+  [50, 60, 90, 100].forEach(function (v) { g.push('<line class="mx-grid" x1="' + m.l + '" x2="' + (m.l + iw) + '" y1="' + Y(v) + '" y2="' + Y(v) + '"/>'); });
+  g.push('<line class="mx-split" x1="' + X(50) + '" x2="' + X(50) + '" y1="' + m.t + '" y2="' + (m.t + ih) + '"/>');
+  g.push('<line class="mx-split" x1="' + m.l + '" x2="' + (m.l + iw) + '" y1="' + Y(75) + '" y2="' + Y(75) + '"/>');
+
+  var ticks = [];
+  [0, 25, 50, 75, 100].forEach(function (a) { ticks.push('<text class="mx-tick" x="' + X(a) + '" y="' + (m.t + ih + 16) + '" text-anchor="middle">' + a + '%</text>'); });
+  [50, 60, 75, 90, 100].forEach(function (v) { ticks.push('<text class="mx-tick" x="' + (m.l - 8) + '" y="' + (Y(v) + 4) + '" text-anchor="end">' + v + '</text>'); });
+  ticks.push('<text class="mx-axis-title" x="' + (m.l + iw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">AI ทำแทนได้มากขึ้น →</text>');
+  ticks.push('<text class="mx-axis-title" transform="translate(' + (small ? 11 : 14) + ',' + (m.t + ih / 2) + ') rotate(-90)" text-anchor="middle">คุณค่าระยะยาว →</text>');
+
+  var qp = small ? 8 : 12;
+  var ql = [
+    ['edge', m.l + qp, m.t + qp + 12, "start"],
+    ['mult', m.l + iw - qp, m.t + qp + 12, "end"],
+    ['situ', m.l + qp, m.t + ih - qp - (small ? 4 : 18), "start"],
+    ['deleg', m.l + iw - qp, m.t + ih - qp - (small ? 4 : 18), "end"]
+  ].map(function (q) {
+    var z = ZONES[q[0]];
+    return '<text class="mx-q-title" x="' + q[1] + '" y="' + q[2] + '" text-anchor="' + q[3] + '">' + z.name + '</text>' +
+      (small ? "" : '<text class="mx-q-sub" x="' + q[1] + '" y="' + (q[2] + 16) + '" text-anchor="' + q[3] + '">' + esc(q[0] === "edge" ? "ลงทุนให้ลึกที่สุด" : q[0] === "mult" ? "เข้าใจลึก แล้วให้ AI คูณผลงาน" : q[0] === "deleg" ? "ให้ AI ทำ รู้พอจะตรวจได้" : "เรียนเมื่องานต้องใช้") + '</text>');
+  }).join("");
+
+  var dots = pts.map(function (p) {
+    var n = p.n;
+    return '<g class="mx-pt" data-id="' + n.id + '" data-x="' + p.x.toFixed(1) + '" data-y="' + p.y.toFixed(1) + '" tabindex="0" role="button" aria-label="' + esc(n.title + " · AI ทำแทนได้ " + n.a + "% · คุณค่า " + n.v + " · " + ZONES[zoneOf(n)].name) + '">' +
+      '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="13" fill="transparent"/>' +
+      '<circle class="mx-done" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + (R + 4) + '" style="display:none"/>' +
+      '<circle class="mx-dot mx-ring ' + n.p + '" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + R + '"/>' +
+    '</g>';
+  }).join("");
+
+  var tip = $("#mxTip");
+  box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="group" aria-label="แผนภาพกระจาย: AI ทำแทนได้ เทียบกับคุณค่าระยะยาวของแต่ละหัวข้อ">' + g.join("") + ticks.join("") + ql + dots + '</svg>';
+  box.appendChild(tip);
+  refreshMatrixDim(); refreshMatrixDone();
+}
+function refreshMatrixDim() {
+  var q = state.q.trim().toLowerCase();
+  $$(".mx-pt").forEach(function (el) {
+    var n = byId[el.dataset.id];
+    el.classList.toggle("dim", !relevant(n) || !matches(n, q) || !priOk(n));
+  });
+}
+function refreshMatrixDone() {
+  $$(".mx-pt").forEach(function (el) {
+    var done = statusOf(byId[el.dataset.id]) === "done";
+    $(".mx-done", el).style.display = done ? "" : "none";
+  });
+}
+function showTip(el) {
+  var n = byId[el.dataset.id], tip = $("#mxTip"), box = $("#mxBox");
+  var scale = box.clientWidth / mxW;
+  var x = +el.dataset.x * scale, y = +el.dataset.y * scale;
+  var p = prog(n);
+  tip.innerHTML = '<b>' + esc(n.title) + '</b><span>' + ZONES[zoneOf(n)].name + ' · ' + PRI[n.p] + '</span><span>AI ทำแทนได้ ' + n.a + '% · คุณค่า ' + n.v + '/100</span><span>ความคืบหน้า ' + p.c + '/' + p.t + ' · คลิกเพื่อดูรายละเอียด</span>';
+  var half = 125, bw = box.clientWidth;
+  tip.style.left = Math.min(bw - half, Math.max(half, x)) + "px";
+  tip.style.top = y + "px";
+  if (y < 110) { tip.style.transform = "translate(-50%, 18px)"; } else { tip.style.transform = ""; }
+  tip.classList.add("show");
+}
+function hideTip() { $("#mxTip").classList.remove("show"); }
+
+function buildTable() {
+  var rows = NODES.slice().sort(function (a, b) {
+    var za = ZONE_ORDER.indexOf(zoneOf(a)), zb = ZONE_ORDER.indexOf(zoneOf(b));
+    return za - zb || b.v - a.v || a.a - b.a;
+  });
+  $("#mxTableWrap").innerHTML = '<table class="mx-table"><thead><tr><th>หัวข้อ</th><th>โซน</th><th>ระดับ</th><th class="num">AI ทำแทนได้</th><th class="num">คุณค่า</th><th class="num">ความคืบหน้า</th></tr></thead><tbody>' +
+    rows.map(function (n) {
+      var p = prog(n);
+      return '<tr' + (relevant(n) ? "" : ' style="opacity:.5"') + '><td><button class="linkish" type="button" data-open="' + n.id + '">' + esc(n.title) + '</button><div class="mono" style="font-size:11.5px;color:var(--muted)">Stage ' + STAGES[n.s].n + '</div></td><td>' + ZONES[zoneOf(n)].name + '</td><td><span class="pri ' + n.p + '">' + PRI[n.p] + '</span></td><td class="num">' + n.a + '%</td><td class="num">' + n.v + '</td><td class="num">' + p.c + '/' + p.t + '</td></tr>';
+    }).join("") + '</tbody></table>';
+}
+
+/* =========================================================
+   THEME
+   ========================================================= */
+function effectiveTheme() {
+  var t = document.documentElement.getAttribute("data-theme");
+  if (t) return t;
+  return window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+function renderThemeBtn() {
+  var dark = effectiveTheme() === "dark";
+  var b = $("#themeBtn");
+  b.innerHTML = dark ? ICON.sun : ICON.moon;
+  b.setAttribute("aria-label", dark ? "เปลี่ยนเป็นธีมสว่าง" : "เปลี่ยนเป็นธีมมืด");
+  b.title = b.getAttribute("aria-label");
+}
+
+/* =========================================================
+   IMPORT / EXPORT / RESET
+   ========================================================= */
+function exportProgress() {
+  var data = { app:"ai-developer-roadmap", version:1, exportedAt:new Date().toISOString(), track:state.track, checks:state.checks };
+  var blob = new Blob([JSON.stringify(data, null, 2)], { type:"application/json" });
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "ai-roadmap-progress.json";
+  document.body.appendChild(a); a.click();
+  setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800);
+  toast("ส่งออกความคืบหน้าแล้ว");
+}
+function importProgress(file) {
+  var r = new FileReader();
+  r.onload = function () {
+    try {
+      var d = JSON.parse(r.result);
+      var c = cleanChecks(d && d.checks);
+      state.checks = c;
+      if (d && TRACK_LABEL[d.track]) state.track = d.track;
+      save(); refreshAll(); if (current) renderDrawer();
+      toast("นำเข้าความคืบหน้าสำเร็จ (" + Object.keys(c).length + " หัวข้อ)");
+    } catch (e) { toast("ไฟล์ไม่ถูกต้อง นำเข้าไม่สำเร็จ"); }
+  };
+  r.readAsText(file);
+}
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+function bind() {
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var anchor = t.closest('a[href^="#"]');
+    if (anchor) {
+      var hash = anchor.getAttribute("href").slice(1);
+      var dest = hash ? document.getElementById(hash) : null;
+      if (dest || hash === "top" || !hash) {
+        e.preventDefault();
+        var smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (dest && hash !== "top") dest.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block:"start" });
+        else window.scrollTo({ top:0, behavior: smooth ? "smooth" : "auto" });
+      }
+      return;
+    }
+    var node = t.closest(".node"); if (node) { openNode(node.dataset.id); return; }
+    var op = t.closest("[data-open]"); if (op) { var id = op.dataset.open; if (quizEl.classList.contains("open")) closeQuiz(false); openNode(id); return; }
+    var chip = t.closest("[data-track]");
+    if (chip) { state.track = chip.dataset.track; save(); refreshAll(); return; }
+    var qo = t.closest("[data-q]");
+    if (qo) { quizAns[QUIZ[quizStep].k] = qo.dataset.q; quizStep++; renderQuiz(); if (quizStep < QUIZ.length) setTimeout(function () { var f = $(".q-opt", quizEl); if (f) f.focus({ preventScroll:true }); }, 30); return; }
+    var act = t.closest("[data-action]"); if (!act) return;
+    switch (act.dataset.action) {
+      case "quiz": openQuiz(); break;
+      case "close-quiz": closeQuiz(); break;
+      case "quiz-back": quizStep = Math.max(0, quizStep - 1); renderQuiz(); break;
+      case "quiz-restart": quizStep = 0; quizAns = {}; renderQuiz(); break;
+      case "quiz-apply": applyQuiz(); break;
+      case "export": exportProgress(); break;
+      case "import": $("#importFile").click(); break;
+      case "reset":
+        if (confirm("ล้างความคืบหน้าทั้งหมด? การกระทำนี้ย้อนกลับไม่ได้ (แนะนำให้ส่งออกเก็บไว้ก่อน)")) {
+          state.checks = {}; save(); refreshAll(); if (current) renderDrawer(); toast("ล้างความคืบหน้าแล้ว");
+        }
+        break;
+      case "clear-filters":
+        state.q = ""; $("#search").value = ""; state.pri = "all"; $("#priFilter").value = "all"; state.hideDone = false; $("#hideDone").checked = false; applyFilters(); break;
+      case "check-all": if (current) setChecks(current, current.sk.map(function (_, i) { return i; })); $$('.checklist input', drawer).forEach(function (c) { c.checked = true; }); break;
+      case "check-none": if (current) setChecks(current, []); $$('.checklist input', drawer).forEach(function (c) { c.checked = false; }); break;
+      case "copy-prompt":
+        if (current) copyText(buildPrompt(current)).then(function (ok) { toast(ok ? "คัดลอก prompt แล้ว นำไปวางใน AI ที่คุณใช้ได้เลย" : "คัดลอกไม่สำเร็จ ลองเลือกข้อความแล้วคัดลอกเอง"); });
+        break;
+    }
+  });
+
+  drawer.addEventListener("change", function (e) {
+    var cb = e.target.closest("input[data-sk]"); if (!cb || !current) return;
+    var i = +cb.dataset.sk, arr = (state.checks[current.id] || []).slice();
+    var k = arr.indexOf(i);
+    if (cb.checked && k === -1) arr.push(i);
+    if (!cb.checked && k > -1) arr.splice(k, 1);
+    var wasDone = statusOf(current) === "done";
+    setChecks(current, arr.sort(function (a, b) { return a - b; }));
+    if (!wasDone && statusOf(current) === "done") toast("เยี่ยม! เรียนจบหัวข้อ “" + current.title + "” แล้ว");
+  });
+
+  $("#dClose").addEventListener("click", closeDrawer);
+  scrim.addEventListener("click", closeDrawer);
+  $("#dPrev").addEventListener("click", function () { if (current && NODES[current.i - 1]) openNode(NODES[current.i - 1].id); });
+  $("#dNext").addEventListener("click", function () { if (current && NODES[current.i + 1]) openNode(NODES[current.i + 1].id); });
+  quizEl.addEventListener("click", function (e) { if (e.target === quizEl) closeQuiz(); });
+
+  var searchTimer;
+  $("#search").addEventListener("input", function (e) {
+    clearTimeout(searchTimer);
+    var v = e.target.value;
+    searchTimer = setTimeout(function () { state.q = v; applyFilters(); }, 80);
+  });
+  $("#priFilter").addEventListener("change", function (e) { state.pri = e.target.value; applyFilters(); });
+  $("#hideDone").addEventListener("change", function (e) { state.hideDone = e.target.checked; applyFilters(); });
+  $("#importFile").addEventListener("change", function (e) { var f = e.target.files && e.target.files[0]; if (f) importProgress(f); e.target.value = ""; });
+
+  $("#themeBtn").addEventListener("click", function () {
+    var next = effectiveTheme() === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("aidr.theme", next); } catch (e) {}
+    renderThemeBtn();
+  });
+  if (window.matchMedia) {
+    var mq = matchMedia("(prefers-color-scheme: dark)");
+    var onMq = function () { renderThemeBtn(); };
+    if (mq.addEventListener) mq.addEventListener("change", onMq); else if (mq.addListener) mq.addListener(onMq);
+  }
+
+  $("#tableToggle").addEventListener("click", function () {
+    var w = $("#mxTableWrap"), open = w.hidden;
+    if (open) buildTable();
+    w.hidden = !open;
+    this.setAttribute("aria-expanded", String(open));
+    this.textContent = open ? "ซ่อนตาราง" : "ดูเป็นตาราง";
+  });
+
+  var box = $("#mxBox");
+  box.addEventListener("pointerover", function (e) { var g = e.target.closest(".mx-pt"); if (g) showTip(g); });
+  box.addEventListener("pointerout", function (e) { var g = e.target.closest(".mx-pt"); if (g && !g.contains(e.relatedTarget)) hideTip(); });
+  box.addEventListener("focusin", function (e) { var g = e.target.closest(".mx-pt"); if (g) showTip(g); });
+  box.addEventListener("focusout", hideTip);
+  box.addEventListener("click", function (e) { var g = e.target.closest(".mx-pt"); if (g) { hideTip(); openNode(g.dataset.id); } });
+  box.addEventListener("keydown", function (e) {
+    var g = e.target.closest(".mx-pt");
+    if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); hideTip(); openNode(g.dataset.id); }
+  });
+
+  var tb = $("#toolbar"), topbar = $(".topbar");
+  var setStick = function () {
+    var sticky = getComputedStyle(tb).position === "sticky";
+    var h = topbar.offsetHeight + (sticky ? tb.offsetHeight : 0) + 20;
+    document.documentElement.style.setProperty("--stick", h + "px");
+  };
+  setStick();
+  if ("ResizeObserver" in window) new ResizeObserver(setStick).observe(tb); else window.addEventListener("resize", setStick);
+
+  var rt;
+  var onResize = function () { clearTimeout(rt); rt = setTimeout(function () { if (Math.abs($("#mxBox").clientWidth - mxW) > 8) buildMatrix(); }, 120); };
+  if ("ResizeObserver" in window) new ResizeObserver(onResize).observe(box); else window.addEventListener("resize", onResize);
+
+  document.addEventListener("keydown", function (e) {
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || "")) && e.target.type !== "checkbox";
+    if (e.key === "Escape") {
+      if (quizEl.classList.contains("open")) { closeQuiz(); return; }
+      if (drawer.classList.contains("open")) { closeDrawer(); return; }
+      if (e.target.id === "search" && e.target.value) { e.target.value = ""; state.q = ""; applyFilters(); }
+      return;
+    }
+    if (e.key === "/" && !typing && !drawer.classList.contains("open") && !quizEl.classList.contains("open")) {
+      e.preventDefault(); var s = $("#search"); s.focus(); s.select(); return;
+    }
+    if (drawer.classList.contains("open") && !typing && current) {
+      if (e.key === "ArrowLeft" && NODES[current.i - 1]) { e.preventDefault(); openNode(NODES[current.i - 1].id); }
+      if (e.key === "ArrowRight" && NODES[current.i + 1]) { e.preventDefault(); openNode(NODES[current.i + 1].id); }
+    }
+    if (e.key === "Tab") trapFocus(e);
+  });
+}
+
+function trapFocus(e) {
+  var root = quizEl.classList.contains("open") ? quizEl : (drawer.classList.contains("open") ? drawer : null);
+  if (!root) return;
+  var f = $$('button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])', root).filter(function (el) { return el.offsetParent !== null || el === document.activeElement; });
+  if (!f.length) return;
+  var first = f[0], last = f[f.length - 1];
+  if (!root.contains(document.activeElement)) { e.preventDefault(); first.focus(); return; }
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+load();
+buildPrinciples();
+buildChips();
+buildRoadmap();
+buildRail();
+var totalSkills = NODES.reduce(function (s, n) { return s + n.sk.length; }, 0);
+$('[data-count="stages"]').textContent = STAGES.length;
+$('[data-count="nodes"]').textContent = NODES.length;
+$('[data-count="skills"]').textContent = totalSkills;
+$("#roadmapTitle").textContent = "เส้นทางการเรียนรู้ " + STAGES.length + " ช่วง " + NODES.length + " หัวข้อ";
+renderThemeBtn();
+bind();
+buildMatrix();
+refreshAll();
+initSpy();
+var m = /^#topic=([\w-]+)/.exec(location.hash);
+if (m && byId[m[1]]) setTimeout(function () { openNode(m[1]); }, 150);
+})();
+</script>
+</body>
 </html>
